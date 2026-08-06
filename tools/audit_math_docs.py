@@ -15,6 +15,7 @@ MALFORMED_PATTERNS = {
     "double-dollar display delimiter": re.compile(r"\$\$"),
     "malformed generated subscript": re.compile(r"(?:_|[A-Za-z])\*\{"),
     "malformed norm command": re.compile(r"\\Vert\{"),
+    "malformed exponent spacing": re.compile(r"\^\{,"),
     "missing backslash on spacing command": re.compile(
         r"(?<!\\)\b(?:quad|qquad)\b"
     ),
