@@ -187,13 +187,12 @@ Not proved here:
 
 ## Next best strategy
 
-Do not discard higher powers of `i^2`. Reconstruct each complete scalar margin
-as a polynomial in `i^2`, retaining the paired odd radical exactly, and seek a
-positivity certificate on `i in [-1,1]` conditional on the already-proved
-one-edge margin. In parallel, extract the equality set from the existing
-one-edge Duffy/Bernstein certificate. The two tasks meet at the only remaining
-logical gap: every exact base equality must be checked against the full odd
-amplitude before global positivity can be promoted.
+Do not discard higher powers of `i^2`. This next reduction is now complete:
+each paired margin is equivalent to degree-six and degree-twelve polynomial
+gates after one reversible squaring. See
+`SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md`. The next exact task is to factor
+their `y=0` and `y=1` endpoint layers before attempting staged Bernstein/Duffy
+positivity in the interior.
 
 ## Artifacts and code
 

@@ -74,6 +74,9 @@ module name. Editable installation adds this directory to the Python path.
   global quadratic Schur strategy, and float64 CUDA face falsifier.
 - `spin8_dirac_two_edge_kernel_flint.py`: independent FLINT replay of the
   rational jet slices and the singular-block factorization.
+- `spin8_dirac_two_edge_finite.py`: exact one-squaring radical elimination of
+  every finite second-edge margin pair into degree-six and degree-twelve
+  polynomial gates, plus a full-six-cube CUDA falsifier.
 - `spin8_multiplicity_gauge.py`: exact covariance and `O(m)` gauge theorem for
   repeated probes in the same triality representation.
 

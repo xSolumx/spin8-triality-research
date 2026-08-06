@@ -382,8 +382,8 @@ class TorchChannels:
         self.hadamard = torch.tensor(HADAMARD, dtype=self.dtype, device=device)
         self.rows = {}
         for mask, sector in sectors.items():
-            powers_by_i_degree = {0: [], 1: []}
-            coefficients_by_i_degree = {0: [], 1: []}
+            powers_by_i_degree = {degree: [] for degree in range(4)}
+            coefficients_by_i_degree = {degree: [] for degree in range(4)}
             for six_powers, coefficient in sector.terms:
                 if six_powers[4] in powers_by_i_degree:
                     powers_by_i_degree[six_powers[4]].append(
@@ -395,7 +395,7 @@ class TorchChannels:
                     torch.tensor(
                         powers_by_i_degree[degree], dtype=torch.long, device=device
                     )
-                    for degree in (0, 1)
+                    for degree in range(4)
                 ),
                 tuple(
                     torch.tensor(
@@ -403,7 +403,7 @@ class TorchChannels:
                         dtype=self.dtype,
                         device=device,
                     )
-                    for degree in (0, 1)
+                    for degree in range(4)
                 ),
                 torch.tensor(
                     sector.mask[:4] + sector.mask[5:],
