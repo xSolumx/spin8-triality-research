@@ -1,4 +1,4 @@
-# Breakthrough Note: Structure and Positivity in Spin(8) Triality Sensing
+# Iteration Note: Structure and Positivity in Spin(8) Triality Sensing
 
 **Date:** 2026-08-06
 

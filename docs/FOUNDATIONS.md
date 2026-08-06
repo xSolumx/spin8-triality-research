@@ -152,7 +152,7 @@ Rotors win two of three seeds; seed 0 is a narrow loss. Learned mean rotor
 angles are nonzero and controller weight norms move away from zero, confirming
 that the winning models actually use the transition. These short runs are a
 promising mechanism-level result, not evidence of state-of-the-art language
-modeling or a statistically established breakthrough.
+modeling or a statistically established advance.
 
 The exact reports, including dataset SHA-256 hashes, loss samples, timings,
 memory use, and transition diagnostics, are in `experiments/final_seed*_300.json`.

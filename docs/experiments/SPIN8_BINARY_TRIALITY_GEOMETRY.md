@@ -7,7 +7,7 @@
 **Preregistration:** none; this theorem was discovered while extending the
 global five-probe certificate
 
-## The breakthrough
+## The structural result
 
 The 24 coordinate probes in the three eight-dimensional Spin(8) triality
 representations are not 24 unrelated objects. They are the visible part of one

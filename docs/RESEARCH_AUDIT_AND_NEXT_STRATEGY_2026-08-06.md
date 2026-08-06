@@ -283,7 +283,7 @@ separation.
 
 The Hillis--Steele reference has logarithmic dependency depth but `O(N log N)`
 work, and per-token matrix exponentials are expensive. Do not advertise a
-hardware breakthrough until a fused `O(N)`-work scan and recurrent decoder are
+hardware result until a fused `O(N)`-work scan and recurrent decoder are
 benchmarked against mature kernels on identical hardware.
 
 ### C7. Triality binding is not yet a high-capacity VSA or attention replacement

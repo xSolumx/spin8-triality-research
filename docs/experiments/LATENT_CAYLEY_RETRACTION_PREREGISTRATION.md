@@ -81,7 +81,7 @@ For all ten seeds, report:
 - untouched class-33 L16384 accuracy, batch 256, plus sequential-versus-direct
   canonical state drift.
 
-## Breakthrough gates
+## Claim gates
 
 All must pass without changing the protocol:
 
