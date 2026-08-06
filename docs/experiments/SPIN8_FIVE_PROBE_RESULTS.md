@@ -149,6 +149,19 @@ through every dense length from 16 to 2,048.
 - Semantic alias inference, learned probe selection, and language modeling were
   not tested here.
 
+### Exact global addendum (2026-08-06)
+
+A subsequent deterministic certificate closes the global-discrete gap for one
+explicit `(1,4,0)` tuple. The triality closure of
+`(e0^V; e0^+, e1^+, e2^+, e4^+)` has exact rank `(8,8,8)` with basis
+determinant `-1` in every representation, so its full global stabilizer is
+trivial. Removing `e4^+` leaves three exact generators closing as `su(2)`.
+
+See [the exact global five-probe theorem](SPIN8_GLOBAL_FIVE_PROBE_THEOREM.md).
+The original boundary above remains correct for the random generic cohort:
+the new certificate proves an explicit globally identifying tuple, not yet a
+complete orbit-type classification of every generic allocation.
+
 ## Next gate
 
 The strongest next experiment is **active triality sensing**: let a model choose

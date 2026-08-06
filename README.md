@@ -26,6 +26,17 @@ together so that the path to the final results remains auditable.
   fitted actions retain exact unconstrained directions.
 - Five generic probes spanning two triality views identify the 28-dimensional
   shared action; four probes retain an exact three-dimensional stabilizer.
+- One displayed five-probe tuple now has an exact **global** certificate: its
+  triality closure is a determinant-`-1` basis in all three representations.
+  Its four-probe subset has an exact continuous `su(2)` stabilizer.
+- The 24 coordinate probes form an exact `F_2^5` geometry. Exhausting all
+  52,752 multiview four- and five-probe sensors proves that four never identify
+  the full action and five do exactly when their labels are a binary basis.
+  The stabilizer ladder is `SU(3) -> SU(2) -> trivial`; the earlier 14
+  exceptional supports are the Hamming `[8,4,4]`/`S(3,4,8)` shadow of this law.
+- The triality-specific triangular scan has been generalized to any bilinear
+  intertwiner, with an exact finite lift, an SO(3) cross-product control, and a
+  formal feedback-degree obstruction.
 - Joint latent-address retraction removes collision slack that survives
   independently normalized routing.
 
@@ -89,6 +100,7 @@ read [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md).
 | [`src/`](src/README.md) | Executable research harnesses and algebra implementations |
 | [`tests/`](tests/) | Foundational, recurrence, streaming, and ablation contracts |
 | [`docs/RESEARCH_MAP.md`](docs/RESEARCH_MAP.md) | The research lineage and interpretation boundaries |
+| [`docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md`](docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md) | Adversarial corrections, standalone paper opportunities, and the next strategy |
 | [`docs/EXPERIMENT_INDEX.md`](docs/EXPERIMENT_INDEX.md) | Grouped index of every preregistration and result document |
 | [`docs/experiments/`](docs/experiments/) | Preregistrations, results, corrections, and negative findings |
 | [`artifacts/`](artifacts/README.md) | Raw JSON outputs retained for reproducibility |
@@ -119,7 +131,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 119 passing tests. See
+The current repository is validated by 127 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 

@@ -10,6 +10,12 @@ module name. Editable installation adds this directory to the Python path.
 - `spin8_triality_lift.py`: triangular triality recurrence and binding.
 - `spin8_triality_memory.py`: multiplicity-slot memory contracts.
 - `spin8_five_probe_identifiability.py`: exact shared-rank and ambiguity gates.
+- `spin8_global_probe_certificate.py`: exact integral triality closure proving
+  one global five-probe free tuple and a four-probe `su(2)` counterfamily.
+- `spin8_coordinate_geometry.py`: exhaustive `F_2^5` classification of all
+  coordinate four/five-probe sensors and their exact stabilizer ladder.
+- `intertwiner_schurscan.py`: generic triangular bilinear scan, finite
+  homogeneous lift, SO(3) control, and cyclic-feedback degree obstruction.
 - `spin8_active_sensing.py`: information operator and sensor metrics.
 - `spin8_joint_sensor_retraction.py`: joint sensor-family continuation.
 - `spin8_cayley_spectrum.py`: exact Cayley spectrum certificates.

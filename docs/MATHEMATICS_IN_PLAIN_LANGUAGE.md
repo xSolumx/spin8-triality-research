@@ -62,6 +62,83 @@ This does not disprove the main inequality. It disproves only that shortcut.
 The lesson is simple: correlations interact, so removing them one by one can
 move information around before it removes it.
 
+## Why five probes can determine the whole action
+
+The older experiment checked a local question: if we nudge the unknown action
+by a tiny amount, do five measurements detect every possible nudge? They did.
+That still left a loophole: perhaps a completely different, far-away action
+could give the same five answers.
+
+Triality closes that loophole for one exact arrangement. Start with one vector
+probe and four spinor probes. Whenever two known objects are combined by the
+triality multiplication rule, the result must also be fixed by any action that
+fixed the original probes. Repeating this rule is like solving a Sudoku: every
+known entry forces more entries.
+
+For the exact probes
+
+```text
+vector:          e0
+positive spinor: e0, e1, e2, e4
+```
+
+the forced vectors eventually form a complete basis of all three
+eight-dimensional triality spaces. Each exact basis determinant is `-1`, so
+none of the directions is missing. An action fixing the five original probes
+must therefore fix every basis vector, meaning it is globally the identity.
+
+Remove `e4` and the closure stops at four dimensions in each space. Three
+independent rotations remain completely invisible. Their exact commutators are
+those of `su(2)`, so this is a continuous family of wrong answers, not rounding
+error or failed training.
+
+This proves a global five-versus-four separation for the displayed probes.
+
+There are 70 ways to choose four coordinate spinors. The exact program checked
+all of them. Fifty-six choices force all eight directions. Fourteen choices get
+stuck in four dimensions. Those fourteen are the blocks of a famous binary
+error-correcting code: the extended Hamming `[8,4,4]` code. Every set of three
+coordinates belongs to exactly one exceptional block.
+
+This does not mean the memory is performing error correction. It means the
+geometry of the exceptional probe choices has the same exact combinatorial
+pattern as that code.
+
+The larger pattern is now known for every coordinate probe. Give the three
+triality spaces three different two-bit labels and each of their eight
+coordinates a three-bit label. Every coordinate probe then has a five-bit
+barcode. Triality multiplication combines barcodes by XOR: a switch is on in
+the answer exactly when it was on in one input but not both.
+
+The exact program checked all 52,752 multiview coordinate choices of four or
+five probes. Four barcodes can span at most four independent binary directions,
+so none sees the whole five-dimensional barcode space. Five probes see it all
+exactly when their five barcodes are independent. The remaining invisible
+continuous symmetry has dimension 8, then 3, then 0 as binary rank rises from
+3 to 4 to 5. Exact bracket and Killing-form checks identify these stages as
+`SU(3)`, `SU(2)`, and no continuous stabilizer.
+
+This completely classifies the coordinate case. Arbitrary non-coordinate
+probes form a continuous problem and still require a separate orbit theorem.
+
+## How bilinear memory can remain parallel
+
+Suppose two recurrent streams are updated independently. After both have been
+computed, combine their current states with any bilinear rule and use that as
+the input to a third recurrent stream. Each layer is still an ordinary affine
+scan, so the construction needs two parallel scan stages and a fixed recurrent
+state.
+
+An exact proof adds the product of the two source states as temporary
+coordinates. Those product coordinates make the whole update one linear
+matrix multiplication. They are a proof device, not part of the streaming
+cache.
+
+The arrow direction matters. If the third stream feeds back into one source,
+the polynomial degree grows forever. If it feeds both sources, the degree
+doubles at every step. So triangular coupling is not an arbitrary engineering
+choice; it is the boundary that preserves a finite exact scan.
+
 ## The current one-edge frontier
 
 The next family allows the Cayley angle to vary as well. Exact symmetry reduces
@@ -106,7 +183,11 @@ integer arithmetic.
 | Claim | Status |
 |---|---|
 | Balanced sensor invariants `81/1024`, `35`, and `43` | Exact |
-| Five generic multiview probes identify 28 action dimensions | Exact |
+| Five generic multiview probes identify 28 local action dimensions | Exact differential rank |
+| Displayed five-probe tuple has no global ambiguity | Proved exactly |
+| Displayed four-probe subset has an `su(2)` ambiguity | Proved exactly |
+| All multiview coordinate four/five-probe closures follow `F_2^5` span | Exhaustively proved |
+| Generic triangular bilinear drive has a finite exact staged scan | Constructively proved |
 | Signed star Dirac--Gram inequality | Proved |
 | Cayley-null four-correlation edge inequality | Proved |
 | Removing residual correlations is always helpful | Disproved |

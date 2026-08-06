@@ -4,6 +4,10 @@ This archive is organized as a sequence of increasingly strict mechanism
 gates. Later results do not erase earlier failures; they answer narrower or
 better-posed questions.
 
+For the current adversarial claim audit, standalone paper opportunities,
+correction ledger, and compressed next-research strategy, see
+[Research audit and next strategy](RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md).
+
 ## 1. Recurrent and streaming baseline
 
 The first layer established full/chunk/token equivalence and fixed recurrent
@@ -102,11 +106,26 @@ of an already identifiable design.
 Primary documents:
 
 - [Five-probe theorem](experiments/SPIN8_FIVE_PROBE_RESULTS.md)
+- [Exact global five-probe certificate](experiments/SPIN8_GLOBAL_FIVE_PROBE_THEOREM.md)
+- [Binary coordinate triality geometry](experiments/SPIN8_BINARY_TRIALITY_GEOMETRY.md)
 - [Active sensing](experiments/SPIN8_ACTIVE_SENSING_RESULTS.md)
 - [Joint sensor retraction](experiments/SPIN8_JOINT_SENSOR_RETRACTION_RESULTS.md)
 
 Interpretation boundary: identifiability is not conditioning. The five-probe
 boundary and the balanced information spectrum are distinct results.
+The exact global certificate now proves one explicitly displayed free
+five-probe tuple and one four-probe `su(2)` counterfamily; classification of
+all generic allocations remains open.
+
+The coordinate subproblem is now completely classified: the 24 coordinate
+probes are nonzero-colour points in `F_2^5`, triality contraction is binary
+addition, and five probes identify exactly when their labels form a basis.
+This does not yet classify arbitrary continuous probes.
+
+The triangular recurrence has also been separated into a universal theorem and
+its exceptional instance. See
+[Intertwiner SchurScans](experiments/INTERTWINER_SCHURSCAN_THEOREM.md) for the
+generic bilinear lift, SO(3) control, and feedback obstruction.
 
 ## 8. Cayley spectrum and Dirac–Gram proof program
 
