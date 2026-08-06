@@ -129,6 +129,14 @@ coordinatewise residual removal.
 Gram--Cayley inequality, and global five-query D-optimality across every
 allocation and nonorthogonal frame.
 
+**Continuous local upgrade.** The complete 35-dimensional Riemannian Hessian
+is now exact. Its kernel is precisely the 28-dimensional shared `Spin(8)`
+orbit, and the seven quotient eigenvalues are strictly negative. Thus the
+balanced sensor is a strict local maximum modulo symmetry. All 35 one-probe
+coordinate great circles are also exact: 15 are determinant-flat and 20
+strictly decrease to rank-25 boundaries. Distant coupled deformations remain
+the gap between this local theorem and the global claim.
+
 **Possible title.** *Cayley-Null Optimal Experimental Design in Spin(8)
 Triality*.
 
@@ -344,6 +352,31 @@ LayerNorm, componentwise GELU, and averaged attention heads do not preserve a
 clean Spin-equivariant interpretation. Preserve it unchanged as the historical
 prototype; use the recurrent triality archive for scientific claims.
 
+### C16. The three D4 labels are not interchangeable
+
+The `D4` root system/24-cell and Dynkin type `D4=so(8)` share the classical
+triality bridge. The order-eight dihedral benchmark called `D4` does not. Do
+not use performance on that finite group as evidence about the 24-cell.
+
+### C17. Equal-five and approximate D-optimality are different problems
+
+The equal balanced five-query sensor is not optimal when arbitrary fractional
+weights and support sizes are allowed: its normalized maximum sensitivity is
+75, above the Kiefer--Wolfowitz threshold 28, and a rational reweighting
+improves it. Uniform mass on an eight-probe basis is globally optimal in that
+broader approximate-design domain. The exact five equal-cost pure-query
+problem remains open and now has a strict local theorem.
+
+### C18. The 24 sensor projectors are tight but not spectrally optimal
+
+The sensor projectors live in `Gr(7,28)`, not on the 24-cell's `S^3`. Their
+sum is tight, and cross-view pairs are isoclinic, but same-view pairs intersect.
+The full configuration misses the chordal simplex bound and has spectral
+coherence one. The latter proves spectral non-optimality; the former does not
+alone prove chordal non-optimality without an attainability result. Moreover,
+every orthonormal basis in a view gives the same tight projector sum, so
+tightness has continuous non-vertex deformations.
+
 ## Next best strategum: compressed researcher handoff
 
 ### Target 1 -- classify exceptional nonprincipal five-probe strata
@@ -376,6 +409,13 @@ one-edge flag bridge, and an exact even/odd four-block decomposition.
 
 **Success condition:** an exact theorem or exact counterexample for positivity
 of both paired group-circulants on the second-residual bridge.
+
+### Target 2B -- globalize or falsify the equal-five local optimum
+
+Use the exact seven-dimensional quotient Hessian to define rational coupled
+probe curves. Audit finite non-vertex paths, all compact rank-deficient strata,
+and exceptional equality components. Any numerical challenger must be
+rationalized and checked exactly; absence of a challenger is not a proof.
 
 ### Target 3 -- benchmark the now-stated Intertwiner SchurScan theorem
 

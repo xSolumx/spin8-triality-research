@@ -24,6 +24,15 @@ module name. Editable installation adds this directory to the Python path.
 - `spin8_cayley_spectrum.py`: exact Cayley spectrum certificates.
 - `spin8_cayley_blocks.py`: exact `8 + 8 + 8 + 4` invariant-block mechanism
   behind the balanced Cayley characteristic law and determinant `81/1024`.
+- `spin8_five_query_local_geometry.py`: exact 35-dimensional Riemannian
+  Hessian, shared-orbit kernel, finite great-circle atlas, and boundary ranks
+  for the balanced equal-five-query sensor.
+- `spin8_approximate_design_audit.py`: exact separation of equal-five and
+  weighted approximate D-optimality, including a rational reweighting
+  counterexample and the isotropic global approximate optimum.
+- `spin8_d4_24cell_bridge.py`: exact minuscule-weight 24-cell bridge, coloured
+  projector geometry, continuous non-vertex tight-frame deformation, and
+  standard Grassmannian packing falsifier.
 - `spin8_dirac_gram.py`: projector geometry, Schur reduction, and falsifiers.
 - `spin8_dirac_star.py`: independently replayed rational Bernstein theorem.
 - `spin8_conditional_counterexample.py`: exact rational falsifier for naive

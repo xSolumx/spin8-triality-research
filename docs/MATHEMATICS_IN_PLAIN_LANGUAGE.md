@@ -310,6 +310,13 @@ integer arithmetic.
 | All eight two-edge sector polynomials and endpoint factors | Proved exactly |
 | Universal two-edge flag law and paired four-block reduction | Proved exactly |
 | Two-edge stability transverse to the orthonormal equality line | Proved exactly |
+| Balanced five-query sensor is a strict local optimum after removing rotations | Proved exactly |
+| All 35 one-camera coordinate-circle deformations | Proved exactly |
+| Equal balanced sensor is best with fractional measurement weights | Disproved exactly |
+| Eight-probe isotropic approximate design is globally best | Proved exactly |
+| 24 coloured sensors are spectrally optimal as an ordinary subspace packing | Disproved exactly |
+| 24 coloured sensors attain the chordal simplex bound | Disproved exactly |
+| 24 coloured sensors are chordally optimal | Open; missing the bound is not a proof |
 | Variable-Cayley two-edge inequality | Open; block positivity remains |
 | Unrestricted seven-parameter inequality | Open |
 | Global best possible five-query design | Open |

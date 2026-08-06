@@ -50,6 +50,19 @@ together so that the path to the final results remains auditable.
   five-query information operator has trace 35.
 - The balanced sensor has exact invariants
   `det(I)=81/1024`, `trace(I)=35`, and `trace(I^-1)=43`.
+- Its full 35-dimensional Riemannian log-determinant Hessian has exactly the
+  28 shared-`Spin(8)` orbit zero modes and seven strictly negative quotient
+  modes. It is therefore a strict **local** equal-five-query optimum modulo
+  symmetry; global equal-five-query optimality remains open.
+- Approximate experimental design is a different domain. The equal five-point
+  sensor fails the Kiefer--Wolfowitz sensitivity test there, while uniform
+  mass on one eight-probe basis gives `M=I_28/4` and is globally approximate
+  D-optimal.
+- The three minuscule `D4` weight octets form the classical 24-cell, but the
+  24 sensor projectors form a different, continuously deformable three-colour
+  tight fusion frame in `Gr(7,28)`. It is not spectrally optimal as an
+  uncoloured Grassmannian packing and does not attain the chordal simplex
+  bound; chordal optimality itself is not settled by that bound.
 - On the orthonormal balanced orbit,
 
   \[
@@ -134,6 +147,7 @@ read [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md).
 | [`tests/`](tests/) | Foundational, recurrence, streaming, and ablation contracts |
 | [`docs/RESEARCH_MAP.md`](docs/RESEARCH_MAP.md) | The research lineage and interpretation boundaries |
 | [`docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md`](docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md) | Adversarial corrections, standalone paper opportunities, and the next strategy |
+| [`docs/LITERATURE_AUDIT_2026-08-06.md`](docs/LITERATURE_AUDIT_2026-08-06.md) | Primary-source audit, continuous-deformation corrections, and updated baseline requirements |
 | [`docs/BREAKTHROUGH_NOTE_2026-08-06.md`](docs/BREAKTHROUGH_NOTE_2026-08-06.md) | Publication-scoped write-up of the exact Cayley blocks and variable-Cayley theorem |
 | [`docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md`](docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md) | Integrated manuscript covering identifiability, Cayley blocks, gauges, and Dirac--Gram results |
 | [`docs/EXPERIMENT_INDEX.md`](docs/EXPERIMENT_INDEX.md) | Grouped index of every preregistration and result document |
@@ -166,7 +180,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 152 passing tests. See
+The current repository is validated by 158 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 
