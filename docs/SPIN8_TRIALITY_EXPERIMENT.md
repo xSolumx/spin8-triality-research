@@ -596,3 +596,19 @@ that row-orthonormal completion cannot reduce it, then establish the exact
 upper bounds for the other four allocation partitions. Only those two steps
 would promote `81/1024` from an orthonormal-orbit theorem plus exhaustive
 falsification to a global five-query theorem.
+
+### 2026-08-06 exact progress update
+
+Two larger theorem slices now survive exact replay. The Cayley-null
+four-correlation family was extended to variable normalized Cayley coordinate:
+two Duffy charts, 1,901,250 exact chart controls, exact boundary factors, and
+256 disjoint direct determinant checks prove the complete variable-Cayley
+one-edge family. This is still not the unrestricted result because two
+Cholesky residual edges remain absent.
+
+The balanced degree-28 information family also has a fixed `8 + 8 + 8 + 4`
+invariant coordinate-block split. The two middle blocks are exactly conjugate,
+and their balanced determinant contributions are `9/16` each; together with
+`1/4` and `1`, this explains `81/1024` structurally. See
+`experiments/SPIN8_CAYLEY_BLOCK_THEOREM.md` and
+`experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md`.

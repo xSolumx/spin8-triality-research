@@ -11,6 +11,7 @@ from pathlib import Path
 import jax
 import jax.numpy as jnp
 import numpy as np
+import sympy as sp
 import torch
 from torch import nn
 
@@ -64,6 +65,7 @@ from spin8_blind_shared_action import (
     observed_action,
     sample_teacher,
 )
+from spin8_cayley_blocks import exact_cayley_block_certificate
 from spin8_cayley_spectrum import (
     cayley_invariance_audit,
     exact_cayley_spectrum_certificate,
@@ -102,12 +104,21 @@ from spin8_dirac_one_edge_exact import (
     EXPECTED_DEGREES as ONE_EDGE_EXPECTED_DEGREES,
 )
 from spin8_dirac_one_edge_exact import (
+    HOLDOUTS as ONE_EDGE_HOLDOUTS,
+)
+from spin8_dirac_one_edge_exact import (
+    _determinant as one_edge_direct_determinant,
+)
+from spin8_dirac_one_edge_exact import (
     _symmetry_certificate as one_edge_symmetry_certificate,
 )
+from spin8_dirac_one_edge_holdouts import verify_holdout_report
 from spin8_dirac_one_edge_positivity import (
     _complement_first_two,
     _integer_bernstein_tensor,
     _lower_duffy_power_tensor,
+    _sparse_tetrahedral_determinant,
+    verify_assembled_report,
 )
 from spin8_dirac_star import (
     rational_circle,
@@ -622,6 +633,16 @@ class CayleySpectrumTheoremTests(unittest.TestCase):
         self.assertEqual(certificate["balanced_rank"], 28)
         self.assertEqual(certificate["calibrated_rank"], 25)
 
+    def test_balanced_characteristic_law_has_exact_invariant_blocks(self) -> None:
+        certificate = exact_cayley_block_certificate()
+        self.assertTrue(certificate["passed"])
+        self.assertEqual(certificate["block_dimensions"], [8, 8, 8, 4])
+        self.assertEqual(
+            certificate["balanced_block_determinants"],
+            ["1/4", "9/16", "9/16", "1"],
+        )
+        self.assertEqual(certificate["balanced_global_determinant"], "81/1024")
+
     def test_two_orthogonalization_slices_are_exact(self) -> None:
         certificate = exact_restricted_orthogonalization_certificate()
         self.assertTrue(certificate["same_view_correlation_identity"])
@@ -734,6 +755,40 @@ class CayleySpectrumTheoremTests(unittest.TestCase):
             )
             self.assertEqual(report["confirmation"][name]["degrees"], list(degrees))
 
+    def test_variable_cayley_exact_holdouts_replay(self) -> None:
+        root = Path(__file__).parents[1]
+        reconstruction = root / "artifacts" / "spin8_dirac_one_edge_exact_20260804.json"
+        artifact = root / "artifacts" / "spin8_dirac_one_edge_holdouts_20260806.json"
+        report = json.loads(artifact.read_text(encoding="utf-8"))
+        self.assertTrue(verify_holdout_report(report, reconstruction))
+        self.assertEqual(report["exact_comparisons"], 256)
+        self.assertEqual(report["mismatch_count"], 0)
+
+        first = report["rows"][0]
+        direct = one_edge_direct_determinant(
+            ONE_EDGE_HOLDOUTS[first["holdout_index"]], tuple(first["signs"])
+        )
+        self.assertEqual(str(direct), first["direct_determinant"])
+
+    def test_variable_cayley_final_theorem_artifact_replays(self) -> None:
+        root = Path(__file__).parents[1]
+        artifacts = root / "artifacts"
+        report = json.loads(
+            (artifacts / "spin8_dirac_one_edge_duffy_20260806.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertTrue(
+            verify_assembled_report(
+                report,
+                artifacts / "spin8_dirac_one_edge_exact_20260804.json",
+                artifacts / "spin8_dirac_one_edge_determinant_cache_20260806.json",
+                artifacts / "spin8_dirac_one_edge_positivity_20260804.json",
+                artifacts / "spin8_dirac_one_edge_holdouts_20260806.json",
+            )
+        )
+        self.assertTrue(report["theorem_proved"])
+
     def test_duffy_power_transform_and_integer_bernstein_are_exact(self) -> None:
         # p(u,v)=u+2v becomes t(2-y) under u=ty, v=t(1-y).
         power = np.empty((2, 2), dtype=object)
@@ -756,6 +811,32 @@ class CayleySpectrumTheoremTests(unittest.TestCase):
         controls, scale = _integer_bernstein_tensor(univariate)
         self.assertEqual(scale, 1)
         self.assertEqual(controls.tolist(), [1, 2])
+
+    def test_sparse_tetrahedral_determinant_matches_direct_formula(self) -> None:
+        variables = sp.symbols("u v r w z")
+        u, v, r, w, z = variables
+        rows = [
+            sp.Poly(1 + u + z, *variables),
+            sp.Poly(v + r, *variables),
+            sp.Poly(w + z, *variables),
+            sp.Poly(u * v + 1, *variables),
+            sp.Poly(r * w + z, *variables),
+        ]
+        X, P, Q, S, C = rows
+        sparse = _sparse_tetrahedral_determinant(X, P, Q, S, C)
+        direct = sp.Poly(
+            sp.expand(
+                X.as_expr() ** 4
+                - 2 * X.as_expr() ** 2 * (P + Q + S).as_expr()
+                - 8 * X.as_expr() * C.as_expr()
+                + P.as_expr() ** 2
+                + Q.as_expr() ** 2
+                + S.as_expr() ** 2
+                - 2 * (P * Q + P * S + Q * S).as_expr()
+            ),
+            *variables,
+        )
+        self.assertEqual(sparse, direct)
 
     def test_variable_cayley_positivity_status_remains_honest(self) -> None:
         artifact = (

@@ -95,6 +95,24 @@ rank-deficient here.
 This is a theorem over the full orthonormal balanced orbit, not a numerical
 fit.
 
+## Exact block mechanism
+
+The degree-28 factorization has now been resolved into constant invariant
+coordinate blocks of dimensions `8 + 8 + 8 + 4`. Their determinants are
+
+\[
+\frac{1-c^2}{4},\qquad
+\frac{(1-c^2)(9-c^2)}{16},\qquad
+\frac{(1-c^2)(9-c^2)}{16},\qquad 1.
+\]
+
+The two middle blocks are exactly conjugate by a fixed signed permutation, so
+their repeated characteristic factors have a structural source. At `c=0`,
+the four contributions become `1/4`, `9/16`, `9/16`, and `1`, explaining
+`81/1024` as a blockwise product rather than merely the constant term of one
+large symbolic polynomial. See `SPIN8_CAYLEY_BLOCK_THEOREM.md` for the exact
+certificate and scope boundary.
+
 ## Exact allocation representatives
 
 Exact coordinate representatives recover every previously inferred partition

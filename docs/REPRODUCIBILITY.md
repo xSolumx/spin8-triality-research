@@ -102,18 +102,25 @@ python -m spin8_dirac_one_edge_positivity upper `
 python -m spin8_dirac_one_edge_positivity boundary `
   --reconstruction artifacts/spin8_dirac_one_edge_exact_20260804.json `
   --output build/one_edge_positivity/boundary.json
+python -m spin8_dirac_one_edge_holdouts `
+  --reconstruction artifacts/spin8_dirac_one_edge_exact_20260804.json `
+  --workers 4 `
+  --output build/one_edge_positivity/holdouts.json
 python -m spin8_dirac_one_edge_positivity assemble `
   --reconstruction artifacts/spin8_dirac_one_edge_exact_20260804.json `
   --cache build/one_edge_positivity/determinant.json `
   --lower build/one_edge_positivity/lower.json `
   --upper build/one_edge_positivity/upper.json `
   --boundary build/one_edge_positivity/boundary.json `
+  --lower-order artifacts/spin8_dirac_one_edge_positivity_20260804.json `
+  --holdouts build/one_edge_positivity/holdouts.json `
   --output artifacts/spin8_dirac_one_edge_positivity_replay.json
 ```
 
 Install `python-flint` to enable the optimized exact backend. The committed
-artifact still labels the theorem open because the two full integer chart
-stages have not completed after repeated system crashes.
+2026-08-06 artifact records the completed exact theorem. The 10 MB published
+determinant cache may replace the first stage when replaying later stages, but
+its SHA-256 link to the reconstruction must still pass.
 
 ## Artifact integrity
 

@@ -1,10 +1,20 @@
-# Variable-Cayley One-Edge Reconstruction Results
+# Variable-Cayley One-Edge Theorem Results
 
 **Date:** 2026-08-04
 
 **Protocol:** `SPIN8_DIRAC_ONE_EDGE_PREREGISTRATION.md`
 
 **Protocol history:** `SPIN8_DIRAC_ONE_EDGE_PROTOCOL_HISTORY.md`
+
+**Theorem-completion date:** 2026-08-06
+
+## Result in one sentence
+
+The strengthened Dirac--Gram determinant inequality is now proved exactly on
+the complete variable-Cayley four-correlation one-edge family: two exact
+Duffy charts cover the full five-cube, boundary identities close their only
+exceptional layers, all tetrahedral principal minors are nonnegative, and all
+256 preregistered off-grid orientation checks agree with direct determinants.
 
 ## What passed
 
@@ -19,12 +29,28 @@
   `F=(3,3,3,3,5)`, `H1=(2,2,2,2,1)`, `H2=(1,2,2,2,1)`, and
   `H3=(2,2,2,3,1)`.
 - Term counts are respectively `1220`, `101`, `78`, and `192`.
+- Eight disjoint rational magnitude points crossed with all 32 sign patterns
+  now give **256/256 exact matches** between direct `28 x 28` determinants and
+  the reconstructed sector formula.
 
 The reconstruction artifact is
 `../../artifacts/spin8_dirac_one_edge_exact_20260804.json`, SHA-256
 `2f69dac6c572a7f001bfe29b16dedc04fe91e51dfa18ed8397c54ec3f2ad73e4`.
 
-## Positivity gate: narrowed to one exact replay
+## Evidence correction: the holdout gate was initially missing
+
+An earlier version of this document said that the 256 exact holdouts had
+passed, while the stored reconstruction artifact correctly retained
+`holdouts_pending: true`. That sentence was unsupported. The missing gate has
+now been implemented separately in `spin8_dirac_one_edge_holdouts.py` and run
+over every preregistered case. The new holdout artifact stores all 256 exact
+rational direct and predicted values; its mismatch count is zero.
+
+This correction matters: two matching interpolation grids are strong internal
+evidence, but they are not a substitute for disjoint direct determinant
+checks.
+
+## Positivity gate
 
 Writing `x=T-F`, native exact Bernstein positivity passes for `x`,
 `x^2-Q^2`, and `x^2-R^2`. It fails as a certificate for `x^2-P^2` with only
@@ -86,16 +112,48 @@ Bernstein tensor with zero negatives, ten boundary zeros, and minimum positive
 coefficient `256/9`. The complementary triangle
 `1-u=t y, 1-v=t(1-y)` also had no negative controls in the discovery screen.
 
-The proof is not yet promoted because repeated system crashes interrupted the
-full exact integer replay of the two roughly 950,000-control chart tensors.
-`spin8_dirac_one_edge_positivity.py` now splits this replay into restartable
-determinant, lower-chart, upper-chart, boundary, and assembly stages.
+The crash-resilient staged implementation has now completed the full exact
+integer replay:
+
+- reduced determinant: `203,978` exact monomials;
+- lower Duffy chart: `950,625` exact Bernstein controls;
+- lower-chart negatives: `393`, all confined to radial layers zero and one;
+- radial layers 2--24: zero negative controls;
+- upper Duffy chart: `950,625` exact controls and zero negatives;
+- boundary layer zero: `G0^2`, with two exact symmetric charts and zero
+  negatives;
+- boundary layer one: `G0(G0+G0_prime/12)`, with zero negatives;
+- compact remainder terms `Q`, `R`, and `PQR`: mechanically verified to
+  vanish to first order on the boundary face.
+
+The staged assembly also links and rechecks the prior certificates for `x`,
+all three quadratic principal minors, and the cubic principal minor. The final
+determinant is therefore not promoted in isolation: every principal-minor
+condition for the tetrahedral orientation matrix is certified.
+
+## Exact artifacts
+
+- reconstructed sector polynomials:
+  `../../artifacts/spin8_dirac_one_edge_exact_20260804.json`;
+- determinant cache:
+  `../../artifacts/spin8_dirac_one_edge_determinant_cache_20260806.json`,
+  SHA-256 `dea6cb98...482a6f`;
+- 256 direct holdouts:
+  `../../artifacts/spin8_dirac_one_edge_holdouts_20260806.json`, SHA-256
+  `695c4b78...856ee`;
+- assembled theorem certificate:
+  `../../artifacts/spin8_dirac_one_edge_duffy_20260806.json`, SHA-256
+  `edac47a3...c790b`.
 
 ## Scientific status
 
-This is now an exact reconstruction, an exact proof of every lower-order
-tetrahedral minor, and a sharply localized determinant candidate. It is
-**not** yet the variable-Cayley one-edge theorem: the final chart layers were
-screened numerically but have not completed their exact integer replay. The
-Cayley-null edge theorem remains proved; the unrestricted Gram--Cayley
-inequality and global five-query D-optimality remain open.
+The variable-Cayley one-edge inequality is now an **exact theorem on the
+frozen target family**. This advances beyond both earlier slices:
+
+- setting `c=0` recovers the Cayley-null edge theorem;
+- setting `e=0` recovers the variable-Cayley signed-star theorem.
+
+It is not the unrestricted seven-invariant theorem. Two residual Cholesky
+edges remain absent from this family. The unrestricted Gram--Cayley inequality,
+the nonbalanced allocation upper bounds, and global five-query D-optimality
+therefore remain open.

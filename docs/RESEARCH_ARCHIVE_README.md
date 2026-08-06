@@ -66,6 +66,15 @@ The experimental Spin(8) branch now includes:
   10,000 random frames, and 32 adversarial searches found no global
   counterexample; the unrestricted orthonormal-completion inequality remains
   a clearly labelled conjecture rather than a theorem.
+- the Cayley block theorem: the complete one-parameter information family
+  splits into constant `8 + 8 + 8 + 4` invariant coordinate blocks. Their
+  balanced determinant factors are `1/4`, `9/16`, `9/16`, and `1`; the two
+  repeated blocks are exactly signed-permutation conjugate.
+- the variable-Cayley one-edge theorem: two exact Duffy charts and certified
+  boundary layers prove the determinant over the complete five-cube. All 256
+  preregistered off-grid sign checks match direct exact determinants. This
+  closes the four-correlation variable-Cayley family, while two residual
+  Cholesky edges and the unrestricted theorem remain open.
 - the Dirac--Gram reduction: every moving query is exactly the graph of a
   scaled isometric seven-frame over the `7+21` Spin(7) split, reducing the
   five-query determinant to

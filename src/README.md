@@ -22,6 +22,8 @@ module name. Editable installation adds this directory to the Python path.
 - `spin8_active_sensing.py`: information operator and sensor metrics.
 - `spin8_joint_sensor_retraction.py`: joint sensor-family continuation.
 - `spin8_cayley_spectrum.py`: exact Cayley spectrum certificates.
+- `spin8_cayley_blocks.py`: exact `8 + 8 + 8 + 4` invariant-block mechanism
+  behind the balanced Cayley characteristic law and determinant `81/1024`.
 - `spin8_dirac_gram.py`: projector geometry, Schur reduction, and falsifiers.
 - `spin8_dirac_star.py`: independently replayed rational Bernstein theorem.
 - `spin8_conditional_counterexample.py`: exact rational falsifier for naive
@@ -32,8 +34,10 @@ module name. Editable installation adds this directory to the Python path.
   four-sector Walsh audit.
 - `spin8_dirac_one_edge_exact.py`: disjoint-grid reconstruction and
   tetrahedral principal-minor certificate utilities.
+- `spin8_dirac_one_edge_holdouts.py`: all 256 exact disjoint determinant
+  holdouts and a lightweight stored-artifact verifier.
 - `spin8_dirac_one_edge_positivity.py`: staged, crash-resilient integer
-  Bernstein/Duffy replay for the still-open final determinant gate.
+  Bernstein/Duffy proof of the final determinant gate.
 
 ## Blind action and addressing line
 

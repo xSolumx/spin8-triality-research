@@ -20,6 +20,19 @@ The determinant is a volume score. If it is large, the measurements distinguish
 many nearby possibilities. If it is zero, at least one direction is completely
 invisible.
 
+The once-mysterious number `81/1024` now has a simple exact explanation. The
+28 directions split into four independent packs. At the balanced point, those
+packs contribute volume factors
+
+\[
+\frac14,\qquad\frac9{16},\qquad\frac9{16},\qquad1.
+\]
+
+Multiplying them gives `81/1024`. The two `9/16` packs are exact mirror copies
+of one another, not a numerical coincidence. When the Cayley angle reaches a
+calibrated endpoint, one factor in each of three packs becomes zero, explaining
+why exactly three directions become invisible.
+
 ## Why perpendicular probes look special
 
 Four unit vectors have a Gram matrix. Its entries are their pairwise dot
@@ -40,16 +53,26 @@ when a probe becomes redundant.
 
 ## What has been proved
 
-The inequality is proved exactly for two increasingly large families:
+The inequality is proved exactly for three increasingly large families:
 
 1. the signed star family, with three active correlations;
-2. the Cayley-null edge family, with four active correlations.
+2. the Cayley-null edge family, with four active correlations;
+3. the variable-Cayley one-edge family, which keeps those four correlations
+   while allowing the Cayley angle to vary.
 
 "Exactly" means the proof uses rational numbers and polynomial identities, not
 rounded decimals. Two separate rational grids reconstructed the same
 polynomials. Exact off-grid tests agreed with direct determinants. Bernstein
 coefficients then proved that the relevant polynomials never become negative
 inside the whole parameter box.
+
+For the newest family, imagine cutting a square along its diagonal. Two exact
+coordinate maps cover the two triangles. Almost two million exact control
+numbers prove positivity away from one edge. On that edge, the only two
+exceptional layers factor into smaller polynomials that were already proved
+nonnegative. Eight fresh rational examples, each tested with all 32 possible
+sign choices, then matched the formula exactly. This is why the new result is
+a proof on that whole family, not a large numerical experiment.
 
 ## A proof idea that failed
 
@@ -152,14 +175,14 @@ the polynomial degree grows forever. If it feeds both sources, the degree
 doubles at every step. So triangular coupling is not an arbitrary engineering
 choice; it is the boundary that preserves a finite exact scan.
 
-## The current one-edge frontier
+## The completed one-edge gate
 
 The next family allows the Cayley angle to vary as well. Exact symmetry reduces
 sixteen possible sign choices to four polynomial sectors. Those four numbers
 are the eigenvalues of a symmetric 4 by 4 matrix. Proving the matrix is
 positive is equivalent to proving every sign choice at once.
 
-The lower-order matrix tests are now proved. The difficult final test is the
+The lower-order matrix tests are proved. The difficult final test was the
 determinant of that 4 by 4 matrix.
 
 In ordinary cube coordinates its polynomial has 257,049 Bernstein controls and
@@ -176,19 +199,18 @@ Think of `t` as distance from a corner and `y` as the direction used to leave
 the corner. This is called a Duffy chart. It separates "how far" from "which
 way", exactly where ordinary boxes kept zooming forever.
 
-The screen found that every difficult control lives in the first two distance
-layers. Those layers factor into already nonnegative pieces. The other 23
-layers and the complementary triangle screened positive. This is strong
-evidence and a clear proof plan, but the million-control exact integer replay
-has been interrupted by system crashes. Therefore the variable-Cayley theorem
-is still labelled open.
+The exact replay confirmed that every difficult control lives in the first two
+distance layers. Those layers factor into already nonnegative pieces. All
+layers from 2 through 24 are exactly nonnegative, and the complementary
+triangle has no negative controls at all. The variable-Cayley theorem is
+therefore proved on this whole family.
 
-## Why the crashes do not count as evidence
+## Why the crashes did not count as evidence
 
 A computer stopping does not make a theorem true or false. The new replay tool
 splits the calculation into five stages and links them with SHA-256 hashes. A
 completed stage can be checked and reused after a restart. The GPU is used only
-to search quickly for counterexamples. Final signs must come from exact CPU
+to search quickly for counterexamples. The final signs came from exact CPU
 integer arithmetic.
 
 ## Honest scoreboard
@@ -206,7 +228,7 @@ integer arithmetic.
 | Signed star Dirac--Gram inequality | Proved |
 | Cayley-null four-correlation edge inequality | Proved |
 | Removing residual correlations is always helpful | Disproved |
-| Variable-Cayley one-edge inequality | Final exact replay open |
+| Variable-Cayley one-edge inequality | Proved |
 | Unrestricted seven-parameter inequality | Open |
 | Global best possible five-query design | Open |
 

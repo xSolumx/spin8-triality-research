@@ -58,6 +58,10 @@ together so that the path to the final results remains auditable.
 
   Cayley-null planes maximize information; calibrated Cayley planes are
   rank-25 endpoints.
+- The degree-28 Cayley information family splits exactly into constant
+  `8 + 8 + 8 + 4` invariant blocks. Their balanced determinant contributions
+  are `1/4`, `9/16`, `9/16`, and `1`; the twin `9/16` blocks are conjugate by
+  an exact signed permutation. This explains `81/1024` structurally.
 
 ### Exact signed Dirac–Gram theorem
 
@@ -79,14 +83,20 @@ uses two independent rational reconstructions, 32 exact signed holdouts, and
 four-dimensional Bernstein positivity. The unrestricted theorem still has
 three residual Cholesky correlations and remains open.
 
-The Cayley-null edge theorem now adds one residual Cholesky correlation. Exact
+The Cayley-null edge theorem first added one residual Cholesky correlation. Exact
 `Spin(7)` sign symmetry reduces its orientation algebra to the trivial and
 `ade` Walsh characters; symbolic rank-three boundary defects prove `Delta^3`
 divisibility; and two conservative five-node grids plus 256 all-sign holdouts
 certify the complete four-correlation family. A separate exact rational
 counterexample proves that residual correlations cannot simply be removed
-monotonically. Nonzero Cayley coordinate and the remaining two residual edges
-remain open.
+monotonically.
+
+The variable-Cayley one-edge extension is now also proved. It retains all four
+active Gram correlations while allowing the normalized Cayley coordinate to
+vary. Two exact Duffy charts certify the final 203,978-term determinant over
+the complete five-cube; all 256 disjoint exact sign holdouts match. The
+remaining two residual Cholesky edges and the unrestricted theorem remain
+open.
 
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 [preregistration](docs/experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md), and
@@ -105,6 +115,7 @@ read [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md).
 | [`tests/`](tests/) | Foundational, recurrence, streaming, and ablation contracts |
 | [`docs/RESEARCH_MAP.md`](docs/RESEARCH_MAP.md) | The research lineage and interpretation boundaries |
 | [`docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md`](docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md) | Adversarial corrections, standalone paper opportunities, and the next strategy |
+| [`docs/BREAKTHROUGH_NOTE_2026-08-06.md`](docs/BREAKTHROUGH_NOTE_2026-08-06.md) | Publication-scoped write-up of the exact Cayley blocks and variable-Cayley theorem |
 | [`docs/EXPERIMENT_INDEX.md`](docs/EXPERIMENT_INDEX.md) | Grouped index of every preregistration and result document |
 | [`docs/experiments/`](docs/experiments/) | Preregistrations, results, corrections, and negative findings |
 | [`artifacts/`](artifacts/README.md) | Raw JSON outputs retained for reproducibility |
@@ -135,7 +146,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 130 passing tests. See
+The current repository is validated by 134 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 
@@ -147,11 +158,12 @@ The repository makes three distinctions explicit:
 2. Behavioral gates are not raw homomorphism gates.
 3. A theorem on a constrained family is not the unrestricted theorem.
 
-The current exact target is the final determinant gate in the variable-Cayley
-one-edge family. Its lower-order matrix minors are proved; a Duffy-coordinate
-screen localizes the remaining exact replay to two boundary layers. The theorem
-is not promoted until the staged integer certificate finishes. Language-model
-scale-up is intentionally downstream of that mechanism gate.
+The variable-Cayley one-edge determinant gate is complete. The next exact
+target is the smallest family that activates a second residual Cholesky edge,
+while retaining the same prospective discipline: derive its symmetry sectors
+and degree bounds before interpolation, attack it numerically for exact
+counterexamples, then certify rather than extrapolate. Language-model scale-up
+remains downstream of the mechanism gates.
 
 ## Provenance and license
 

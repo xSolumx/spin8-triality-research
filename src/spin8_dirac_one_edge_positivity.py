@@ -63,17 +63,55 @@ def _reduced_components(polynomials):
 
 
 def _reduced_determinant(polynomials):
-    X, P, Q, S, C = _reduced_components(polynomials)
-    determinant = sp.expand(
-        X**4
-        - 2 * X**2 * (P + Q + S)
-        - 8 * X * C
-        + P**2
-        + Q**2
-        + S**2
-        - 2 * (P * Q + P * S + Q * S)
+    """Build the determinant with collected sparse polynomial products.
+
+    Calling ``expand(X**4)`` asks SymPy to construct a multinomial expansion
+    over every term of ``X`` before like monomials are collected.  Here ``X``
+    has roughly 1,200 terms, so that path creates a combinatorial intermediate
+    vastly larger than the final 203,978-term polynomial.  ``Poly`` products
+    collect after each binary convolution and scale with the actual support.
+    """
+
+    F, H1, H2, H3 = (polynomials[name] for name in ("F", "H1", "H2", "H3"))
+    target = sp.Poly((1 - Z) ** 3 * (9 - Z) ** 2, *VARIABLES)
+    x = target - F
+    X = x.exquo(sp.Poly((1 - Z) ** 3, *VARIABLES))
+    P = (
+        sp.Poly(
+            (1 - U) ** 2 * (1 - V) ** 2 * R * (1 - R) * W * (1 - W) * Z,
+            *VARIABLES,
+        )
+        * H1
+        * H1
     )
-    return sp.Poly(determinant, *VARIABLES)
+    Q = (
+        sp.Poly(
+            U * (1 - U) ** 3 * V * (1 - V) * (1 - R) * W * (1 - W) * Z,
+            *VARIABLES,
+        )
+        * H2
+        * H2
+    )
+    S = sp.Poly(U * (1 - U) * V * (1 - V) * R, *VARIABLES) * H3 * H3
+    C = (
+        sp.Poly(
+            U * (1 - U) ** 3 * V * (1 - V) ** 2 * R * (1 - R) * W * (1 - W) * Z,
+            *VARIABLES,
+        )
+        * H1
+        * H2
+        * H3
+    )
+    return _sparse_tetrahedral_determinant(X, P, Q, S, C)
+
+
+def _sparse_tetrahedral_determinant(X, P, Q, S, C):
+    X2 = X * X
+    diagonal = P + Q + S
+    pairwise = P * Q + P * S + Q * S
+    return (
+        X2 * X2 - 2 * X2 * diagonal - 8 * X * C + P * P + Q * Q + S * S - 2 * pairwise
+    )
 
 
 def _integer_power_tensor(polynomial, variables):
@@ -217,7 +255,7 @@ def _symmetric_face_charts(G0):
 
 
 def boundary_layer_certificate(polynomials):
-    X, P, _, _, _ = _reduced_components(polynomials)
+    X, P, Q, S, C = _reduced_components(polynomials)
     G = sp.expand(X**2 - P)
     G0 = sp.factor(G.subs({U: 0, V: 0}))
     directional_derivative = Y * sp.diff(G, U).subs({U: 0, V: 0}) + (1 - Y) * sp.diff(
@@ -226,13 +264,35 @@ def boundary_layer_certificate(polynomials):
     first_factor = sp.Poly(sp.expand(G0 + directional_derivative / 12), Y, R, W, Z)
     first_summary, _ = _rational_bernstein_summary(first_factor, (Y, R, W, Z))
     charts = _symmetric_face_charts(G0)
+    # In the compact tetrahedral determinant, the difference from G^2 is
+    # built entirely from Q, S, and C.  Each has both value and first
+    # derivatives zero on u=v=0.  This mechanically certifies that the first
+    # two degree-24 Bernstein layers are exactly G0^2 and
+    # G0*(G0 + directional_derivative/12), rather than trusting those formulas
+    # as explanatory strings in the report.
+    higher_components = (Q, S, C)
+    remainder_zero_on_face = all(
+        component.subs({U: 0, V: 0}) == 0 for component in higher_components
+    )
+    remainder_first_order_zero = all(
+        derivative.subs({U: 0, V: 0}) == 0
+        for component in higher_components
+        for derivative in (sp.diff(component, U), sp.diff(component, V))
+    )
     return {
         "duffy_layer_0_identity": "B0 = G0^2",
         "duffy_layer_1_identity": "B1 = G0 * (G0 + G0_prime/12)",
+        "compact_remainder_zero_on_face": remainder_zero_on_face,
+        "compact_remainder_first_order_zero_on_face": remainder_first_order_zero,
         "G0_symmetric_charts": charts,
         "G0_plus_directional_derivative_over_12": first_summary,
-        "passed": all(
-            item["negative_count"] == 0 for item in (*charts.values(), first_summary)
+        "passed": (
+            remainder_zero_on_face
+            and remainder_first_order_zero
+            and all(
+                item["negative_count"] == 0
+                for item in (*charts.values(), first_summary)
+            )
         ),
     }
 
@@ -330,13 +390,48 @@ def certify_boundary(reconstruction_path: Path, output: Path):
     return report
 
 
+def _determinant_gate(lower_controls, upper_controls, boundary_layers):
+    return (
+        lower_controls["degrees"][0] == 24
+        and lower_controls["direct_start"] == 2
+        and lower_controls["direct_negative_count"] == 0
+        and set(lower_controls["negative_by_first_axis"]).issubset({"0", "1"})
+        and upper_controls["degrees"][0] == 24
+        and upper_controls["direct_start"] == 0
+        and upper_controls["negative_count"] == 0
+        and boundary_layers["passed"]
+    )
+
+
+def _lower_order_gate(lower_order):
+    return (
+        lower_order["native_bernstein"]["x"]["negative_count"] == 0
+        and lower_order["native_bernstein"]["x2_minus_q2"]["negative_count"] == 0
+        and lower_order["native_bernstein"]["x2_minus_r2"]["negative_count"] == 0
+        and lower_order["boundary_adapted_face"]["x2_minus_p2_proved"]
+        and lower_order["cubic"]["proved_nonnegative"]
+    )
+
+
+def _holdout_gate(holdouts):
+    return (
+        holdouts["exact_comparisons"] == 256
+        and holdouts["mismatch_count"] == 0
+        and holdouts["passed"]
+    )
+
+
 def assemble(
     reconstruction_path: Path,
     cache_path: Path,
     lower_path: Path,
     upper_path: Path,
     boundary_path: Path,
+    lower_order_path: Path,
+    holdouts_path: Path,
 ):
+    from spin8_dirac_one_edge_holdouts import verify_holdout_report
+
     source_bytes = reconstruction_path.read_bytes()
     source_sha = hashlib.sha256(source_bytes).hexdigest()
     cache_bytes = cache_path.read_bytes()
@@ -345,6 +440,10 @@ def assemble(
     lower = json.loads(lower_path.read_bytes())
     upper = json.loads(upper_path.read_bytes())
     boundary = json.loads(boundary_path.read_bytes())
+    lower_order_bytes = lower_order_path.read_bytes()
+    lower_order = json.loads(lower_order_bytes)
+    holdouts_bytes = holdouts_path.read_bytes()
+    holdouts = json.loads(holdouts_bytes)
     if cache["source_reconstruction_sha256"] != source_sha:
         raise AssertionError("determinant cache is linked to another reconstruction")
     if lower["determinant_cache_sha256"] != cache_sha:
@@ -353,20 +452,29 @@ def assemble(
         raise AssertionError("upper chart is linked to another determinant cache")
     if boundary["source_reconstruction_sha256"] != source_sha:
         raise AssertionError("boundary certificate is linked to another reconstruction")
+    if lower_order["source_reconstruction_sha256"] != source_sha:
+        raise AssertionError(
+            "lower-order certificate is linked to another reconstruction"
+        )
+    if holdouts["source_reconstruction_sha256"] != source_sha:
+        raise AssertionError("holdout certificate is linked to another reconstruction")
 
     lower_controls = lower["controls"]
     upper_controls = upper["controls"]
     boundary_layers = boundary["boundary_layers"]
-    determinant_passed = (
-        lower_controls["direct_negative_count"] == 0
-        and set(lower_controls["negative_by_first_axis"]).issubset({"0", "1"})
-        and upper_controls["negative_count"] == 0
-        and boundary_layers["passed"]
+    determinant_passed = _determinant_gate(
+        lower_controls, upper_controls, boundary_layers
+    )
+    lower_order_passed = _lower_order_gate(lower_order)
+    holdouts_passed = _holdout_gate(holdouts) and verify_holdout_report(
+        holdouts, reconstruction_path
     )
     return {
         "experiment": "variable-Cayley one-edge exact Duffy positivity certificate",
         "source_reconstruction_sha256": source_sha,
         "determinant_cache_sha256": cache_sha,
+        "lower_order_certificate_sha256": hashlib.sha256(lower_order_bytes).hexdigest(),
+        "exact_holdout_certificate_sha256": hashlib.sha256(holdouts_bytes).hexdigest(),
         "normalization": cache["normalization"],
         "lower_triangle": {
             "chart": lower["chart"],
@@ -380,8 +488,81 @@ def assemble(
             "controls": upper_controls,
         },
         "determinant_proved_nonnegative": determinant_passed,
-        "theorem_proved": determinant_passed,
+        "lower_order_principal_minors_proved_nonnegative": lower_order_passed,
+        "exact_off_grid_holdouts_passed": holdouts_passed,
+        "theorem_proved": (
+            determinant_passed and lower_order_passed and holdouts_passed
+        ),
     }
+
+
+def verify_assembled_report(
+    report,
+    reconstruction_path: Path,
+    cache_path: Path,
+    lower_order_path: Path,
+    holdouts_path: Path,
+):
+    """Replay every lightweight acceptance predicate and cryptographic link.
+
+    The million-control tensors are intentionally regenerated by the staged
+    commands rather than embedded in the small assembled report.  This
+    verifier does not pretend otherwise: it checks the published determinant
+    cache, re-evaluates all stored exact holdout predictions, and recomputes
+    every acceptance predicate represented in the assembled artifact.
+    """
+
+    from spin8_dirac_one_edge_holdouts import verify_holdout_report
+
+    source_bytes = reconstruction_path.read_bytes()
+    cache_bytes = cache_path.read_bytes()
+    lower_order_bytes = lower_order_path.read_bytes()
+    holdouts_bytes = holdouts_path.read_bytes()
+    source_sha = hashlib.sha256(source_bytes).hexdigest()
+    cache_sha = hashlib.sha256(cache_bytes).hexdigest()
+    cache = json.loads(cache_bytes)
+    lower_order = json.loads(lower_order_bytes)
+    holdouts = json.loads(holdouts_bytes)
+    if report.get("source_reconstruction_sha256") != source_sha:
+        return False
+    if report.get("determinant_cache_sha256") != cache_sha:
+        return False
+    if (
+        report.get("lower_order_certificate_sha256")
+        != hashlib.sha256(lower_order_bytes).hexdigest()
+    ):
+        return False
+    if (
+        report.get("exact_holdout_certificate_sha256")
+        != hashlib.sha256(holdouts_bytes).hexdigest()
+    ):
+        return False
+    if cache.get("source_reconstruction_sha256") != source_sha:
+        return False
+    if _records_digest(cache.get("coefficients", [])) != cache.get("records_sha256"):
+        return False
+    if report.get("normalization") != cache.get("normalization"):
+        return False
+    if not verify_holdout_report(holdouts, reconstruction_path):
+        return False
+
+    lower_triangle = report.get("lower_triangle", {})
+    upper_triangle = report.get("upper_triangle", {})
+    determinant_passed = _determinant_gate(
+        lower_triangle.get("controls", {}),
+        upper_triangle.get("controls", {}),
+        lower_triangle.get("boundary_layers", {}),
+    )
+    lower_order_passed = _lower_order_gate(lower_order)
+    holdouts_passed = _holdout_gate(holdouts)
+    return (
+        report.get("determinant_proved_nonnegative") is determinant_passed
+        and report.get("lower_order_principal_minors_proved_nonnegative")
+        is lower_order_passed
+        and report.get("exact_off_grid_holdouts_passed") is holdouts_passed
+        and report.get("theorem_proved")
+        is (determinant_passed and lower_order_passed and holdouts_passed)
+    )
 
 
 def main():
@@ -394,6 +575,8 @@ def main():
     parser.add_argument("--lower", type=Path)
     parser.add_argument("--upper", type=Path)
     parser.add_argument("--boundary", type=Path)
+    parser.add_argument("--lower-order", type=Path)
+    parser.add_argument("--holdouts", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.stage == "determinant":
@@ -409,6 +592,8 @@ def main():
             args.lower,
             args.upper,
             args.boundary,
+            args.lower_order,
+            args.holdouts,
         )
     payload = json.dumps(report, indent=2) + "\n"
     if args.stage == "assemble":
