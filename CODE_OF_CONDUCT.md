@@ -6,6 +6,10 @@ The Solum Triality project is maintained primarily by a single individual as a h
 
 This Code of Conduct outlines our expectations for participant behavior, how we handle reports, and how community conduct relates to the project's licensing and contribution expectations.
 
+## Quick summary (suitable for README)
+
+Be kind, be respectful, and follow the repository license and attribution requirements. If you experience or observe unacceptable behavior, report it (see Reporting below). Contributors agree to license contributions under AGPL-3.0.
+
 ## Expected Behavior
 
 Community members are expected to:
@@ -42,7 +46,10 @@ This Code of Conduct applies to all spaces managed by the Solum Triality project
 
 ## Reporting
 
-If you believe someone is violating this Code of Conduct, or you have concerns about licensing or improper attribution, please report it by emailing: haydaust@gmail.com
+If you believe someone is violating this Code of Conduct, or you have concerns about licensing or improper attribution, you can report it in one of these ways:
+
+- Preferred: Use the repository's Code of Conduct issue template: create a new issue and select the "Report: Code of Conduct" template (or use the link provided in the repository). This creates a structured report that helps maintainers respond quickly.
+- Email: haydaust@gmail.com
 
 When reporting, include as much relevant information as you can: what happened, when and where it happened (links if applicable), who was involved, and any supporting evidence. If the issue involves license or attribution concerns, include file paths, commits, and any relevant license headers. Reporters may request confidentiality; we will do our best to respect it while fulfilling our responsibility to the community.
 
@@ -56,19 +63,26 @@ Reports will be handled by the project maintainers and, when appropriate, short-
 
 Enforcement decisions aim to be fair and proportional to the behavior and its impact. For incidents involving license violations or improper removal of AGPL-3.0 attribution, we may request that contributors restore appropriate license headers or take other corrective steps; in serious cases we may escalate to the hosting organization or pursue other remedies consistent with the AGPL-3.0 license and applicable law.
 
-## Attribution and Licensing
+## License header snippet (copy-paste)
 
-This repository is distributed under the GNU AGPL v3 (AGPL-3.0). By contributing, you agree to license your contributions under the repository's AGPL-3.0 terms. When contributing, please:
+When adding new files, contributors are asked to include a short notice. Example one-line header (replace YEAR and NAME):
 
-- Preserve existing copyright and license headers where present.
-- Include a brief notice in new files indicating authorship and the AGPL-3.0 license (for example: "Copyright (c) YEAR Author — licensed under AGPL-3.0").
-- Clearly attribute any third-party content and ensure it is compatible with AGPL-3.0.
+> Copyright (c) 2026 Solum — licensed under AGPL-3.0-or-later
 
-If you have questions about licensing or attribution, contact: haydaust@gmail.com
+A more complete recommended header (multi-line):
+
+"""
+Copyright (C) 2026 Solum
+
+This file is part of the Solum Triality project and is licensed under the GNU Affero General Public License v3.0 or later (AGPL-3.0+).
+For full license text see: https://www.gnu.org/licenses/agpl-3.0.en.html
+"""
+
+Please preserve existing headers when modifying files.
 
 ## Attribution (Code of Conduct)
 
-This Code of Conduct is adapted from the Contributor Covenant, version 2.1 (https://www.contributor-covenant.org/version/2/1/) and other community resources. We are grateful to those projects for the foundation these materials provide.
+This Code of Conduct is adapted from the Contributor Covenant, version 3.0 (https://www.contributor-covenant.org/version/3/0/). We are grateful to that project and other community resources for the foundation these materials provide.
 
 ## Questions or Clarifications
 
