@@ -12,5 +12,5 @@
 .gitattributes text eol=lf
 .gitignore text eol=lf
 
-# Raw artifacts are immutable evidence; preserve their exact source bytes.
-artifacts/** binary
+# Raw JSON artifacts are immutable evidence; preserve their exact source bytes.
+artifacts/*.json binary

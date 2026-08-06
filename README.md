@@ -64,9 +64,23 @@ uses two independent rational reconstructions, 32 exact signed holdouts, and
 four-dimensional Bernstein positivity. The unrestricted theorem still has
 three residual Cholesky correlations and remains open.
 
+The Cayley-null edge theorem now adds one residual Cholesky correlation. Exact
+`Spin(7)` sign symmetry reduces its orientation algebra to the trivial and
+`ade` Walsh characters; symbolic rank-three boundary defects prove `Delta^3`
+divisibility; and two conservative five-node grids plus 256 all-sign holdouts
+certify the complete four-correlation family. A separate exact rational
+counterexample proves that residual correlations cannot simply be removed
+monotonically. Nonzero Cayley coordinate and the remaining two residual edges
+remain open.
+
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 [preregistration](docs/experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md), and
 [raw certificate](artifacts/spin8_dirac_star_20260804.json).
+The new boundary is documented in the
+[edge theorem](docs/experiments/SPIN8_DIRAC_EDGE_RESULTS.md) and
+[decorrelation counterexample](docs/experiments/SPIN8_CONDITIONAL_DECORRELATION_COUNTEREXAMPLE.md).
+For a non-specialist explanation of the mathematical results and open gates,
+read [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md).
 
 ## Repository map
 
@@ -79,7 +93,7 @@ See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 | [`docs/experiments/`](docs/experiments/) | Preregistrations, results, corrections, and negative findings |
 | [`artifacts/`](artifacts/README.md) | Raw JSON outputs retained for reproducibility |
 | [`ARTIFACTS.sha256`](ARTIFACTS.sha256) | SHA-256 manifest for every published raw artifact |
-| [`PROVENANCE.json`](PROVENANCE.json) | Source path, destination, size, and hash for the extraction |
+| [`PROVENANCE.json`](PROVENANCE.json) | Source path, destination, size, and hash for the original extraction boundary |
 | [`docs/EXTRACTION_SCOPE.md`](docs/EXTRACTION_SCOPE.md) | Audited inclusion and exclusion boundary |
 
 ## Installation
@@ -105,8 +119,8 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The source extraction was validated with 111 tests passing and two expected
-hardware-dependent skips. See [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
+The current repository is validated by 119 passing tests. See
+[REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 
 ## Scientific scope
@@ -117,17 +131,21 @@ The repository makes three distinctions explicit:
 2. Behavioral gates are not raw homomorphism gates.
 3. A theorem on a constrained family is not the unrestricted theorem.
 
-The next exact target is a conditional-decorrelation lemma controlling the
-three residual Cholesky correlations in the Dirac–Schur operator. Language
-model scale-up is intentionally downstream of that mechanism gate.
+The current exact target is the final determinant gate in the variable-Cayley
+one-edge family. Its lower-order matrix minors are proved; a Duffy-coordinate
+screen localizes the remaining exact replay to two boundary layers. The theorem
+is not promoted until the staged integer certificate finishes. Language-model
+scale-up is intentionally downstream of that mechanism gate.
 
 ## Provenance and license
 
-The extraction covers the research lineage from the frozen baseline commit
+The original extraction covers the research lineage from the frozen baseline commit
 through source commit `a367a80`. All 463 scientific files in that range are
 preserved. Checkpoints, transient logs, caches, virtual
 environments, and the unrelated 44.8 MB historical language-model checkpoint
 are deliberately excluded. Raw result JSON, preregistrations, and negative
-results are retained.
+results are retained. Research added after extraction is outside
+`PROVENANCE.json` by design and is labelled post-extraction; its artifacts are
+covered by `ARTIFACTS.sha256` and Git history.
 
 Licensed under the GNU Affero General Public License v3.0. See [LICENSE](LICENSE).

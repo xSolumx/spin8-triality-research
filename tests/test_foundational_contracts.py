@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import copy
+import json
 import unittest
 from fractions import Fraction
 from pathlib import Path
@@ -12,17 +14,25 @@ import numpy as np
 import torch
 from torch import nn
 
-from GALib import (
-    Spin3IsotypicLinear as JaxSpin3IsotypicLinear,
-    pack_spin3_isotypic,
-    rotor_from_bivector as jax_rotor_from_bivector,
-    rotor_sandwich as jax_rotor_sandwich,
-    unpack_spin3_isotypic,
-)
 from compare_recurrences import (
     GROUPS,
-    evaluate as evaluate_recurrence,
     group_prefix_products,
+)
+from compare_recurrences import (
+    evaluate as evaluate_recurrence,
+)
+from GALib import (
+    Spin3IsotypicLinear as JaxSpin3IsotypicLinear,
+)
+from GALib import (
+    pack_spin3_isotypic,
+    unpack_spin3_isotypic,
+)
+from GALib import (
+    rotor_from_bivector as jax_rotor_from_bivector,
+)
+from GALib import (
+    rotor_sandwich as jax_rotor_sandwich,
 )
 from mechanistic_group_actions import evaluate as evaluate_group_action
 from rotor_ssm_torch import GA_DIM, GradeLinear
@@ -34,23 +44,76 @@ from schur_scan import (
     pack_cl3_isotypic,
     unpack_cl3_isotypic,
 )
+from spin8_active_sensing import (
+    SensorDesign,
+    action_independence_audit,
+    fixed_sensor,
+    information_metrics,
+)
+from spin8_blind_alias_action import (
+    calibration_complement,
+    combined_design_audit,
+    negative_calibration_basis,
+)
+from spin8_blind_alias_action import (
+    evaluate_sequences as evaluate_blind_alias_sequences,
+)
 from spin8_blind_shared_action import (
     action_design_audit,
     joint_shared_retraction,
     observed_action,
     sample_teacher,
 )
-from spin8_blind_alias_action import (
-    calibration_complement,
-    combined_design_audit,
-    evaluate_sequences as evaluate_blind_alias_sequences,
-    negative_calibration_basis,
+from spin8_cayley_spectrum import (
+    cayley_invariance_audit,
+    exact_cayley_spectrum_certificate,
+    exact_partition_representatives,
+    exact_restricted_orthogonalization_certificate,
 )
-from spin8_active_sensing import (
-    SensorDesign,
-    action_independence_audit,
-    fixed_sensor,
-    information_metrics,
+from spin8_conditional_counterexample import (
+    verify_artifact as verify_conditional_counterexample_artifact,
+)
+from spin8_continuous_alias import (
+    AliasWorld,
+    FrozenKeyPolicy,
+    FrozenSlotPolicy,
+    alias_world_audit,
+    key_scan_parity,
+    slot_endpoint_loss,
+    slot_scan_parity,
+)
+from spin8_dirac_edge import (
+    exact_walsh_symmetry_certificate,
+)
+from spin8_dirac_edge import (
+    verify_artifact as verify_dirac_edge_artifact,
+)
+from spin8_dirac_edge import (
+    verify_report as verify_dirac_edge_report,
+)
+from spin8_dirac_gram import (
+    exact_approximate_design_rejection,
+    exact_dirac_graph_certificate,
+    exact_projector_geometry_certificate,
+    exact_strengthened_slice_certificate,
+    exact_whitening_flow_invariant_certificate,
+)
+from spin8_dirac_one_edge_exact import (
+    EXPECTED_DEGREES as ONE_EDGE_EXPECTED_DEGREES,
+)
+from spin8_dirac_one_edge_exact import (
+    _symmetry_certificate as one_edge_symmetry_certificate,
+)
+from spin8_dirac_one_edge_positivity import (
+    _complement_first_two,
+    _integer_bernstein_tensor,
+    _lower_duffy_power_tensor,
+)
+from spin8_dirac_star import (
+    rational_circle,
+)
+from spin8_dirac_star import (
+    verify_artifact as verify_dirac_star_artifact,
 )
 from spin8_five_probe_identifiability import (
     FIVE_MIXED,
@@ -68,42 +131,20 @@ from spin8_joint_sensor_retraction import (
     joint_retract_sensor,
     single_query_projector_audit,
 )
-from spin8_cayley_spectrum import (
-    cayley_invariance_audit,
-    exact_cayley_spectrum_certificate,
-    exact_partition_representatives,
-    exact_restricted_orthogonalization_certificate,
-)
-from spin8_dirac_gram import (
-    exact_approximate_design_rejection,
-    exact_dirac_graph_certificate,
-    exact_projector_geometry_certificate,
-    exact_strengthened_slice_certificate,
-    exact_whitening_flow_invariant_certificate,
-)
-from spin8_dirac_star import (
-    rational_circle,
-    verify_artifact as verify_dirac_star_artifact,
-)
 from spin8_learned_address import (
     evaluate_mixed_sequences,
     log_sinkhorn,
     route_statistics,
-    scan_parity as learned_address_scan_parity,
 )
-from spin8_continuous_alias import (
-    AliasWorld,
-    FrozenKeyPolicy,
-    FrozenSlotPolicy,
-    alias_world_audit,
-    key_scan_parity,
-    slot_endpoint_loss,
-    slot_scan_parity,
+from spin8_learned_address import (
+    scan_parity as learned_address_scan_parity,
 )
 from spin8_triality import spin8_actions, torch_triality_generators
 from spin8_triality_identifiability import invariant_space_audit
 from spin8_triality_lift import (
     diagnostics as triality_lift_diagnostics,
+)
+from spin8_triality_lift import (
     triality_bind,
     triality_tensor,
     triality_unbind_negative,
@@ -626,6 +667,107 @@ class CayleySpectrumTheoremTests(unittest.TestCase):
 
     def test_star_rational_circle_never_promotes_zero_to_float(self) -> None:
         self.assertEqual(rational_circle(0), (0, 1))
+
+    def test_conditional_decorrelation_counterexample_is_exact(self) -> None:
+        artifact = (
+            Path(__file__).parents[1]
+            / "artifacts"
+            / "spin8_conditional_counterexample_20260804.json"
+        )
+        self.assertTrue(verify_conditional_counterexample_artifact(artifact))
+
+    def test_edge_walsh_restriction_follows_from_exact_symmetry(self) -> None:
+        certificate = exact_walsh_symmetry_certificate()
+        self.assertTrue(certificate["passed"])
+        self.assertTrue(certificate["common_adjoint_conjugacy_verified"])
+        self.assertEqual(certificate["fixed_e0_diagonal_cayley_symmetry_count"], 8)
+        self.assertEqual(certificate["walsh_annihilator"], [[0, 0, 0, 0], [1, 1, 1, 0]])
+
+    def test_dirac_edge_artifact_integrity_and_holdouts_recompute(self) -> None:
+        artifact = (
+            Path(__file__).parents[1] / "artifacts" / "spin8_dirac_edge_20260804.json"
+        )
+        self.assertTrue(artifact.is_file())
+        self.assertTrue(verify_dirac_edge_artifact(artifact))
+
+    def test_dirac_edge_verifier_rejects_stored_evidence_tampering(self) -> None:
+        artifact = (
+            Path(__file__).parents[1] / "artifacts" / "spin8_dirac_edge_20260804.json"
+        )
+        report = json.loads(artifact.read_text(encoding="utf-8"))
+
+        bad_maps = copy.deepcopy(report)
+        bad_maps["coefficient_maps_match"] = False
+        self.assertFalse(verify_dirac_edge_report(bad_maps))
+
+        bad_symmetry = copy.deepcopy(report)
+        bad_symmetry["exact_walsh_symmetry"][
+            "common_adjoint_conjugacy_verified"
+        ] = False
+        self.assertFalse(verify_dirac_edge_report(bad_symmetry))
+
+        bad_degree = copy.deepcopy(report)
+        bad_degree["exact_degree_divisibility"]["degree_certificate"][
+            "raw_coordinate_pair_degree_upper_bound"
+        ] = 13
+        self.assertFalse(verify_dirac_edge_report(bad_degree))
+
+    def test_variable_cayley_one_edge_symmetry_is_exact(self) -> None:
+        certificate = one_edge_symmetry_certificate()
+        self.assertTrue(certificate["passed"])
+        self.assertEqual(len(certificate["induced_sign_group"]), 8)
+        self.assertEqual(len(certificate["walsh_annihilator"]), 4)
+
+    def test_variable_cayley_disjoint_reconstructions_match(self) -> None:
+        artifact = (
+            Path(__file__).parents[1]
+            / "artifacts"
+            / "spin8_dirac_one_edge_exact_20260804.json"
+        )
+        report = json.loads(artifact.read_text(encoding="utf-8"))
+        self.assertTrue(report["coefficient_maps_match"])
+        self.assertTrue(report["degrees_match"])
+        for name, degrees in ONE_EDGE_EXPECTED_DEGREES.items():
+            self.assertEqual(
+                report["discovery"][name]["coefficients"],
+                report["confirmation"][name]["coefficients"],
+            )
+            self.assertEqual(report["confirmation"][name]["degrees"], list(degrees))
+
+    def test_duffy_power_transform_and_integer_bernstein_are_exact(self) -> None:
+        # p(u,v)=u+2v becomes t(2-y) under u=ty, v=t(1-y).
+        power = np.empty((2, 2), dtype=object)
+        power.fill(0)
+        power[1, 0] = 1
+        power[0, 1] = 2
+        duffy = _lower_duffy_power_tensor(power)
+        self.assertEqual(duffy.shape, (3, 3))
+        self.assertEqual(duffy[1, 0], 2)
+        self.assertEqual(duffy[1, 1], -1)
+        self.assertEqual(sum(abs(value) for value in duffy.flat), 3)
+
+        # p(1-u,1-v)=3-u-2v.
+        complemented = _complement_first_two(power)
+        self.assertEqual(complemented[0, 0], 3)
+        self.assertEqual(complemented[1, 0], -1)
+        self.assertEqual(complemented[0, 1], -2)
+
+        univariate = np.array([1, 1], dtype=object)
+        controls, scale = _integer_bernstein_tensor(univariate)
+        self.assertEqual(scale, 1)
+        self.assertEqual(controls.tolist(), [1, 2])
+
+    def test_variable_cayley_positivity_status_remains_honest(self) -> None:
+        artifact = (
+            Path(__file__).parents[1]
+            / "artifacts"
+            / "spin8_dirac_one_edge_positivity_20260804.json"
+        )
+        report = json.loads(artifact.read_text(encoding="utf-8"))
+        self.assertTrue(report["boundary_adapted_face"]["x2_minus_p2_proved"])
+        self.assertTrue(report["cubic"]["proved_nonnegative"])
+        self.assertFalse(report["determinant"]["proved_nonnegative"])
+        self.assertFalse(report["theorem_proved"])
 
 
 if __name__ == "__main__":

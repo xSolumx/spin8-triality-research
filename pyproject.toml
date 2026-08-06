@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "AGPL-3.0-only"
 license-files = ["LICENSE"]
-authors = [{ name = "xSolumx" }]
+authors = [{ name = "Hayden Austin" }]
 keywords = [
   "state-space-models",
   "geometric-algebra",
@@ -33,6 +33,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+exact = [
+  "python-flint>=0.9",
+]
 full = [
   "datasets>=4.0",
   "flax>=0.10.7",

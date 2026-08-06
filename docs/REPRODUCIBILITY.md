@@ -20,8 +20,12 @@ Exact SymPy certificates and CPU recurrence checks do not require CUDA.
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-The extraction gate passed 111 tests with two expected skips. The theorem
-artifact also has a lightweight integrity replay in the foundational tests.
+The current suite passes 119 tests. The edge-theorem unit test is a lightweight
+artifact verifier: it reconstructs the stored polynomials and Bernstein arrays,
+directly compares both stored coefficient maps, requires complete equality
+between stored and freshly recomputed symmetry/divisibility records, and
+recomputes all 256 signed holdouts. It deliberately does not rerun the
+interpolation grids.
 
 ## Exact Dirac-star replay
 
@@ -36,6 +40,63 @@ checks 32 signed off-grid determinants.
 
 Acceptance conditions are frozen in
 [SPIN8_DIRAC_STAR_PREREGISTRATION.md](experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md).
+
+## Exact Cayley-null edge-family replay
+
+```bash
+python -m spin8_dirac_edge \
+  --output artifacts/spin8_dirac_edge_replay.json
+```
+
+This proof-bearing replay constructs the symbolic boundary-nullspace
+certificate, derives the Walsh symmetry restriction, reconstructs two exact
+coefficient maps on disjoint five-node grids, checks all 256 off-grid signed
+determinants, and verifies the native Bernstein certificate. Acceptance
+conditions are recorded in
+[SPIN8_DIRAC_EDGE_PREREGISTRATION.md](experiments/SPIN8_DIRAC_EDGE_PREREGISTRATION.md).
+
+The exact conditional-decorrelation counterexample has a faster replay:
+
+```bash
+python -m spin8_conditional_counterexample \
+  --output artifacts/spin8_conditional_counterexample_replay.json
+```
+
+## Hardware-tuned variable-Cayley determinant replay
+
+The final one-edge determinant certificate is intentionally staged so the
+large SymPy polynomial and the million-control integer tensors never coexist.
+On the reference workstation (8-core i7-9700K, 24 GB RAM, RTX 2070 SUPER), use
+FLINT-backed exact arithmetic for the CPU stages. CUDA is used only for the
+separate falsifier and never supplies proof signs.
+
+```powershell
+$env:SYMPY_GROUND_TYPES = "flint"
+$env:PYTHONPATH = "src"
+python -m spin8_dirac_one_edge_positivity determinant `
+  --reconstruction artifacts/spin8_dirac_one_edge_exact_20260804.json `
+  --output build/one_edge_positivity/determinant.json
+python -m spin8_dirac_one_edge_positivity lower `
+  --cache build/one_edge_positivity/determinant.json `
+  --output build/one_edge_positivity/lower.json
+python -m spin8_dirac_one_edge_positivity upper `
+  --cache build/one_edge_positivity/determinant.json `
+  --output build/one_edge_positivity/upper.json
+python -m spin8_dirac_one_edge_positivity boundary `
+  --reconstruction artifacts/spin8_dirac_one_edge_exact_20260804.json `
+  --output build/one_edge_positivity/boundary.json
+python -m spin8_dirac_one_edge_positivity assemble `
+  --reconstruction artifacts/spin8_dirac_one_edge_exact_20260804.json `
+  --cache build/one_edge_positivity/determinant.json `
+  --lower build/one_edge_positivity/lower.json `
+  --upper build/one_edge_positivity/upper.json `
+  --boundary build/one_edge_positivity/boundary.json `
+  --output artifacts/spin8_dirac_one_edge_positivity_replay.json
+```
+
+Install `python-flint` to enable the optimized exact backend. The committed
+artifact still labels the theorem open because the two full integer chart
+stages have not completed after repeated system crashes.
 
 ## Artifact integrity
 

@@ -15,6 +15,16 @@ module name. Editable installation adds this directory to the Python path.
 - `spin8_cayley_spectrum.py`: exact Cayley spectrum certificates.
 - `spin8_dirac_gram.py`: projector geometry, Schur reduction, and falsifiers.
 - `spin8_dirac_star.py`: independently replayed rational Bernstein theorem.
+- `spin8_conditional_counterexample.py`: exact rational falsifier for naive
+  Cholesky decorrelation.
+- `spin8_dirac_edge.py`: exact Cayley-null four-correlation theorem with
+  symbolic degree, symmetry, and Bernstein certificates.
+- `spin8_dirac_one_edge.py`: variable-Cayley one-edge falsifier and exact
+  four-sector Walsh audit.
+- `spin8_dirac_one_edge_exact.py`: disjoint-grid reconstruction and
+  tetrahedral principal-minor certificate utilities.
+- `spin8_dirac_one_edge_positivity.py`: staged, crash-resilient integer
+  Bernstein/Duffy replay for the still-open final determinant gate.
 
 ## Blind action and addressing line
 

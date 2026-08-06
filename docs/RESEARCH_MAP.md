@@ -118,7 +118,11 @@ Primary documents:
 - [Cayley spectrum theorem](experiments/SPIN8_CAYLEY_SPECTRUM_RESULTS.md)
 - [Dirac–Gram gate](experiments/SPIN8_DIRAC_GRAM_RESULTS.md)
 - [Signed star theorem](experiments/SPIN8_DIRAC_STAR_RESULTS.md)
+- [Exact decorrelation counterexample](experiments/SPIN8_CONDITIONAL_DECORRELATION_COUNTEREXAMPLE.md)
+- [Cayley-null edge theorem](experiments/SPIN8_DIRAC_EDGE_RESULTS.md)
+- [Variable-Cayley one-edge reconstruction](experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md)
 
-Current exact frontier: prove or falsify the conditional-decorrelation lemma
-for the three residual Cholesky correlations in the `21 x 21` Dirac–Schur
-operator.
+The coordinatewise conditional-decorrelation lemma is exactly false. The
+current frontier is the variable-Cayley one-edge family, where four orientation
+sectors assemble into a tetrahedral matrix-positivity certificate, followed by
+the remaining two residual Cholesky correlations.

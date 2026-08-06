@@ -3,7 +3,9 @@ message: "If you use this research archive, please cite the repository and the s
 title: "Spin(8) Triality and Noncommutative State-Space Research"
 type: software
 authors:
-  - alias: xSolumx
+  - family-names: "Austin"
+    given-names: "Hayden"
+    email: "haydaust@gmail.com"
 version: 0.1.0
 date-released: 2026-08-04
 repository-code: "https://github.com/xSolumx/spin8-triality-research"
