@@ -149,6 +149,8 @@ Primary documents:
 - [Complete two-edge reconstruction](experiments/SPIN8_DIRAC_TWO_EDGE_ALL_SECTOR_RESULTS.md)
 - [Repeated-view multiplicity gauge theorem](SPIN8_MULTIPLICITY_GAUGE_THEOREM.md)
 - [Eight-sector amplitude theorem](SPIN8_TWO_EDGE_AMPLITUDE_THEOREM.md)
+- [Two-edge boundary-kernel theorem](experiments/SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md)
+- [Finite two-edge polynomial reduction](experiments/SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md)
 
 The coordinatewise conditional-decorrelation lemma is exactly false. The
 variable-Cayley one-edge family is proved through its tetrahedral
@@ -159,3 +161,11 @@ proved. Its repeated negative-spinor probes also possess an exact multiplicity
 `O(2)` gauge, reducing correlation to orthogonal-mode energy imbalance.
 Positivity of the paired blocks remains the gate; one further residual edge
 separates this bridge from the unrestricted family.
+
+The local gate is now exact: the new edge cannot leave the one-edge equality
+set with a harmful first-order sign, and its sole quadratic endpoint kernel is
+lifted positively at fourth order. The finite-edge gate has also been reduced
+without approximation. Each of the four paired margins is nonnegative exactly
+when a degree-six polynomial \(L\) and a degree-twelve polynomial \(S\) are
+both nonnegative on \(0\leq y\leq1\). The reduction is proved; global
+positivity of those eight polynomials remains open.

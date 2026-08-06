@@ -135,6 +135,16 @@ orthonormal equality line, however, the new residual is now proved to lower the
 determinant strictly by a positive nine-coefficient Bernstein polynomial. See the
 [complete reconstruction results](docs/experiments/SPIN8_DIRAC_TWO_EDGE_ALL_SECTOR_RESULTS.md).
 
+The local boundary obstruction has now been resolved exactly. The second edge
+has no dangerous odd first-order motion on the one-edge kernel; its only
+quadratic endpoint degeneracy is lifted positively at fourth order. For finite
+edge size, every paired orientation margin is exactly equivalent to one
+degree-six and one degree-twelve polynomial inequality after a single
+sign-preserving squaring. A dense CUDA sweep found no violation, but global
+positivity of those eight polynomial families remains open. See the
+[boundary-kernel result](docs/experiments/SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md)
+and [finite polynomial reduction](docs/experiments/SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md).
+
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 [preregistration](docs/experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md), and
 [raw certificate](artifacts/spin8_dirac_star_20260804.json).
@@ -154,7 +164,9 @@ read [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md).
 | [`docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md`](docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md) | Adversarial corrections, standalone paper opportunities, and the next strategy |
 | [`docs/LITERATURE_AUDIT_2026-08-06.md`](docs/LITERATURE_AUDIT_2026-08-06.md) | Primary-source audit, continuous-deformation corrections, and updated baseline requirements |
 | [`docs/experiments/SPIN8_RESOURCE_FLINT_GPU_AUDIT.md`](docs/experiments/SPIN8_RESOURCE_FLINT_GPU_AUDIT.md) | Six-core/15-GiB execution contract, independent FLINT replay, CUDA falsifiers, and noise profile |
-| [`docs/ITERATION_NOTE_2026-08-06.md`](docs/ITERATION_NOTE_2026-08-06.md) | Publication-scoped write-up of the exact Cayley blocks and variable-Cayley theorem |
+| [`docs/ITERATION_NOTE_2026-08-06.md`](docs/ITERATION_NOTE_2026-08-06.md) | Publication-scoped synthesis from exact Cayley blocks through the finite two-edge reduction |
+| [`docs/MATHEMATICAL_WRITING_STANDARD.md`](docs/MATHEMATICAL_WRITING_STANDARD.md) | Claim, notation, proof, and explanatory-writing contract |
+| [`docs/DOCUMENTATION_AUDIT_2026-08-06.md`](docs/DOCUMENTATION_AUDIT_2026-08-06.md) | Repository-wide mathematical-writing and link audit |
 | [`docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md`](docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md) | Integrated manuscript covering identifiability, Cayley blocks, gauges, and Dirac--Gram results |
 | [`docs/EXPERIMENT_INDEX.md`](docs/EXPERIMENT_INDEX.md) | Grouped index of every preregistration and result document |
 | [`docs/experiments/`](docs/experiments/) | Preregistrations, results, corrections, and negative findings |
@@ -186,7 +198,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 164 passing tests. See
+The current repository is validated by 175 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 
@@ -199,9 +211,11 @@ The repository makes three distinctions explicit:
 3. A theorem on a constrained family is not the unrestricted theorem.
 
 The variable-Cayley one-edge determinant gate is complete. The smallest
-second-residual family has survived exact symmetry and degree analysis plus a
-large numerical falsifier. Its next exact target is a covariance-quotiented
-sector factorization, followed by staged positivity. Language-model scale-up
+second-residual family has exact symmetry, reconstruction, endpoint-factor,
+local-kernel, and finite polynomial-reduction results. Its degree-six and
+degree-twelve polynomial gates have survived dense numerical falsification but
+are not yet globally certified. Endpoint factorization followed by staged
+Bernstein/Duffy positivity is the next exact target. Language-model scale-up
 remains downstream of these mechanism gates.
 
 ## Provenance and license

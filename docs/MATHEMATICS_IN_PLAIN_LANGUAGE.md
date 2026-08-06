@@ -281,6 +281,60 @@ sign components do not each need to be positive. They are like ingredients
 with positive and negative flavors; only the eight final orientation totals
 must be nonnegative.
 
+## The second edge: what is now exact
+
+The first one-edge theorem has a line of equality: a family of perfectly
+balanced arrangements where the upper bound is attained. Before attempting a
+global proof with a second correlation, we asked the most dangerous local
+question. Could an arbitrarily small second edge tip one of the zero margins
+below zero?
+
+The exact answer is no along the entire orthonormal equality line. Almost
+everywhere, the margin curves upward quadratically. At one Cayley endpoint a
+single direction is quadratically flat, but the exact fourth-order term is
+
+\[
+64s^2(2-s^2),
+\qquad 0<s\leq1,
+\]
+
+which is strictly positive. In geometric language, the apparent flat floor is
+not another hidden equality corridor; a finer measurement shows that it rises.
+
+A plausible quadratic shortcut nevertheless fails away from that equality
+line. An exact rational example makes its proposed auxiliary expression
+negative. This does not disprove the target inequality. It tells us that the
+full finite-edge dependence, rather than only its first two derivatives, is
+essential.
+
+That full dependence has now been simplified exactly. If (i) is the new edge,
+set
+
+\[
+x=i^2,qquad y=\sqrt{1-x},qquad 0\leq y\leq1.
+\]
+
+Each pair of signed answers becomes
+
+\[
+m_\pm=L(y)\pm\sqrt{1-y^2}\,R(y).
+\]
+
+The two answers are both nonnegative exactly when their midpoint is
+nonnegative and their half-separation is no larger than that midpoint:
+
+\[
+L(y)\geq0,
+\qquad
+L(y)^2-(1-y^2)R(y)^2\geq0.
+\]
+
+The first expression has degree six in (y); the second has degree twelve.
+Thus a nested-radical, eight-sign problem has become eight ordinary polynomial
+sign problems. This conversion is proved exactly. A GPU search over 851,968
+interior and boundary samples found no negative value, but the global signs of
+those polynomials remain open until an exact positivity certificate is built.
+
 ## Why the crashes did not count as evidence
 
 A computer stopping does not make a theorem true or false. The new replay tool
@@ -310,6 +364,8 @@ integer arithmetic.
 | All eight two-edge sector polynomials and endpoint factors | Proved exactly |
 | Universal two-edge flag law and paired four-block reduction | Proved exactly |
 | Two-edge stability transverse to the orthonormal equality line | Proved exactly |
+| Finite two-edge radical-to-polynomial reduction | Proved exactly |
+| Degree-six and degree-twelve finite two-edge gates are globally nonnegative | Open; dense GPU search found no violation |
 | Balanced five-query sensor is a strict local optimum after removing rotations | Proved exactly |
 | All 35 one-camera coordinate-circle deformations | Proved exactly |
 | Equal balanced sensor is best with fractional measurement weights | Disproved exactly |

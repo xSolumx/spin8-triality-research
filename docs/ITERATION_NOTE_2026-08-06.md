@@ -2,11 +2,11 @@
 
 **Date:** 2026-08-06
 
-## The two results
+## The result ladder
 
 ### 1. The recurring Cayley spectrum has an exact block mechanism
 
-For the balanced five-probe `Spin(8)` triality sensor, the 28-dimensional
+For the balanced five-probe \(\operatorname{Spin}(8)\) triality sensor, the 28-dimensional
 information operator is exactly block diagonal after one fixed bivector-basis
 permutation:
 
@@ -27,8 +27,9 @@ permutation. Their determinants, together with those of the other blocks, are
 This explains at once:
 
 - why the characteristic polynomial has repeated factors;
-- why the determinant has powers `(1-c^2)^3(9-c^2)^2`;
-- why the Cayley-null value is exactly `81/1024`;
+- why the determinant contains the factors
+  \((1-c^2)^3(9-c^2)^2\);
+- why the Cayley-null value is exactly \(81/1024\);
 - why three information directions disappear at calibrated endpoints.
 
 The important correction is that these are certified invariant *coordinate*
@@ -66,9 +67,105 @@ B_1=G_0\left(G_0+\frac{G'_0}{12}\right),
 and exact positivity certificates for both factors. Thus all orientation
 eigenvalues are nonnegative throughout the frozen family.
 
+### 3. A second residual edge is locally stable
+
+The next family activates a second Cholesky residual. Let
+
+\[
+z=c^2\in[0,1]
+\]
+
+denote the squared normalized Cayley coordinate, and let \(i\) be the new
+physical edge coordinate. Exact Walsh reduction pairs the eight orientation
+margins into four Hadamard eigenchannels. Near \(i=0\), each pair has the form
+
+\[
+m_{r,\pm}=\lambda_r\pm i\mu_r+i^2\nu_r+O(i^3),
+\qquad r=1,\ldots,4.
+\]
+
+Here \(\lambda_r\) is the proved one-edge margin, \(\mu_r\) is the odd
+first derivative, and \(\nu_r\) is the leading even curvature. This expansion
+makes the immediate failure test explicit: if \(\lambda_r=0\) but
+\(\mu_r\neq0\), one sign of a sufficiently small \(i\) would make the target
+margin negative.
+
+That obstruction does not occur on the orthonormal equality line. The only
+nontrivial quadratic tangent block has determinant
+
+\[
+4(z-9)^3(z-1),
+\]
+
+which is positive for \(0\leq z<1\). At the sole degenerate endpoint \(z=1\),
+the odd derivative vanishes on the tangent kernel and the exact surviving
+margin is
+
+\[
+64s^2(2-s^2)>0,
+\qquad 0<s\leq1.
+\]
+
+Thus the endpoint that appears flat to second order rises at fourth order.
+This proves local two-edge stability around the complete orthonormal equality
+line. It does not prove finite-edge positivity throughout the parameter cube.
+
+An exact rational witness also rules out the tempting shortcut
+
+\[
+4\lambda_r\nu_r-\mu_r^2\geq0
+\]
+
+as a global certificate. This is a negative result about the quadratic
+truncation, not a counterexample to the full Dirac--Gram inequality: higher
+powers of \(i\) remain capable of restoring positivity.
+
+### 4. The finite second edge reduces to ordinary polynomials
+
+The full finite-edge expression initially contains nested square roots. Set
+
+\[
+x=i^2\in[0,1],\qquad y=\sqrt{1-x}\in[0,1].
+\]
+
+Every paired orientation margin is exactly expressible as
+
+\[
+m_\pm(y)=L(y)\pm\sqrt{1-y^2}\,R(y),
+\]
+
+where \(L\) and \(R\) are ordinary polynomials in \(y\), with coefficients
+that depend polynomially on the five older squared coordinates. Both signs
+are nonnegative if and only if
+
+\[
+L(y)\geq0
+\quad\text{and}\quad
+S(y):=L(y)^2-(1-y^2)R(y)^2\geq0.
+\]
+
+The equivalence retains the premise \(L\geq0\), so the single squaring creates
+no spurious solutions. Exact reconstruction gives
+
+\[
+\deg_y L=6,
+\qquad
+\deg_y S=12
+\]
+
+in all four channels. The original radical problem has therefore become eight
+finite polynomial-positivity problems: four degree-six center conditions and
+four degree-twelve separation conditions.
+
+A float64 CUDA campaign checked 851,968 points across the interior and all
+twelve coordinate faces without finding a violation. That is strong
+falsification evidence, but it is not an exact positivity proof between the
+sampled points.
+
 ## Evidence standard
 
-This promotion rests on exact arithmetic, not floating-point survival:
+The promoted one-edge theorem rests on exact arithmetic, not floating-point
+survival:
 
 - two disjoint tensor grids reconstructed identical rational polynomials;
 - 256 disjoint direct rational determinants match the reconstruction exactly;
@@ -79,26 +176,33 @@ This promotion rests on exact arithmetic, not floating-point survival:
 - a replay verifier recomputes the stored holdout predictions and all
   lightweight acceptance checks.
 
+The two-edge statements have a deliberately split evidence status. The local
+kernel theorem and the finite radical-to-polynomial reduction are exact. The
+dense CUDA campaign is a counterexample search only; it does not promote the
+finite two-edge inequality to a theorem.
+
 The audit also found and corrected an earlier unsupported sentence claiming
 the 256 holdouts had already run. The source artifact had honestly retained
 `holdouts_pending: true`; the missing experiment was run before theorem
 promotion.
 
-## Why this may be paper-worthy
+## Why this forms a coherent paper
 
-The combination is stronger than either result alone. The first result reveals
-the spectral anatomy of the optimal orthonormal sensor. The second proves a
-nonorthogonal deformation theorem using symmetry reduction plus
-boundary-adapted exact positivity. Together they form a coherent mathematical
-story about how exceptional triality geometry controls experimental-design
-information.
+The exact block theorem reveals the spectral anatomy of the balanced sensor.
+The one-edge theorem then proves a nonorthogonal deformation family using
+symmetry reduction and boundary-adapted positivity. Finally, the two-edge work
+shows both what survives locally and how the remaining global question reduces
+to a finite polynomial certificate. These are successive layers of one story:
+triality symmetry converts a large signed determinant problem into invariant
+blocks, then into scalar margins, and finally into ordinary polynomial signs.
 
 A defensible paper claim is:
 
-> We derive an exact invariant-block factorization for the balanced Spin(8)
-> triality information family and prove the strengthened Dirac--Gram bound on
-> a complete variable-Cayley four-correlation family by an independently
-> replayable rational Bernstein/Duffy certificate.
+> We derive an exact invariant-block factorization for the balanced
+> \(\operatorname{Spin}(8)\) triality information family, prove the strengthened
+> Dirac--Gram bound on a complete variable-Cayley four-correlation family, and
+> reduce the next finite residual edge to four degree-six and four
+> degree-twelve polynomial positivity gates.
 
 This is narrower—and stronger—than claiming global five-query optimality.
 
@@ -109,16 +213,23 @@ inequality. Two residual Cholesky edges remain. It also does not prove the
 nonbalanced allocation upper bounds or global D-optimality among all
 five-query designs.
 
-The next best bridge is to activate exactly one additional residual edge. Its
-symmetry characters and degree bounds should be derived before interpolation.
-The existing block basis should be tested first; if it reduces the new
-determinant, use it. If not, preregister a boundary-adapted certificate and an
-exact counterexample protocol before spending on another large expansion.
+The second residual edge is now active and algebraically reduced, but its
+finite positivity remains open. The next exact gate is to factor the endpoint
+layers \(y=1\) and \(y=0\), together with their first inward derivatives. The
+\(y=1\) face must recover the proved one-edge theorem and its boundary-kernel
+jet; \(y=0\) is an independent five-dimensional face. Only after both faces
+are understood should the interior Bernstein/Duffy calculation begin.
+
+One further residual Cholesky edge then separates this bridge from the
+unrestricted seven-invariant inequality. Global five-query D-optimality and
+nonbalanced allocation bounds remain separate open problems.
 
 ## Primary evidence
 
 - [Cayley block theorem](experiments/SPIN8_CAYLEY_BLOCK_THEOREM.md)
 - [Variable-Cayley one-edge theorem](experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md)
+- [Two-edge boundary-kernel theorem](experiments/SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md)
+- [Finite two-edge polynomial reduction](experiments/SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md)
 - [Cayley block artifact](../artifacts/spin8_cayley_blocks_20260806.json)
 - [Final Duffy certificate](../artifacts/spin8_dirac_one_edge_duffy_20260806.json)
 - [Exact holdouts](../artifacts/spin8_dirac_one_edge_holdouts_20260806.json)
