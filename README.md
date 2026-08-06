@@ -58,6 +58,11 @@ together so that the path to the final results remains auditable.
   sensor fails the Kiefer--Wolfowitz sensitivity test there, while uniform
   mass on one eight-probe basis gives `M=I_28/4` and is globally approximate
   D-optimal.
+- Native python-flint now independently replays the central matrix,
+  characteristic-polynomial, boundary-rank, and degree-28 reweighting
+  arithmetic. A ten-seed RTX 2070 SUPER falsifier searched 860,160 dense
+  interiors and 1,680 gradient starts without finding a global-five-query
+  challenger; that remains numerical evidence, not a theorem.
 - The three minuscule `D4` weight octets form the classical 24-cell, but the
   24 sensor projectors form a different, continuously deformable three-colour
   tight fusion frame in `Gr(7,28)`. It is not spectrally optimal as an
@@ -148,6 +153,7 @@ read [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md).
 | [`docs/RESEARCH_MAP.md`](docs/RESEARCH_MAP.md) | The research lineage and interpretation boundaries |
 | [`docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md`](docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md) | Adversarial corrections, standalone paper opportunities, and the next strategy |
 | [`docs/LITERATURE_AUDIT_2026-08-06.md`](docs/LITERATURE_AUDIT_2026-08-06.md) | Primary-source audit, continuous-deformation corrections, and updated baseline requirements |
+| [`docs/experiments/SPIN8_RESOURCE_FLINT_GPU_AUDIT.md`](docs/experiments/SPIN8_RESOURCE_FLINT_GPU_AUDIT.md) | Six-core/15-GiB execution contract, independent FLINT replay, CUDA falsifiers, and noise profile |
 | [`docs/BREAKTHROUGH_NOTE_2026-08-06.md`](docs/BREAKTHROUGH_NOTE_2026-08-06.md) | Publication-scoped write-up of the exact Cayley blocks and variable-Cayley theorem |
 | [`docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md`](docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md) | Integrated manuscript covering identifiability, Cayley blocks, gauges, and Dirac--Gram results |
 | [`docs/EXPERIMENT_INDEX.md`](docs/EXPERIMENT_INDEX.md) | Grouped index of every preregistration and result document |
@@ -180,7 +186,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 158 passing tests. See
+The current repository is validated by 164 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 

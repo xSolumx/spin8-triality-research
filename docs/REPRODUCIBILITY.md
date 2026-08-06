@@ -122,6 +122,25 @@ Install `python-flint` to enable the optimized exact backend. The committed
 determinant cache may replace the first stage when replaying later stages, but
 its SHA-256 link to the reconstruction must still pass.
 
+### Enforced workstation envelope
+
+For any expensive stage on the reference i7-9700K, use the bounded runner:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m spin8_resource_limits --workers 6 --memory-gib 15 -- `
+  python -m <module> <arguments>
+```
+
+This pins the complete process tree to six logical cores, caps common native
+thread pools, selects the FLINT SymPy ground domain, records peak process-tree
+RSS, and terminates the stage at 15 GiB. The one-GiB margin keeps the symbolic
+process below the requested 16-GiB ceiling despite watchdog sampling latency.
+
+`spin8_flint_crosscheck.py` is the independent arithmetic check. Merely setting
+`SYMPY_GROUND_TYPES=flint` improves speed but is not counted as independent
+verification.
+
 ## Artifact integrity
 
 `ARTIFACTS.sha256` contains one SHA-256 entry per published JSON artifact.

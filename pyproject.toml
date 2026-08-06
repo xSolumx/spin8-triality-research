@@ -27,6 +27,7 @@ classifiers = [
 ]
 dependencies = [
   "numpy>=1.26",
+  "psutil>=6.0",
   "scipy>=1.13",
   "sympy>=1.13",
   "torch>=2.6",

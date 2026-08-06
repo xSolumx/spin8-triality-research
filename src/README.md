@@ -32,7 +32,14 @@ module name. Editable installation adds this directory to the Python path.
   counterexample and the isotropic global approximate optimum.
 - `spin8_d4_24cell_bridge.py`: exact minuscule-weight 24-cell bridge, coloured
   projector geometry, continuous non-vertex tight-frame deformation, and
-  standard Grassmannian packing falsifier.
+  spectral packing falsifier plus chordal-bound audit.
+- `spin8_flint_crosscheck.py`: independent native-FLINT replay of central
+  SymPy matrix and polynomial arithmetic.
+- `spin8_resource_limits.py`: six-core affinity, native-thread caps, and a
+  process-tree RAM watchdog for staged exact work.
+- `spin8_gpu_design_audit.py`, `spin8_gpu_design_cohort.py`: CUDA dense
+  interior search, sensitivity mapping, reweighting, and noise profiling;
+  numerical falsification only.
 - `spin8_dirac_gram.py`: projector geometry, Schur reduction, and falsifiers.
 - `spin8_dirac_star.py`: independently replayed rational Bernstein theorem.
 - `spin8_conditional_counterexample.py`: exact rational falsifier for naive
