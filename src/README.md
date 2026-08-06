@@ -38,6 +38,10 @@ module name. Editable installation adds this directory to the Python path.
   holdouts and a lightweight stored-artifact verifier.
 - `spin8_dirac_one_edge_positivity.py`: staged, crash-resilient integer
   Bernstein/Duffy proof of the final determinant gate.
+- `spin8_dirac_two_edge.py`: exact common-symmetry and two-anchor sector audit
+  for the preregistered `h=0`, residual-`i` bridge.
+- `spin8_dirac_two_edge_attack.py`: uniform, boundary-biased, and optimized
+  CUDA falsifier for that bridge; never used for proof signs.
 
 ## Blind action and addressing line
 
