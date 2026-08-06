@@ -14,6 +14,7 @@ from spin8_dirac_two_edge_shared_reconstruct import (
     NODE_SETS,
     _shared_point_worker,
     _shared_setup,
+    verify_tile_report,
 )
 
 
@@ -50,6 +51,9 @@ class Spin8DiracTwoEdgeSharedGridTests(unittest.TestCase):
             )
         )
         self.assertEqual(observed, predicted)
+
+    def test_tile_verifier_does_not_trust_a_passed_flag(self) -> None:
+        self.assertFalse(verify_tile_report({"passed": True}))
 
 
 if __name__ == "__main__":

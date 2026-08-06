@@ -150,6 +150,58 @@ def _read_gzip_json(path: Path) -> dict[str, object]:
         return json.load(handle)
 
 
+def verify_tile_report(report: dict[str, object]) -> bool:
+    """Replay tile integrity and exact coverage without trusting ``passed``."""
+
+    if report.get("node_set") not in NODE_SETS:
+        return False
+    tile = report.get("tile")
+    if (
+        not isinstance(tile, list)
+        or len(tile) != 2
+        or any(int(value) not in range(5) for value in tile)
+    ):
+        return False
+    masks, _signs, _inverse, _complements = _shared_setup()
+    expected_masks = [list(mask) for mask in masks]
+    expected_bounds = {_mask_text(mask): list(DEGREE_BOUNDS[mask]) for mask in masks}
+    nodes = NODE_SETS[report["node_set"]]
+    if report.get("nodes") != [str(value) for value in nodes]:
+        return False
+    if report.get("squared_nodes") != [
+        str(rational_circle(value)[0] ** 2) for value in nodes
+    ]:
+        return False
+    rows = report.get("rows")
+    if not isinstance(rows, list) or report.get("rows_sha256") != _digest(rows):
+        return False
+    expected_indices = {
+        (int(tile[0]), int(tile[1]), *tail)
+        for tail in itertools.product(range(5), repeat=4)
+    }
+    try:
+        observed_indices = {
+            tuple(int(value) for value in row["multi_index"]) for row in rows
+        }
+        residuals_are_exact = all(
+            len(row["sector_residuals"]) == 8
+            and all(sp.Rational(value).is_Rational for value in row["sector_residuals"])
+            for row in rows
+        )
+    except (KeyError, TypeError, ValueError):
+        return False
+    return bool(
+        len(rows) == len(observed_indices) == len(expected_indices) == 625
+        and observed_indices == expected_indices
+        and residuals_are_exact
+        and report.get("sector_masks") == expected_masks
+        and report.get("degree_bounds") == expected_bounds
+        and report.get("point_count") == 625
+        and report.get("direct_determinant_count") == 5000
+        and report.get("passed") is True
+    )
+
+
 def reconstruct(tiles: list[Path]) -> dict[str, object]:
     if len(tiles) != 25:
         raise ValueError("exactly 25 tile files are required")
@@ -161,11 +213,8 @@ def reconstruct(tiles: list[Path]) -> dict[str, object]:
         itertools.product(range(5), repeat=2)
     ):
         raise ValueError("tiles do not cover the 5 x 5 leading-axis grid")
-    for report in reports:
-        if report["rows_sha256"] != _digest(report["rows"]):
-            raise ValueError("invalid tile row digest")
-        if report["point_count"] != 625 or report["passed"] is not True:
-            raise ValueError("invalid tile acceptance predicates")
+    if not all(verify_tile_report(report) for report in reports):
+        raise ValueError("tile failed replay verification")
 
     masks = tuple(tuple(mask) for mask in reports[0]["sector_masks"])
     tensors = {mask: np.empty((5,) * 6, dtype=object) for mask in masks}
