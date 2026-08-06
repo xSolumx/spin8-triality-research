@@ -239,17 +239,20 @@ route to the remaining tensors, not a positivity result by itself.
 
 ## Scientific status
 
-The family has passed Gates 1--4, its global amplitude theorem, and one complete
-sector reconstruction. It has **not** passed reconstruction of the other seven
-sectors or global positivity. In particular:
+The family has passed Gates 1--4, its global amplitude theorem, and complete
+reconstruction of all eight sectors under the separately frozen shared-grid
+protocol. It has **not** passed global positivity. In particular:
 
 - numerical non-violation is not a theorem;
 - two anchor supports do not establish radical amplitude factorizations;
-- sector `110101` is reconstructed globally, but the slice atlas still cannot
-  substitute for tensors in the other seven sectors;
+- two disjoint grids recover identical 6,664-coefficient maps and all 256 fresh
+  exact sector holdouts pass;
+- all slice-predicted endpoint factors are now exact global identities;
+- every endpoint-reduced sector obeys an exact bridge to the proved one-edge
+  family, and the orientation algebra splits into paired four-sector blocks;
 - the unrestricted family still has the `h` residual beyond this bridge.
 
-The next action is to use the exact `110101` factor as a model for deriving the
-remaining complement factors exposed by the endpoint atlas, now in
-covariance-quotiented coordinates. Positivity machinery remains premature
-until the other sector tensors are reduced and reconstructed.
+The next action is an exact equality-kernel compatibility falsifier for the odd
+first-order block, followed—if it survives—by a paired group-circulant Schur or
+boundary-adapted positivity certificate. See
+[`SPIN8_DIRAC_TWO_EDGE_ALL_SECTOR_RESULTS.md`](SPIN8_DIRAC_TWO_EDGE_ALL_SECTOR_RESULTS.md).

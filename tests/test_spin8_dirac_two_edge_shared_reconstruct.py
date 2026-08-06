@@ -14,6 +14,10 @@ from spin8_dirac_two_edge_shared_reconstruct import (
     NODE_SETS,
     _shared_point_worker,
     _shared_setup,
+    verify_coefficient_report,
+    verify_comparison_report,
+    verify_factor_atlas_report,
+    verify_holdout_report,
     verify_tile_report,
 )
 
@@ -54,6 +58,42 @@ class Spin8DiracTwoEdgeSharedGridTests(unittest.TestCase):
 
     def test_tile_verifier_does_not_trust_a_passed_flag(self) -> None:
         self.assertFalse(verify_tile_report({"passed": True}))
+
+    def test_published_all_sector_certificate_replays(self) -> None:
+        root = Path(__file__).parents[1]
+        artifact = root / "artifacts"
+        alpha = json.loads(
+            (
+                artifact / "spin8_dirac_two_edge_all_sectors_coefficients_20260806.json"
+            ).read_text(encoding="utf-8")
+        )
+        beta = json.loads(
+            (
+                artifact
+                / "spin8_dirac_two_edge_all_sectors_beta_coefficients_20260806.json"
+            ).read_text(encoding="utf-8")
+        )
+        comparison = json.loads(
+            (
+                artifact / "spin8_dirac_two_edge_all_sectors_comparison_20260806.json"
+            ).read_text(encoding="utf-8")
+        )
+        holdouts = json.loads(
+            (
+                artifact / "spin8_dirac_two_edge_all_sectors_holdouts_20260806.json"
+            ).read_text(encoding="utf-8")
+        )
+        factor_atlas = json.loads(
+            (
+                artifact / "spin8_dirac_two_edge_all_sectors_factor_atlas_20260806.json"
+            ).read_text(encoding="utf-8")
+        )
+
+        self.assertTrue(verify_coefficient_report(alpha))
+        self.assertTrue(verify_coefficient_report(beta))
+        self.assertTrue(verify_comparison_report(comparison, alpha, beta))
+        self.assertTrue(verify_holdout_report(holdouts, alpha))
+        self.assertTrue(verify_factor_atlas_report(factor_atlas, alpha))
 
 
 if __name__ == "__main__":

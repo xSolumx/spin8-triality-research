@@ -106,9 +106,14 @@ their apparent correlation is exactly equivalent to an orthogonal-mode energy
 imbalance. The companion
 [eight-sector amplitude theorem](docs/SPIN8_TWO_EDGE_AMPLITUDE_THEOREM.md)
 reduces all radicals to fixed monomials and one universal Cayley-boundary
-factor. Its first fully reconstructed sector passed two disjoint exact grids
-and 32 fresh holdouts, then exposed the additional exact factor
-`1-a^2`. Positivity of this two-edge family remains open.
+factor. All eight sectors are now reconstructed exactly from two disjoint
+shared grids: 250,000 direct determinants recover identical 6,664-coefficient
+maps, and 256 fresh exact equalities hold. Every predicted endpoint factor is
+global. The endpoint-reduced sectors obey an exact flag law connecting them to
+the proved one-edge theorem, while their eight orientation margins split into
+two commuting four-dimensional Hadamard blocks. Positivity of those two blocks,
+and hence of the full two-edge family, remains open. See the
+[complete reconstruction results](docs/experiments/SPIN8_DIRAC_TWO_EDGE_ALL_SECTOR_RESULTS.md).
 
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 [preregistration](docs/experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md), and
@@ -159,7 +164,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 147 passing tests. See
+The current repository is validated by 152 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 

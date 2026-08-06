@@ -50,7 +50,9 @@ module name. Editable installation adds this directory to the Python path.
   disjoint-grid comparison, holdout replay, and factor certification for the
   first complete two-edge Walsh sector.
 - `spin8_dirac_two_edge_shared_reconstruct.py`: preregistered common-grid
-  campaign that reuses each exact determinant across all eight Walsh sectors.
+  campaign that reuses each exact determinant across all eight Walsh sectors;
+  verifies two independent complete coefficient maps, exact holdouts, endpoint
+  factors, the one-edge flag bridge, and the even/odd Hadamard block split.
 - `spin8_multiplicity_gauge.py`: exact covariance and `O(m)` gauge theorem for
   repeated probes in the same triality representation.
 

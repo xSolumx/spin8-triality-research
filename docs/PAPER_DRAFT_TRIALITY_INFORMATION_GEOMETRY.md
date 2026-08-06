@@ -270,10 +270,9 @@ H_{110101}=(1-a^2)Q_{110101},
 
 with a 162-term quotient of multidegree `(1,2,2,2,1,1)`. This converts a
 slice-observed boundary multiplicity into a global identity for one complete
-six-variable sector. It suggests that the remaining sectors should be reduced
-by their boundary ideals before any full positivity certificate is attempted.
-No sign claim is made for an individual sector, and the seven unreconstructed
-sectors remain open.
+six-variable sector. It supplied the prospective template for the complete
+shared-grid reconstruction below. No sign claim is made for an individual
+sector.
 
 The quotient also obeys a nested boundary law:
 
@@ -299,6 +298,39 @@ The first is nonpositive and the second nonnegative on the squared-coordinate
 cube. Individual sector positivity is therefore false even in this first
 closed sector; the correct positivity objects are the eight assembled
 orientation margins.
+
+### 7.2 Complete reconstruction and the one-edge bridge
+
+A common proof-safe `5^6` grid recovers all eight sectors from the same eight
+direct determinants at each point. Two disjoint grids required 250,000 exact
+direct determinants and independently produced the same 6,664 nonzero
+rational coefficients. Thirty-two fresh rational points supplied another 256
+direct determinants and 256 exact sector equalities. All eight endpoint-factor
+patterns previously observed on slices divide the global six-variable maps.
+
+After those endpoint factors are removed, every sector obeys
+
+\[
+Q_m=Q_m|_{i^2=0}
+   +i^2(1-d^2)(1-e^2)(1-g^2)T_m.
+\]
+
+The `i^2=0` base is the proved variable-Cayley one-edge frame. The new residual
+therefore enters the even polynomial core through an exact four-factor flag
+ideal.
+
+The orientation algebra simultaneously splits by `i` parity. The four even
+and four odd characters use the same exact order-four Hadamard matrix `W`, so
+
+\[
+\lambda_{r,+}=W_r(E+O),\qquad
+\lambda_{r,-}=W_r(E-O).
+\]
+
+Equivalently, the eight margins are the spectra of two commuting `4 x 4`
+group-circulants. At `i=0` the odd amplitudes vanish, the matrices coincide,
+and their spectrum is exactly the previously proved one-edge spectrum. This
+is the decisive structural reduction for the remaining positivity problem.
 
 ## 8. Connection to sequence models
 
@@ -341,14 +373,15 @@ Promoted results use:
 - SHA-256 manifests over published artifacts;
 - full foundational regression tests.
 
-The current two-edge frontier deliberately remains labelled open until full
-coefficient reconstruction and positivity certification succeed.
+The current two-edge frontier deliberately remains labelled open until the
+two paired group-circulants receive a positivity certificate. Full coefficient
+reconstruction is complete.
 
 ## 10. Next theorem and next ML gate
 
-The immediate mathematical task is staged reconstruction of the eight
-polynomials `H_m` under the newly proved conservative multidegree bounds,
-followed by group-circulant principal-minor or Schur positivity.
+The immediate mathematical task is an exact boundary-kernel compatibility
+audit for the odd first-order block, followed by paired group-circulant
+principal-minor, Schur-complement, or boundary-adapted SOS positivity.
 
 The immediate ML task, after the theorem campaign, is to impose the discovered
 multiplicity gauge and shared-family retraction in the blind-action memory
@@ -364,7 +397,9 @@ Proved:
 - repeated-view covariance gauge;
 - variable-Cayley one-edge Dirac--Gram theorem;
 - two-edge global amplitude ansatz, `Delta^3` divisibility, and conservative
-  degree ceiling.
+  degree ceiling;
+- complete exact reconstruction of all eight two-edge sectors, their endpoint
+  factors, the universal one-edge bridge, and the paired four-block reduction.
 
 Open:
 

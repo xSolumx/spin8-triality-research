@@ -146,13 +146,16 @@ Primary documents:
 - [Cayley-null edge theorem](experiments/SPIN8_DIRAC_EDGE_RESULTS.md)
 - [Variable-Cayley one-edge theorem](experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md)
 - [Two-edge gate results](experiments/SPIN8_DIRAC_TWO_EDGE_GATE_RESULTS.md)
+- [Complete two-edge reconstruction](experiments/SPIN8_DIRAC_TWO_EDGE_ALL_SECTOR_RESULTS.md)
 - [Repeated-view multiplicity gauge theorem](SPIN8_MULTIPLICITY_GAUGE_THEOREM.md)
 - [Eight-sector amplitude theorem](SPIN8_TWO_EDGE_AMPLITUDE_THEOREM.md)
 
 The coordinatewise conditional-decorrelation lemma is exactly false. The
 variable-Cayley one-edge family is proved through its tetrahedral
-matrix-positivity certificate. The smallest second-residual bridge has passed
-exact symmetry and degree gates. Its repeated negative-spinor probes possess
-an exact multiplicity `O(2)` gauge, reducing correlation to orthogonal-mode
-energy imbalance before the remaining positivity problem. One further residual
-edge separates this bridge from the unrestricted family.
+matrix-positivity certificate. The smallest second-residual bridge now has
+complete exact coefficient maps for all eight sectors. Their endpoint factors,
+universal one-edge flag bridge, and paired four-block Hadamard reduction are
+proved. Its repeated negative-spinor probes also possess an exact multiplicity
+`O(2)` gauge, reducing correlation to orthogonal-mode energy imbalance.
+Positivity of the paired blocks remains the gate; one further residual edge
+separates this bridge from the unrestricted family.

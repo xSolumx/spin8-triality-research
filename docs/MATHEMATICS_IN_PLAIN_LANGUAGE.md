@@ -254,11 +254,18 @@ term in which either of the last two coordinates appears also contains
 ```
 
 After removing that product, only a 28-term formula remains, and it is linear
-in every squared coordinate. In everyday language: information added late in
-this triangular coordinate chain can affect this sector only if every
-intermediate direction is still available. This is an exact dependency law,
-not a numerical correlation. The other seven sectors must still be checked
-before it can become a theorem for the full determinant.
+in every squared coordinate. The subsequent complete reconstruction found the
+same screening rule in **all eight** sectors. In everyday language:
+information added late in this triangular coordinate chain can affect the
+even polynomial core only if every intermediate direction is still available.
+This is an exact dependency law, not a numerical correlation.
+
+There is an even simpler picture. The eight sign cases form four pairs. In
+each pair, flipping the new coordinate leaves four ingredients alone and
+reverses the other four. The unchanged half is exactly the earlier one-edge
+problem that has already been proved. So the new theorem problem is two
+four-by-four blocks built as controlled deformations of a solved case—not
+eight unrelated monsters.
 
 On two outer faces, the remaining 162-term formula collapses to products of
 only a few simple factors. One face is always nonpositive and another is always
@@ -293,8 +300,9 @@ integer arithmetic.
 | Variable-Cayley one-edge inequality | Proved |
 | Repeated-view covariance gauge | Proved exactly |
 | Common two-edge Cayley boundary factor `(1-c^2)^3` | Proved exactly |
-| First full two-edge sector and its nested boundary law | Proved exactly |
-| Variable-Cayley two-edge inequality | Open; seven sectors and positivity remain |
+| All eight two-edge sector polynomials and endpoint factors | Proved exactly |
+| Universal two-edge flag law and paired four-block reduction | Proved exactly |
+| Variable-Cayley two-edge inequality | Open; block positivity remains |
 | Unrestricted seven-parameter inequality | Open |
 | Global best possible five-query design | Open |
 
