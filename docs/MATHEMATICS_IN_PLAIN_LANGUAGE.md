@@ -239,6 +239,27 @@ only eight allowed polynomial characters. Each visible orientation sector has
 one unique hidden complement parity. Thus every apparent radical is a fixed
 front factor; what remains is an ordinary polynomial in six squared numbers.
 
+The first of those eight polynomials has now been recovered completely. Two
+different exact 4-by-4-by-4-by-4-by-4-by-4 grids gave the identical rational
+formula, and 32 new points matched calculations made directly from the
+original matrices. The safe degree bound allowed 4,096 coefficient positions;
+only 243 were used.
+
+Then the formula revealed two extra pieces of structure. First, all 243 terms
+share the factor `1-a^2`, reducing the real core to 162 terms. Second, every
+term in which either of the last two coordinates appears also contains
+
+```text
+(1-d^2)(1-e^2)(1-g^2).
+```
+
+After removing that product, only a 28-term formula remains, and it is linear
+in every squared coordinate. In everyday language: information added late in
+this triangular coordinate chain can affect this sector only if every
+intermediate direction is still available. This is an exact dependency law,
+not a numerical correlation. The other seven sectors must still be checked
+before it can become a theorem for the full determinant.
+
 ## Why the crashes did not count as evidence
 
 A computer stopping does not make a theorem true or false. The new replay tool
@@ -265,7 +286,8 @@ integer arithmetic.
 | Variable-Cayley one-edge inequality | Proved |
 | Repeated-view covariance gauge | Proved exactly |
 | Common two-edge Cayley boundary factor `(1-c^2)^3` | Proved exactly |
-| Variable-Cayley two-edge inequality | Open; symmetry, degree, and first factor gates passed |
+| First full two-edge sector and its nested boundary law | Proved exactly |
+| Variable-Cayley two-edge inequality | Open; seven sectors and positivity remain |
 | Unrestricted seven-parameter inequality | Open |
 | Global best possible five-query design | Open |
 

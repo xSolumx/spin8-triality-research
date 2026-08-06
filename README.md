@@ -106,7 +106,9 @@ their apparent correlation is exactly equivalent to an orthogonal-mode energy
 imbalance. The companion
 [eight-sector amplitude theorem](docs/SPIN8_TWO_EDGE_AMPLITUDE_THEOREM.md)
 reduces all radicals to fixed monomials and one universal Cayley-boundary
-factor. Positivity of this two-edge family remains open.
+factor. Its first fully reconstructed sector passed two disjoint exact grids
+and 32 fresh holdouts, then exposed the additional exact factor
+`1-a^2`. Positivity of this two-edge family remains open.
 
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 [preregistration](docs/experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md), and
@@ -126,6 +128,7 @@ read [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md).
 | [`docs/RESEARCH_MAP.md`](docs/RESEARCH_MAP.md) | The research lineage and interpretation boundaries |
 | [`docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md`](docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md) | Adversarial corrections, standalone paper opportunities, and the next strategy |
 | [`docs/BREAKTHROUGH_NOTE_2026-08-06.md`](docs/BREAKTHROUGH_NOTE_2026-08-06.md) | Publication-scoped write-up of the exact Cayley blocks and variable-Cayley theorem |
+| [`docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md`](docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md) | Integrated manuscript covering identifiability, Cayley blocks, gauges, and Dirac--Gram results |
 | [`docs/EXPERIMENT_INDEX.md`](docs/EXPERIMENT_INDEX.md) | Grouped index of every preregistration and result document |
 | [`docs/experiments/`](docs/experiments/) | Preregistrations, results, corrections, and negative findings |
 | [`artifacts/`](artifacts/README.md) | Raw JSON outputs retained for reproducibility |
@@ -156,7 +159,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 143 passing tests. See
+The current repository is validated by 147 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 

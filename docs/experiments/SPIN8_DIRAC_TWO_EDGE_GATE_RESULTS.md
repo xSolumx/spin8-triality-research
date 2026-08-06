@@ -153,6 +153,21 @@ polynomial in `(a^2,d^2,e^2,g^2,i^2,c^2)`. This proves the minimal radical
 ansatz. It does not yet prove the extra even complement powers suggested by the
 endpoint atlas, nor the signs of the final orientation margins.
 
+The normalization is now formal on the complete bridge. Both branches of all
+five diagonal boundaries `A,D,E,G,I=0` have exact Jacobian rank `25` and
+nullity `3`. The rank-32 circle normal form and coprimality therefore prove
+
+\[
+A^6D^6E^6G^6I^6=\Delta^3
+\]
+
+divides every raw determinant coefficient. Combined with the universal
+rank-seven Cauchy--Binet bound, this yields a conservative residual degree
+certificate with per-coordinate degrees no larger than four. Reconstructing
+the eight sectors separately at those bounds requires `61,321` grid points.
+That is the frozen proof-safe ceiling; the smaller slice degrees are not being
+silently substituted for it.
+
 In plain language, the determinant could have hidden high-degree behavior
 between the original samples. It did not: independently chosen rational test
 points landed exactly on the same low-degree polynomials. The remaining hard
@@ -188,19 +203,53 @@ This cancels the complete cubic Cayley-boundary factor from the target, leaving
 degree in `c^2` drops from 5 to 2, while the squared nontrivial sector measures
 drop from degrees 8 or 10 to 2 or 4 after the common squared factor is removed.
 
+## First full-sector reconstruction
+
+Sector `110101`, selected prospectively because its proof-safe grid was the
+smallest, has now passed a complete exact reconstruction:
+
+- two disjoint `4^6=4096` rational grids;
+- `65,536` direct determinants across those grids;
+- identical 243-term coefficient maps;
+- observed multidegree `(2,2,2,2,1,1)`;
+- 32/32 fresh exact off-grid matches from another 256 determinants.
+
+Exact polynomial division exposed the additional global factor
+
+\[
+1-a^2=A^2.
+\]
+
+After division, the core has 162 terms and multidegree `(1,2,2,2,1,1)`.
+Together with the character-forced `aA`, the complete sector amplitude contains
+`aA^3`, precisely matching the earlier endpoint slice pattern. This is the
+first time that one of those extra slice factors has been promoted to a global
+six-variable identity.
+
+The quotient has a further exact boundary-ideal decomposition:
+
+\[
+Q=Q|_{i^2=c^2=0}+(1-d^2)(1-e^2)(1-g^2)R,
+\]
+
+where the base has 42 terms and `R` has 28 terms and is multilinear. Therefore
+the late coordinates `i^2,c^2` couple into this sector only through the three
+intermediate complement energies `D^2E^2G^2`. This is a promising structural
+route to the remaining tensors, not a positivity result by itself.
+
 ## Scientific status
 
-The family has passed Gates 1--4 and its first global amplitude-factor lemma.
-It has **not** passed full tensor reconstruction, fresh all-sign holdouts, or
-global positivity. In particular:
+The family has passed Gates 1--4, its global amplitude theorem, and one complete
+sector reconstruction. It has **not** passed reconstruction of the other seven
+sectors or global positivity. In particular:
 
 - numerical non-violation is not a theorem;
 - two anchor supports do not establish radical amplitude factorizations;
-- the observed degree atlas is exact on 144 slices but is not a reconstructed
-  six-variable coefficient tensor;
+- sector `110101` is reconstructed globally, but the slice atlas still cannot
+  substitute for tensors in the other seven sectors;
 - the unrestricted family still has the `h` residual beyond this bridge.
 
-The next action is to derive the remaining complement factors exposed by the
-endpoint atlas, now in covariance-quotiented coordinates. Full tensor
-interpolation remains forbidden until those factors are proved and the reduced
-grid size is known.
+The next action is to use the exact `110101` factor as a model for deriving the
+remaining complement factors exposed by the endpoint atlas, now in
+covariance-quotiented coordinates. Positivity machinery remains premature
+until the other sector tensors are reduced and reconstructed.

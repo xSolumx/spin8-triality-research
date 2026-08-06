@@ -46,6 +46,9 @@ module name. Editable installation adds this directory to the Python path.
   and endpoint-factor audit with disjoint confirmation nodes.
 - `spin8_dirac_two_edge_amplitude.py`: both-branch rank and quotient-ring proof
   of the common `(1-c^2)^3` factor in all eight two-edge sectors.
+- `spin8_dirac_two_edge_reconstruct.py`: crash-safe exact tensor reconstruction,
+  disjoint-grid comparison, holdout replay, and factor certification for the
+  first complete two-edge Walsh sector.
 - `spin8_multiplicity_gauge.py`: exact covariance and `O(m)` gauge theorem for
   repeated probes in the same triality representation.
 

@@ -8,11 +8,20 @@ from pathlib import Path
 
 from spin8_dirac_two_edge_amplitude import (
     exact_cayley_boundary_factor_certificate,
+    exact_delta_divisibility_certificate,
     exact_extended_chart_sign_certificate,
 )
 
 
 class Spin8DiracTwoEdgeAmplitudeTests(unittest.TestCase):
+    def test_all_delta_boundaries_have_exact_nullity_three(self) -> None:
+        report = exact_delta_divisibility_certificate()
+        self.assertTrue(report["passed"])
+        self.assertTrue(report["all_ten_branches_rank_25"])
+        self.assertEqual(len(report["boundary_branch_rows"]), 10)
+        self.assertEqual(report["proved_divisor"], "A^6 D^6 E^6 G^6 I^6 = Delta^3")
+        self.assertEqual(report["post_division_coordinate_pair_degree_upper_bound"], 8)
+
     def test_extended_chart_has_one_complement_parity_per_sector(self) -> None:
         report = exact_extended_chart_sign_certificate()
         self.assertTrue(report["passed"])
@@ -42,6 +51,9 @@ class Spin8DiracTwoEdgeAmplitudeTests(unittest.TestCase):
             report["common_normalized_determinant_factor"],
             "s^6 = (1-c^2)^3",
         )
+        degree = report["conservative_residual_degree_certificate"]
+        self.assertTrue(degree["passed"])
+        self.assertEqual(degree["separate_sector_grid_point_total"], 61321)
 
     def test_published_artifact_matches_fresh_certificate(self) -> None:
         artifact = (
