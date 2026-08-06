@@ -117,6 +117,26 @@ is an exact algebraic dependency chain. It strongly suggests that the useful
 global coordinates are a base polynomial plus boundary-ideal corrections,
 not a flat six-dimensional monomial tensor.
 
+Two transverse faces collapse even further:
+
+\[
+Q|_{d^2=1}=3(a^2-1)(g^2-1)^2,
+\]
+
+and
+
+\[
+Q|_{g^2=1}
+=3(a^2-1)(d^2-1)^2(e^2-1)(3e^2+1).
+\]
+
+Both identities are independent of `i^2,c^2`, and the first also loses `e^2`.
+They were verified by exact zero remainders against the published coefficient
+map. On the unit cube the first face is nonpositive and the second is
+nonnegative. This explicitly demonstrates why proving every Walsh sector
+nonnegative would be a category error: positivity belongs to the eight signed
+orientation margins assembled from the sectors.
+
 ## What a non-specialist should take from this
 
 Imagine a complicated formula depending on six sliders, with four settings
@@ -139,6 +159,8 @@ seen were recomputed from the original determinants and matched exactly.
   `../../artifacts/spin8_dirac_two_edge_sector_110101_holdouts_20260806.json`;
 - exact factor certificate:
   `../../artifacts/spin8_dirac_two_edge_sector_110101_factor_20260806.json`.
+- exact transverse-face certificate:
+  `../../artifacts/spin8_dirac_two_edge_sector_110101_faces_20260806.json`.
 
 The artifact verifier recomputes row digests, coefficient uniqueness and
 degrees, all stored rational holdout equalities, and the complete exact

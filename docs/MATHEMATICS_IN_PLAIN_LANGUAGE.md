@@ -260,6 +260,13 @@ intermediate direction is still available. This is an exact dependency law,
 not a numerical correlation. The other seven sectors must still be checked
 before it can become a theorem for the full determinant.
 
+On two outer faces, the remaining 162-term formula collapses to products of
+only a few simple factors. One face is always nonpositive and another is always
+nonnegative. That catches a tempting but wrong proof plan: the eight internal
+sign components do not each need to be positive. They are like ingredients
+with positive and negative flavors; only the eight final orientation totals
+must be nonnegative.
+
 ## Why the crashes did not count as evidence
 
 A computer stopping does not make a theorem true or false. The new replay tool

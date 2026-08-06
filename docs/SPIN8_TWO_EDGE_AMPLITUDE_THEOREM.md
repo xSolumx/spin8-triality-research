@@ -179,6 +179,18 @@ multilinear in all six squared coordinates. This nested boundary law is now a
 proved identity for `110101` and a concrete structural hypothesis—not yet a
 theorem—for the remaining sectors.
 
+The same quotient has exact closed transverse faces
+
+\[
+Q|_{d^2=1}=3(a^2-1)(g^2-1)^2,
+\qquad
+Q|_{g^2=1}=3(a^2-1)(d^2-1)^2(e^2-1)(3e^2+1).
+\]
+
+Their signs are opposite on the unit cube. Thus no proof strategy should ask
+the individual Walsh sectors to be nonnegative; only the eight orientation
+margins—the character sums of those sectors—have that target property.
+
 Two independent evidence layers now agree with this theorem:
 
 - both rational anchors activate all eight sectors;

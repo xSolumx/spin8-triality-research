@@ -287,6 +287,19 @@ intermediate complement energies. This exact serial dependence is the main
 structural lead for replacing the remaining flat tensor reconstructions by a
 boundary-ideal recursion.
 
+Two exact face restrictions make the recursion visible:
+
+\[
+Q|_{d^2=1}=3(a^2-1)(g^2-1)^2,
+\qquad
+Q|_{g^2=1}=3(a^2-1)(d^2-1)^2(e^2-1)(3e^2+1).
+\]
+
+The first is nonpositive and the second nonnegative on the squared-coordinate
+cube. Individual sector positivity is therefore false even in this first
+closed sector; the correct positivity objects are the eight assembled
+orientation margins.
+
 ## 8. Connection to sequence models
 
 Three reusable architectural principles emerge.

@@ -385,6 +385,59 @@ def verify_factor_report(
     return report == _factor_from_coefficient_report(coefficient_report)
 
 
+def _face_from_coefficient_report(
+    coefficient_report: dict[str, object],
+) -> dict[str, object]:
+    """Certify the two closed-form transverse faces of the quotient sector."""
+
+    factor = _factor_from_coefficient_report(coefficient_report)
+    variables = sp.symbols("a2 d2 e2 g2 i2 c2")
+    a2, d2, e2, g2, _i2, _c2 = variables
+    quotient = sp.Poly(
+        sum(
+            sp.Rational(row["coefficient"])
+            * sp.prod(variables[axis] ** int(row["powers"][axis]) for axis in range(6))
+            for row in factor["quotient_coefficient_rows"]
+        ),
+        *variables,
+        domain=sp.QQ,
+    ).as_expr()
+    expected_d = 3 * (a2 - 1) * (g2 - 1) ** 2
+    expected_g = 3 * (a2 - 1) * (d2 - 1) ** 2 * (e2 - 1) * (3 * e2 + 1)
+    d_remainder = sp.factor(quotient.subs(d2, 1) - expected_d)
+    g_remainder = sp.factor(quotient.subs(g2, 1) - expected_g)
+    return {
+        "experiment": "two-edge sector 110101 exact transverse face certificate",
+        "source_coefficient_rows_sha256": coefficient_report["coefficient_rows_sha256"],
+        "source_quotient_coefficient_rows_sha256": factor[
+            "quotient_coefficient_rows_sha256"
+        ],
+        "variable_order": list(VARIABLE_ORDER),
+        "d2_equals_one_identity": "Q=3(a2-1)(g2-1)^2",
+        "g2_equals_one_identity": "Q=3(a2-1)(d2-1)^2(e2-1)(3e2+1)",
+        "d2_face_independent_of": ["e2", "i2", "c2"],
+        "g2_face_independent_of": ["i2", "c2"],
+        "d2_face_exact_zero_remainder": d_remainder == 0,
+        "g2_face_exact_zero_remainder": g_remainder == 0,
+        "unit_cube_signs": {
+            "d2_equals_one": "nonpositive",
+            "g2_equals_one": "nonnegative",
+        },
+        "passed": bool(d_remainder == 0 and g_remainder == 0),
+    }
+
+
+def face_report(coefficients_path: Path) -> dict[str, object]:
+    coefficient_report = json.loads(coefficients_path.read_text(encoding="utf-8"))
+    return _face_from_coefficient_report(coefficient_report)
+
+
+def verify_face_report(
+    report: dict[str, object], coefficient_report: dict[str, object]
+) -> bool:
+    return report == _face_from_coefficient_report(coefficient_report)
+
+
 def compare(left: Path, right: Path) -> dict[str, object]:
     left_report = json.loads(left.read_text(encoding="utf-8"))
     right_report = json.loads(right.read_text(encoding="utf-8"))
@@ -489,6 +542,9 @@ def main() -> None:
     factor_parser = subparsers.add_parser("factor")
     factor_parser.add_argument("--coefficients", type=Path, required=True)
     factor_parser.add_argument("--output", type=Path, required=True)
+    face_parser = subparsers.add_parser("faces")
+    face_parser.add_argument("--coefficients", type=Path, required=True)
+    face_parser.add_argument("--output", type=Path, required=True)
     arguments = parser.parse_args()
 
     if arguments.stage == "evaluate-slab":
@@ -511,8 +567,13 @@ def main() -> None:
         arguments.output.write_text(
             json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
         )
-    else:
+    elif arguments.stage == "factor":
         report = factor_report(arguments.coefficients)
+        arguments.output.write_text(
+            json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        )
+    else:
+        report = face_report(arguments.coefficients)
         arguments.output.write_text(
             json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
         )
