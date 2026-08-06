@@ -143,9 +143,14 @@ conservative multidegree ceilings for the residual `H_m`:
 | `110101` | `(3,3,3,3,3,3)` |
 | `111000` | `(3,3,3,4,4,4)` |
 
-Separate tensor reconstruction at these proof-safe bounds requires `61,321`
-grid points. The smaller degrees seen in the slice atlas are discovery evidence
-until their higher coefficients are globally annihilated.
+Separate tensor reconstruction at these proof-safe bounds would require
+`61,321` grid points. That is a valid mathematical count but not the efficient
+experiment: the same eight direct determinants recover all eight sectors at
+each point. A common `5^6=15,625` grid covers the componentwise maximum bound
+and reduces the one-grid determinant work from `490,568` to `125,000`. The
+shared-grid protocol was frozen before those evaluations. The smaller degrees
+seen in the slice atlas remain discovery evidence until their higher
+coefficients are globally annihilated.
 
 The first complete reconstruction has now annihilated those coefficients for
 sector `110101`. Two disjoint `4^6` exact grids produced the same 243-term

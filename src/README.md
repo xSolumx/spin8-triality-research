@@ -49,6 +49,8 @@ module name. Editable installation adds this directory to the Python path.
 - `spin8_dirac_two_edge_reconstruct.py`: crash-safe exact tensor reconstruction,
   disjoint-grid comparison, holdout replay, and factor certification for the
   first complete two-edge Walsh sector.
+- `spin8_dirac_two_edge_shared_reconstruct.py`: preregistered common-grid
+  campaign that reuses each exact determinant across all eight Walsh sectors.
 - `spin8_multiplicity_gauge.py`: exact covariance and `O(m)` gauge theorem for
   repeated probes in the same triality representation.
 
