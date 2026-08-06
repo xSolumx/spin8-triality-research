@@ -20,7 +20,7 @@ Exact SymPy certificates and CPU recurrence checks do not require CUDA.
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-The current suite passes 127 tests. The edge-theorem unit test is a lightweight
+The current suite passes 130 tests. The edge-theorem unit test is a lightweight
 artifact verifier: it reconstructs the stored polynomials and Bernstein arrays,
 directly compares both stored coefficient maps, requires complete equality
 between stored and freshly recomputed symmetry/divisibility records, and
@@ -37,6 +37,12 @@ recomputes exact rational Lie ranks for all 141 distinct closures, and verifies
 the `SU(3) -> SU(2) -> trivial` representative chain. The generic SchurScan
 test independently compares its staged scan and finite homogeneous lift with
 sequential recurrence and checks an SO(3) cross-product control.
+
+The continuous-orbit test recomputes exact invariant tangent ranks, action
+ranks, stabilizer brackets/Killing forms, and one globally free closure for
+every mixed five-probe allocation. The compact principal-orbit theorem is the
+mathematical inference layer connecting those exact certificates to the global
+generic and universal claims.
 
 ## Exact Dirac-star replay
 

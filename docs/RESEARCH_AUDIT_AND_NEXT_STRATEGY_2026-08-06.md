@@ -74,29 +74,26 @@ Operator Families*.
 
 ### Paper B: The five-probe Spin(8) base-size problem
 
-**Publication-safe claim today.** Five generic probes spanning at least two
-triality representations have full differential rank 28 in the maintained real
-Spin(8) model. In addition, one exact canonical five-probe tuple now has a
-globally trivial stabilizer: its invariant triality closure gives determinant
-`-1` bases of all three representations. Removing its fifth probe leaves three
-exact generators closing as `su(2)`. The broader random-cohort statement
-remains local until every generic orbit type is classified.
+**Publication-safe claim today.** Every four-probe sensor has a
+positive-dimensional stabilizer. The principal stabilizer Lie algebra is
+`spin(4)` for one view and `su(2)` for every mixed allocation. Every mixed
+five-probe allocation has an open dense globally free stratum; five probes in
+one view retain `Spin(3)`. Exact invariant Jacobians, action ranks, compact Lie
+types, and full-closure points support the compact principal-orbit proof.
 
 **Why this is mathematically interesting.** This is naturally a base-size or
 generic-stabilizer problem for Spin(8) acting on a disjoint union of its three
 triality representations. The observed Spin(7), G2, and SU(2)-sized stabilizer
 chain is representation theory, not merely a neural-network diagnostic.
 
-**What is still missing.** The floating random-cohort witness remains only a
-machine-precision construction, but it now has a separate exact canonical
-counterpart. What remains is a complete orbit-type theorem: prove that all
-generic five-probe allocations have the claimed global stabilizer and classify
-whether any exceptional four-probe allocation can do better.
+**What is still missing.** The sharp principal boundary is closed. What remains
+is classification of every exceptional nonprincipal five-probe orbit and its
+possible finite or positive-dimensional stabilizer, plus the separate
+conditioning problem inside the free stratum.
 
-**Decisive upgrade.** Classify the complete generic stabilizer for every probe
-allocation. Produce exact probe representatives, prove the four-probe
-stabilizer, and show whether the five-probe stabilizer is trivial or a specified
-finite subgroup. Only then call five probes a global theorem.
+**Decisive upgrade achieved.** The exact continuous orbit theorem now supports
+the global generic five-probe claim. The next upgrade is an exceptional-strata
+classification, not another generic rank experiment.
 
 **Possible title.** *Generic Stabilizers and Minimal Multiview Sensing for
 Spin(8) Triality*.
@@ -247,14 +244,13 @@ five-versus-four certificate is such an exact proof, but it does not
 retroactively make the earlier random SVD witnesses exact. Apply the same
 discipline to numerically extracted A5 irreps and numerical rank claims.
 
-### C3. Generic five-probe cohorts remain local; one canonical tuple is global
+### C3. Rank alone was local; the later orbit theorem supplies the global step
 
 Rank 28 removes infinitesimal slack but does not by itself rule out a finite
-global stabilizer. The exact triality-closure certificate now rules out every
-global ambiguity for one displayed tuple. Ten successful random near-identity
-optimizations still do not prove that all generic allocations share that orbit
-type. The complete generic-stabilizer classification remains the next proof
-gate.
+global stabilizer. That correction still stands for the original cohort. The
+later proof adds full-closure points in every mixed allocation and invokes the
+compact principal-orbit theorem; that separate argument, not the old rank
+experiment, establishes the open dense globally free strata.
 
 ### C4. Active sensing is currently static local design
 
@@ -347,22 +343,16 @@ prototype; use the recurrent triality archive for scientific claims.
 
 ## Next best strategum: compressed researcher handoff
 
-### Target 1 -- extend the coordinate classification to a continuous orbit theorem
+### Target 1 -- classify exceptional nonprincipal five-probe strata
 
-1. Use Gram, trilinear, and quartic invariant counts to prove the lower bound
-   on every four-probe stabilizer.
-2. Certify exact tangent independence and rank-25 representatives for every
-   mixed allocation; handle the single-view rank-22 case separately.
-3. Apply the compact principal-orbit theorem to turn those calculations into
-   a universal four-probe insufficiency theorem.
-4. Classify exceptional nonprincipal strata using the binary/Hamming closures
-   as exact normal-form anchors.
-5. Search adversarially for remote five-probe stabilizers outside the explicit
-   globally free tuple.
+The universal four-probe theorem and mixed five-probe principal strata are now
+proved. Next classify exceptional nonprincipal strata using the binary/Hamming
+closures as exact normal-form anchors, determine possible finite stabilizers,
+and connect orbit type to Cayley/conditioning degeneracy.
 
-**Kill condition:** any non-gauge remote counterexample outside the proved
-canonical free stratum prevents a universal generic-allocation claim and may
-require an ambiguity-resolution query.
+**Branch condition:** if exceptional stabilizers are not conjugate to closures
+generated by the binary anchors, stop treating the Hamming atlas as a complete
+normal-form list and introduce the additional continuous invariants explicitly.
 
 ### Target 2 -- explain the Cayley spectrum by symmetry blocks
 

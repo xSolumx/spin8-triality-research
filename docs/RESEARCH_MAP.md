@@ -108,19 +108,24 @@ Primary documents:
 - [Five-probe theorem](experiments/SPIN8_FIVE_PROBE_RESULTS.md)
 - [Exact global five-probe certificate](experiments/SPIN8_GLOBAL_FIVE_PROBE_THEOREM.md)
 - [Binary coordinate triality geometry](experiments/SPIN8_BINARY_TRIALITY_GEOMETRY.md)
+- [Continuous probe orbit theorem](experiments/SPIN8_CONTINUOUS_PROBE_ORBIT_THEOREM.md)
 - [Active sensing](experiments/SPIN8_ACTIVE_SENSING_RESULTS.md)
 - [Joint sensor retraction](experiments/SPIN8_JOINT_SENSOR_RETRACTION_RESULTS.md)
 
 Interpretation boundary: identifiability is not conditioning. The five-probe
 boundary and the balanced information spectrum are distinct results.
-The exact global certificate now proves one explicitly displayed free
-five-probe tuple and one four-probe `su(2)` counterfamily; classification of
-all generic allocations remains open.
+The exact global certificate proves one explicitly displayed free five-probe
+tuple and one four-probe `su(2)` counterfamily.
 
 The coordinate subproblem is now completely classified: the 24 coordinate
 probes are nonzero-colour points in `F_2^5`, triality contraction is binary
 addition, and five probes identify exactly when their labels form a basis.
-This does not yet classify arbitrary continuous probes.
+The subsequent continuous orbit theorem uses exact invariant Jacobians,
+stabilizer ranks, and the compact principal-orbit theorem. It proves that every
+four-probe sensor is insufficient, while every mixed five-probe allocation has
+an open dense globally free stratum. The remaining orbit problem is the full
+classification of exceptional nonprincipal five-probe tuples, not the sharp
+generic boundary.
 
 The triangular recurrence has also been separated into a universal theorem and
 its exceptional instance. See

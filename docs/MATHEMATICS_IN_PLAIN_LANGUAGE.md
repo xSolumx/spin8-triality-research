@@ -119,7 +119,20 @@ continuous symmetry has dimension 8, then 3, then 0 as binary rank rises from
 `SU(3)`, `SU(2)`, and no continuous stabilizer.
 
 This completely classifies the coordinate case. Arbitrary non-coordinate
-probes form a continuous problem and still require a separate orbit theorem.
+probes form a continuous problem. That orbit theorem is now also proved.
+
+Every way of distributing four probes among the three views has at least three
+independent relationship measurements that Spin(8) cannot change. Those
+relationships force at least three invisible rotation directions. Exact
+representatives show the bound is sharp, and the compact principal-orbit
+theorem guarantees that unusual probe choices can only have more symmetry,
+never less. Thus no four-probe arrangement works, coordinate or continuous.
+
+For five probes, the exact coordinate atlas supplies a zero-ambiguity example
+in every allocation that uses at least two views. Compact orbit theory then
+says zero ambiguity holds on an open dense set: almost every such mixed design
+works globally. Five probes in only one view still leave three rotations
+unseen.
 
 ## How bilinear memory can remain parallel
 
@@ -187,6 +200,8 @@ integer arithmetic.
 | Displayed five-probe tuple has no global ambiguity | Proved exactly |
 | Displayed four-probe subset has an `su(2)` ambiguity | Proved exactly |
 | All multiview coordinate four/five-probe closures follow `F_2^5` span | Exhaustively proved |
+| Every continuous four-probe sensor is insufficient | Proved by invariants and principal orbits |
+| Every mixed five-probe allocation is generically globally free | Proved |
 | Generic triangular bilinear drive has a finite exact staged scan | Constructively proved |
 | Signed star Dirac--Gram inequality | Proved |
 | Cayley-null four-correlation edge inequality | Proved |

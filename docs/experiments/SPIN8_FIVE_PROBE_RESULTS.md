@@ -158,9 +158,12 @@ determinant `-1` in every representation, so its full global stabilizer is
 trivial. Removing `e4^+` leaves three exact generators closing as `su(2)`.
 
 See [the exact global five-probe theorem](SPIN8_GLOBAL_FIVE_PROBE_THEOREM.md).
-The original boundary above remains correct for the random generic cohort:
-the new certificate proves an explicit globally identifying tuple, not yet a
-complete orbit-type classification of every generic allocation.
+The subsequent
+[continuous orbit theorem](SPIN8_CONTINUOUS_PROBE_ORBIT_THEOREM.md) uses exact
+allocation-specific invariants and the compact principal-orbit theorem to
+prove universal four-probe insufficiency and generic global identifiability in
+every mixed five-probe allocation. The original numerical cohort remains
+evidence rather than part of that exact proof.
 
 ## Next gate
 

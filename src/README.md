@@ -14,6 +14,9 @@ module name. Editable installation adds this directory to the Python path.
   one global five-probe free tuple and a four-probe `su(2)` counterfamily.
 - `spin8_coordinate_geometry.py`: exhaustive `F_2^5` classification of all
   coordinate four/five-probe sensors and their exact stabilizer ladder.
+- `spin8_continuous_probe_orbits.py`: invariant/principal-orbit certificate
+  proving universal four-probe insufficiency and generic mixed five-probe
+  global identifiability.
 - `intertwiner_schurscan.py`: generic triangular bilinear scan, finite
   homogeneous lift, SO(3) control, and cyclic-feedback degree obstruction.
 - `spin8_active_sensing.py`: information operator and sensor metrics.

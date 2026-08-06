@@ -34,6 +34,10 @@ together so that the path to the final results remains auditable.
   the full action and five do exactly when their labels are a binary basis.
   The stabilizer ladder is `SU(3) -> SU(2) -> trivial`; the earlier 14
   exceptional supports are the Hamming `[8,4,4]`/`S(3,4,8)` shadow of this law.
+- The continuous orbit theorem is now sharp: every four-probe arrangement is
+  insufficient, every mixed allocation has generic `su(2)` stabilizer Lie
+  algebra, and every mixed five-probe allocation has an open dense globally
+  free stratum. Five probes in a single view still leave `Spin(3)`.
 - The triality-specific triangular scan has been generalized to any bilinear
   intertwiner, with an exact finite lift, an SO(3) cross-product control, and a
   formal feedback-degree obstruction.
@@ -131,7 +135,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 127 passing tests. See
+The current repository is validated by 130 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 

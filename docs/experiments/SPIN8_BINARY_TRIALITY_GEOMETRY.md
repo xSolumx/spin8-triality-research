@@ -161,9 +161,14 @@ Proved exactly:
 - exact representatives realize the compact `SU(3) -> SU(2) -> trivial`
   stabilizer ladder.
 
-Still open:
+Subsequent progress and remaining work:
 
-- a classification of arbitrary continuous, non-coordinate probes;
+- the later
+  [continuous orbit theorem](SPIN8_CONTINUOUS_PROBE_ORBIT_THEOREM.md) proves
+  universal four-probe insufficiency and generic global freedom for every
+  mixed five-probe allocation;
+- a complete classification of exceptional nonprincipal continuous
+  five-probe strata remains open;
 - whether the binary geometry extends canonically to an intrinsic matroid or
   building description independent of the chosen octonion basis;
 - publication-priority and closest-prior-art determination;

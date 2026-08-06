@@ -19,6 +19,12 @@ This closes the remote-discrete-ambiguity gap for the displayed five-probe
 sensor. It does **not** yet classify every generic five-probe tuple or prove
 that every possible four-probe allocation is insufficient.
 
+**Subsequent result.** The later
+[continuous probe orbit theorem](SPIN8_CONTINUOUS_PROBE_ORBIT_THEOREM.md) now
+does prove universal four-probe insufficiency and an open dense globally free
+stratum in every mixed five-probe allocation. The present document remains the
+explicit global-closure certificate from which that stronger theorem grew.
+
 ## The invariant-closure lemma
 
 Let `V`, `S+`, and `S-` be the three real eight-dimensional triality
