@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
@@ -102,6 +103,39 @@ def _coefficient_digest(polynomial: sp.Poly) -> str:
         f"{powers[0]}:{coefficient}" for powers, coefficient in polynomial.terms()
     )
     return hashlib.sha256(payload.encode()).hexdigest()
+
+
+def _rational_square_root(value: sp.Rational) -> sp.Rational | None:
+    if value < 0:
+        return None
+    numerator_root = math.isqrt(int(value.p))
+    denominator_root = math.isqrt(int(value.q))
+    if numerator_root**2 != value.p or denominator_root**2 != value.q:
+        return None
+    return sp.Rational(numerator_root, denominator_root)
+
+
+def _residual_square_certificate(
+    polynomial: sp.Poly, multiplicity_at_one: int
+) -> tuple[bool, int | None, str | None]:
+    """Check whether removing ``(1-u)^k`` leaves an exact rational square."""
+
+    variable = polynomial.gens[0]
+    residual = sp.Poly(
+        sp.cancel(polynomial.as_expr() / (1 - variable) ** multiplicity_at_one),
+        variable,
+    )
+    coefficient, factors = sp.factor_list(residual.as_expr(), variable)
+    coefficient_root = _rational_square_root(sp.Rational(coefficient))
+    if coefficient_root is None or any(exponent % 2 for _, exponent in factors):
+        return False, None, None
+    root = coefficient_root * sp.prod(
+        factor ** (exponent // 2) for factor, exponent in factors
+    )
+    root_polynomial = sp.Poly(sp.expand(root), variable)
+    if sp.Poly(root_polynomial.as_expr() ** 2, variable) != residual:
+        return False, None, None
+    return True, int(root_polynomial.degree()), _coefficient_digest(root_polynomial)
 
 
 def _rows_digest(rows: list[dict[str, object]]) -> str:
@@ -207,6 +241,12 @@ def exact_degree_audit(*, workers: int = 1) -> dict[str, object]:
                     variable,
                 )
                 polynomial = sp.Poly(sp.factor(expression), variable)
+                multiplicity_at_one = _root_multiplicity(polynomial, 1)
+                square_passed, square_root_degree, square_root_digest = (
+                    _residual_square_certificate(polynomial, multiplicity_at_one)
+                    if any(mask)
+                    else (False, None, None)
+                )
                 confirmations = []
                 for node_index, coordinate in enumerate(confirmation_coordinates):
                     point_index = point_lookup[
@@ -226,9 +266,16 @@ def exact_degree_audit(*, workers: int = 1) -> dict[str, object]:
                         ),
                         "degree": int(polynomial.degree()),
                         "multiplicity_at_zero": _root_multiplicity(polynomial, 0),
-                        "multiplicity_at_one": _root_multiplicity(polynomial, 1),
+                        "multiplicity_at_one": multiplicity_at_one,
                         "coefficient_count": len(polynomial.terms()),
                         "coefficients_sha256": _coefficient_digest(polynomial),
+                        "post_degree_discovery_residual_is_exact_square": (
+                            square_passed
+                        ),
+                        "residual_square_root_degree": square_root_degree,
+                        "residual_square_root_coefficients_sha256": (
+                            square_root_digest
+                        ),
                         "confirmation_nodes_passed": sum(confirmations),
                         "confirmation_nodes_total": len(confirmations),
                     }
@@ -264,6 +311,19 @@ def exact_degree_audit(*, workers: int = 1) -> dict[str, object]:
         "slice_rows_sha256": _rows_digest(slice_rows),
         "slice_rows": slice_rows,
         "degree_atlas": degree_atlas,
+        "post_degree_square_discovery": {
+            "status": "exact on every audited slice; global factorization open",
+            "nontrivial_slice_count": sum(any(row["mask"]) for row in slice_rows),
+            "exact_square_slice_count": sum(
+                bool(row["post_degree_discovery_residual_is_exact_square"])
+                for row in slice_rows
+            ),
+            "all_nontrivial_residuals_are_exact_squares": all(
+                row["post_degree_discovery_residual_is_exact_square"]
+                for row in slice_rows
+                if any(row["mask"])
+            ),
+        },
         "interpretation": (
             "These are exact multi-slice degrees under a structural upper bound. "
             "They freeze conservative full-grid degrees only after radical "
@@ -316,6 +376,20 @@ def verify_degree_report(report: dict[str, object]) -> bool:
         * len(masks)
         and report.get("slice_count") == len(expected_keys)
         and report.get("degree_atlas") == atlas
+        and report.get("post_degree_square_discovery")
+        == {
+            "status": "exact on every audited slice; global factorization open",
+            "nontrivial_slice_count": sum(any(row["mask"]) for row in rows),
+            "exact_square_slice_count": sum(
+                bool(row["post_degree_discovery_residual_is_exact_square"])
+                for row in rows
+            ),
+            "all_nontrivial_residuals_are_exact_squares": all(
+                row["post_degree_discovery_residual_is_exact_square"]
+                for row in rows
+                if any(row["mask"])
+            ),
+        }
         and all(
             int(row["degree"]) <= MAX_SQUARED_SECTOR_DEGREE
             and int(row["confirmation_nodes_passed"])

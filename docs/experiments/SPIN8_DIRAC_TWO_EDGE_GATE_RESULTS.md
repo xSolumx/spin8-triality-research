@@ -115,6 +115,44 @@ complement factors for the next exact derivation. They are not yet called
 global factors: three generic slices can discover a pattern, but only a
 quotient-ring or exact coefficient argument can prove it over the whole cube.
 
+A post-gate exact factor audit sharpened this observation. After removing each
+slice's character-forced signed-coordinate square and its full endpoint factor,
+all `126/126` nontrivial slices are exact polynomial squares. Their square-root
+degrees are:
+
+- `39` linear;
+- `81` quadratic;
+- `6` cubic.
+
+This is a highly structured discovery, not a global theorem. It proves the
+factorization on three unrelated base slices per axis with disjoint exact
+confirmation nodes. A multivariate quotient-ring derivation or complete exact
+coefficient reconstruction is still required before the seven sector
+amplitudes may be declared globally polynomial.
+
+The missing global polynomial ansatz is now supplied by an exact extension of
+the sign audit. Instead of tracking only `(a,d,e,g,i,c)`, it tracks all twelve
+circle coordinates `(a,A,d,D,e,E,g,G,i,I,c,s)`, while including the independent
+sign gauge of each probe. The induced chart-sign group has order `512`; its
+annihilator contains exactly eight characters. Each of the original eight
+lower-coordinate characters has exactly one compatible complement character:
+
+| Lower mask | Complement mask `(A,D,E,G,I,s)` |
+|---|---|
+| `000000` | `000000` |
+| `001101` | `001110` |
+| `010110` | `011100` |
+| `011011` | `010010` |
+| `100011` | `100010` |
+| `101110` | `101100` |
+| `110101` | `111110` |
+| `111000` | `110000` |
+
+Consequently every sector is globally its displayed forced monomial times a
+polynomial in `(a^2,d^2,e^2,g^2,i^2,c^2)`. This proves the minimal radical
+ansatz. It does not yet prove the extra even complement powers suggested by the
+endpoint atlas, nor the signs of the final orientation margins.
+
 In plain language, the determinant could have hidden high-degree behavior
 between the original samples. It did not: independently chosen rational test
 points landed exactly on the same low-degree polynomials. The remaining hard

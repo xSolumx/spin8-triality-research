@@ -232,6 +232,13 @@ distance from the endpoint. In formulas, every orientation sector contains
 `(1-c^2)^3`. The same factor occurs in the proposed upper bound, so it can be
 cancelled before tackling the remaining polynomial.
 
+There is also an exact reason that the remaining square roots fit together.
+When every signed coordinate and every circle complement is audited together,
+the 4,096 possible sign patterns collapse to a 512-element gauge group with
+only eight allowed polynomial characters. Each visible orientation sector has
+one unique hidden complement parity. Thus every apparent radical is a fixed
+front factor; what remains is an ordinary polynomial in six squared numbers.
+
 ## Why the crashes did not count as evidence
 
 A computer stopping does not make a theorem true or false. The new replay tool

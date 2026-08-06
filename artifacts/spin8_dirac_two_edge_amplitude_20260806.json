@@ -206,6 +206,181 @@
   "common_normalized_determinant_factor": "s^6 = (1-c^2)^3",
   "coordinate_ring": "Q[c,s]/(c^2+s^2-1)",
   "experiment": "two-edge exact Cayley-boundary amplitude factor",
+  "extended_chart_sign_certificate": {
+    "annihilator_order": 8,
+    "chart_characters": [
+      {
+        "complement_mask": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "forced_monomial": "1",
+        "lower_mask": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "complement_mask": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "forced_monomial": "e E g G I c",
+        "lower_mask": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "complement_mask": [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "forced_monomial": "d D E g G i",
+        "lower_mask": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "complement_mask": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "forced_monomial": "d D e i I c",
+        "lower_mask": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "complement_mask": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "forced_monomial": "a A i I c",
+        "lower_mask": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "complement_mask": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "forced_monomial": "a A e E g G i",
+        "lower_mask": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "complement_mask": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "forced_monomial": "a A d D E g G I c",
+        "lower_mask": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "complement_mask": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "forced_monomial": "a A d D e",
+        "lower_mask": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "chart_parameter_order": [
+      "a",
+      "A",
+      "d",
+      "D",
+      "e",
+      "E",
+      "g",
+      "G",
+      "i",
+      "I",
+      "c",
+      "s"
+    ],
+    "global_sector_ansatz": "Each sector equals its forced chart monomial times a polynomial in a^2,d^2,e^2,g^2,i^2,c^2 after the circle relations.",
+    "induced_chart_sign_group_order": 512,
+    "one_complement_character_per_lower_character": true,
+    "passed": true
+  },
   "free_module_basis_over_Q_s": [
     "1",
     "c"

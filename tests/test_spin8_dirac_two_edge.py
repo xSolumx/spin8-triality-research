@@ -81,6 +81,15 @@ class Spin8DiracTwoEdgeTests(unittest.TestCase):
             sum(row["confirmation_nodes_passed"] for row in report["slice_rows"]),
             576,
         )
+        self.assertEqual(
+            report["post_degree_square_discovery"],
+            {
+                "all_nontrivial_residuals_are_exact_squares": True,
+                "exact_square_slice_count": 126,
+                "nontrivial_slice_count": 126,
+                "status": ("exact on every audited slice; global factorization open"),
+            },
+        )
 
 
 if __name__ == "__main__":

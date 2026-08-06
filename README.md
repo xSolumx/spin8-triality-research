@@ -103,7 +103,10 @@ anchor, numerical-falsifier, and multi-slice degree gates. A new
 [multiplicity-gauge theorem](docs/SPIN8_MULTIPLICITY_GAUGE_THEOREM.md) shows
 that repeated probes in one triality view depend only on their covariance:
 their apparent correlation is exactly equivalent to an orthogonal-mode energy
-imbalance. Positivity of this two-edge family remains open.
+imbalance. The companion
+[eight-sector amplitude theorem](docs/SPIN8_TWO_EDGE_AMPLITUDE_THEOREM.md)
+reduces all radicals to fixed monomials and one universal Cayley-boundary
+factor. Positivity of this two-edge family remains open.
 
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 [preregistration](docs/experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md), and
@@ -153,7 +156,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 142 passing tests. See
+The current repository is validated by 143 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 

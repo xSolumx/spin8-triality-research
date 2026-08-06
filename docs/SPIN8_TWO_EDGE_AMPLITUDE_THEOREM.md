@@ -1,0 +1,141 @@
+# The Eight-Sector Amplitude Theorem
+
+## Scope
+
+This note proves the global algebraic form of the eight orientation sectors in
+the preregistered `h=0` variable-Cayley two-edge family. It does not prove that
+the final orientation margins are nonnegative.
+
+Use the circle coordinates
+
+\[
+(a,A),(d,D),(e,E),(g,G),(i,I),(c,s),
+\qquad x^2+X^2=1,
+\]
+
+and the frame
+
+\[
+\begin{aligned}
+x_1&=e_0,\\
+x_2&=a e_0+A e_1,\\
+x_3&=d e_0+D(e e_1+E e_2),\\
+x_4&=g e_0+G(i e_2+I(c e_3+s e_4)).
+\end{aligned}
+\]
+
+## Theorem 1: the complete chart-sign quotient
+
+Common diagonal triality actions and the independent sign gauge of each probe
+induce a group of order `512` on the twelve chart coordinates
+
+```text
+(a,A,d,D,e,E,g,G,i,I,c,s).
+```
+
+The annihilator of this group has order eight. Projecting each character onto
+the six lower coordinates gives the eight previously proved Walsh sectors, and
+each lower character has exactly one compatible complement character:
+
+| Lower `(a,d,e,g,i,c)` | Complement `(A,D,E,G,I,s)` | Forced monomial |
+|---|---|---|
+| `000000` | `000000` | `1` |
+| `001101` | `001110` | `e E g G I c` |
+| `010110` | `011100` | `d D E g G i` |
+| `011011` | `010010` | `d D e i I c` |
+| `100011` | `100010` | `a A i I c` |
+| `101110` | `101100` | `a A e E g G i` |
+| `110101` | `111110` | `a A d D E g G I c` |
+| `111000` | `110000` | `a A d D e` |
+
+### Proof
+
+For each exact common triality sign action, allow an independent overall sign
+on `x2`, `x3`, and `x4`; projectors cannot see those three signs. Equating the
+resulting component signs in the displayed frame gives all `512` induced chart
+actions. Exhausting the `2^12` characters leaves exactly the eight rows above.
+
+The computation is exact over signs, not sampled determinant evidence. The
+maintained common-adjoint-conjugacy certificate proves that every induced
+action preserves the information determinant.
+
+After its forced monomial is divided out, a sector is even in every circle
+coordinate. The six relations `X^2=1-x^2` therefore reduce what remains to an
+ordinary polynomial
+
+\[
+H_m(a^2,d^2,e^2,g^2,i^2,c^2).
+\]
+
+## Theorem 2: the common Cayley-boundary factor
+
+Every direct normalized determinant, and therefore every one of the eight
+Walsh sectors, is divisible by
+
+\[
+s^6=(1-c^2)^3.
+\]
+
+### Proof
+
+At `s=0`, both circle branches `c=+1` and `c=-1` give an exact symbolic
+`40 x 28` observation Jacobian of rank `25` and nullity `3`. Under a transverse
+perturbation in `s`, every maximal minor is consequently order at least three.
+Cauchy--Binet writes the information determinant as a sum of squares of those
+minors, so it is order at least six.
+
+In
+
+\[
+\mathbb Q[c,s]/(c^2+s^2-1),
+\]
+
+every element has unique form `F0(s)+c F1(s)`. Applying the order-six result on
+both branches, then adding and subtracting, proves that `s^6` divides both
+coefficients. This is quotient-ring divisibility, not a floating-point boundary
+limit.
+
+## Final global ansatz
+
+For every allowed character `m`, the exact sector has the form
+
+\[
+S_m=s^6 M_m H_m(a^2,d^2,e^2,g^2,i^2,c^2),
+\]
+
+where `M_m` is the forced monomial in the table and `H_m` is an ordinary
+rational polynomial.
+
+Two independent evidence layers now agree with this theorem:
+
+- both rational anchors activate all eight sectors;
+- all `126/126` nontrivial exact one-dimensional slices become perfect
+  polynomial squares after the corresponding squared amplitude is removed,
+  with all `576/576` disjoint interpolation checks passing.
+
+The slice square result is still described as slice evidence; the global
+polynomial ansatz comes from the exact sign quotient, not from interpolation.
+
+## Why this matters
+
+Before this result, a full reconstruction appeared to involve radicals and 64
+independent orientation cases. It now involves eight low-degree polynomials in
+six squared variables, with one universal boundary factor already cancelled.
+This is the algebraic compression needed before a crash-safe coefficient or
+positivity certificate is sensible.
+
+## Plain-language version
+
+The determinant seemed to change in dozens of unrelated ways when signs were
+flipped. In fact, 512 exact renamings say that only eight sign patterns can
+carry information. Each pattern comes with a fixed collection of square-root
+factors. Once those known factors are peeled away, there is no radical left—
+only a small polynomial in six numbers between zero and one.
+
+## Remaining gates
+
+- derive or conservatively certify the multidegree of every `H_m`;
+- reconstruct coefficient maps on two disjoint exact grids;
+- evaluate fresh all-sign exact holdouts;
+- certify nonnegativity of all eight orientation margins;
+- only then promote the two-edge inequality.

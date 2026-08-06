@@ -147,6 +147,7 @@ Primary documents:
 - [Variable-Cayley one-edge theorem](experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md)
 - [Two-edge gate results](experiments/SPIN8_DIRAC_TWO_EDGE_GATE_RESULTS.md)
 - [Repeated-view multiplicity gauge theorem](SPIN8_MULTIPLICITY_GAUGE_THEOREM.md)
+- [Eight-sector amplitude theorem](SPIN8_TWO_EDGE_AMPLITUDE_THEOREM.md)
 
 The coordinatewise conditional-decorrelation lemma is exactly false. The
 variable-Cayley one-edge family is proved through its tetrahedral
