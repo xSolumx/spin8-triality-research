@@ -205,6 +205,33 @@ layers from 2 through 24 are exactly nonnegative, and the complementary
 triangle has no negative controls at all. The variable-Cayley theorem is
 therefore proved on this whole family.
 
+## The repeated-sensor gauge
+
+The next bridge adds a correlation between two probes of the same kind. At
+first this looks like another independent geometric complication. It is partly
+a coordinate illusion.
+
+Put the two probe vectors into a two-row matrix `X`. Their combined information
+depends only on `X` transposed times `X`. Mixing the two rows by any ordinary
+rotation leaves that matrix unchanged, so it leaves their information
+unchanged too.
+
+For two unit probes whose dot product is `r`, the sum and difference directions
+are perpendicular. Their squared lengths are exactly `1+r` and `1-r`.
+Therefore two correlated equal-strength sensors are exactly the same
+information source as two perpendicular sensors with unequal strengths.
+
+This does not finish the next inequality. It tells us to prove it using a
+rank-two covariance and its energy split, rather than carrying a redundant
+choice of sensor names through a much larger polynomial.
+
+The first boundary factor of that proof is now exact. When the Cayley angle
+reaches either endpoint, the observation system loses exactly three ranks.
+That forces its information determinant to vanish with six powers of the
+distance from the endpoint. In formulas, every orientation sector contains
+`(1-c^2)^3`. The same factor occurs in the proposed upper bound, so it can be
+cancelled before tackling the remaining polynomial.
+
 ## Why the crashes did not count as evidence
 
 A computer stopping does not make a theorem true or false. The new replay tool
@@ -229,6 +256,9 @@ integer arithmetic.
 | Cayley-null four-correlation edge inequality | Proved |
 | Removing residual correlations is always helpful | Disproved |
 | Variable-Cayley one-edge inequality | Proved |
+| Repeated-view covariance gauge | Proved exactly |
+| Common two-edge Cayley boundary factor `(1-c^2)^3` | Proved exactly |
+| Variable-Cayley two-edge inequality | Open; symmetry, degree, and first factor gates passed |
 | Unrestricted seven-parameter inequality | Open |
 | Global best possible five-query design | Open |
 

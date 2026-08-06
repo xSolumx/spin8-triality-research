@@ -98,6 +98,13 @@ the complete five-cube; all 256 disjoint exact sign holdouts match. The
 remaining two residual Cholesky edges and the unrestricted theorem remain
 open.
 
+The preregistered second-residual bridge has passed its exact symmetry,
+anchor, numerical-falsifier, and multi-slice degree gates. A new
+[multiplicity-gauge theorem](docs/SPIN8_MULTIPLICITY_GAUGE_THEOREM.md) shows
+that repeated probes in one triality view depend only on their covariance:
+their apparent correlation is exactly equivalent to an orthogonal-mode energy
+imbalance. Positivity of this two-edge family remains open.
+
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
 [preregistration](docs/experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md), and
 [raw certificate](artifacts/spin8_dirac_star_20260804.json).
@@ -146,7 +153,7 @@ python -m spin8_dirac_star \
   --output artifacts/spin8_dirac_star_replay.json
 ```
 
-The current repository is validated by 134 passing tests. See
+The current repository is validated by 142 passing tests. See
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 before comparing a rerun with a frozen artifact.
 
@@ -158,12 +165,11 @@ The repository makes three distinctions explicit:
 2. Behavioral gates are not raw homomorphism gates.
 3. A theorem on a constrained family is not the unrestricted theorem.
 
-The variable-Cayley one-edge determinant gate is complete. The next exact
-target is the smallest family that activates a second residual Cholesky edge,
-while retaining the same prospective discipline: derive its symmetry sectors
-and degree bounds before interpolation, attack it numerically for exact
-counterexamples, then certify rather than extrapolate. Language-model scale-up
-remains downstream of the mechanism gates.
+The variable-Cayley one-edge determinant gate is complete. The smallest
+second-residual family has survived exact symmetry and degree analysis plus a
+large numerical falsifier. Its next exact target is a covariance-quotiented
+sector factorization, followed by staged positivity. Language-model scale-up
+remains downstream of these mechanism gates.
 
 ## Provenance and license
 

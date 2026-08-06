@@ -13,6 +13,9 @@
 **Exact degree artifact:**
 `../../artifacts/spin8_dirac_two_edge_degree_20260806.json`
 
+**Exact common-factor artifact:**
+`../../artifacts/spin8_dirac_two_edge_amplitude_20260806.json`
+
 ## Result in one sentence
 
 The clean second-residual bridge passed its first four frozen gates: exact
@@ -118,10 +121,40 @@ points landed exactly on the same low-degree polynomials. The remaining hard
 problem is no longer guessing the algebra's size; it is proving the common
 factors and certifying positivity of the resulting eight-sector matrix.
 
+## First global amplitude factor
+
+The first candidate factor is now proved globally, rather than inferred from
+the slice atlas. At the two Cayley boundary branches `c=+1` and `c=-1`, the
+symbolic `40 x 28` observation Jacobian has exact rank `25` and nullity `3`.
+Every maximal minor is consequently order at least three in the transverse
+coordinate `s`, so Cauchy--Binet makes the information determinant order at
+least six.
+
+In the quotient ring
+
+\[
+\mathbb{Q}[c,s]/(c^2+s^2-1),
+\]
+
+every element has the unique form `F0(s)+c F1(s)`. Applying the rank argument
+on both branches and adding/subtracting them proves that both coefficients are
+divisible by `s^6`. Therefore every direct determinant, and hence every Walsh
+sector, contains the exact common factor
+
+\[
+s^6=(1-c^2)^3.
+\]
+
+This cancels the complete cubic Cayley-boundary factor from the target, leaving
+`(9-c^2)^2`. It also explains the slice atlas exactly: the trivial sector's
+degree in `c^2` drops from 5 to 2, while the squared nontrivial sector measures
+drop from degrees 8 or 10 to 2 or 4 after the common squared factor is removed.
+
 ## Scientific status
 
-The family has passed Gates 1--4. It has **not** passed full tensor
-reconstruction, fresh all-sign holdouts, or global positivity. In particular:
+The family has passed Gates 1--4 and its first global amplitude-factor lemma.
+It has **not** passed full tensor reconstruction, fresh all-sign holdouts, or
+global positivity. In particular:
 
 - numerical non-violation is not a theorem;
 - two anchor supports do not establish radical amplitude factorizations;
@@ -129,7 +162,7 @@ reconstruction, fresh all-sign holdouts, or global positivity. In particular:
   six-variable coefficient tensor;
 - the unrestricted family still has the `h` residual beyond this bridge.
 
-The next action is an exact global amplitude-factor derivation from the common
-triality sign characters, circle quotient, and boundary rank. Full tensor
+The next action is to derive the remaining complement factors exposed by the
+endpoint atlas, now in covariance-quotiented coordinates. Full tensor
 interpolation remains forbidden until those factors are proved and the reduced
 grid size is known.

@@ -145,9 +145,13 @@ Primary documents:
 - [Exact decorrelation counterexample](experiments/SPIN8_CONDITIONAL_DECORRELATION_COUNTEREXAMPLE.md)
 - [Cayley-null edge theorem](experiments/SPIN8_DIRAC_EDGE_RESULTS.md)
 - [Variable-Cayley one-edge theorem](experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md)
+- [Two-edge gate results](experiments/SPIN8_DIRAC_TWO_EDGE_GATE_RESULTS.md)
+- [Repeated-view multiplicity gauge theorem](SPIN8_MULTIPLICITY_GAUGE_THEOREM.md)
 
 The coordinatewise conditional-decorrelation lemma is exactly false. The
-variable-Cayley one-edge family is now proved through its tetrahedral
-matrix-positivity certificate. The current frontier is the smallest extension
-that activates a second residual Cholesky correlation; two residual edges
-separate the present theorem from the unrestricted family.
+variable-Cayley one-edge family is proved through its tetrahedral
+matrix-positivity certificate. The smallest second-residual bridge has passed
+exact symmetry and degree gates. Its repeated negative-spinor probes possess
+an exact multiplicity `O(2)` gauge, reducing correlation to orthogonal-mode
+energy imbalance before the remaining positivity problem. One further residual
+edge separates this bridge from the unrestricted family.

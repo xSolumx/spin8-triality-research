@@ -42,6 +42,12 @@ module name. Editable installation adds this directory to the Python path.
   for the preregistered `h=0`, residual-`i` bridge.
 - `spin8_dirac_two_edge_attack.py`: uniform, boundary-biased, and optimized
   CUDA falsifier for that bridge; never used for proof signs.
+- `spin8_dirac_two_edge_degree.py`: 2,736-determinant exact multi-slice degree
+  and endpoint-factor audit with disjoint confirmation nodes.
+- `spin8_dirac_two_edge_amplitude.py`: both-branch rank and quotient-ring proof
+  of the common `(1-c^2)^3` factor in all eight two-edge sectors.
+- `spin8_multiplicity_gauge.py`: exact covariance and `O(m)` gauge theorem for
+  repeated probes in the same triality representation.
 
 ## Blind action and addressing line
 
