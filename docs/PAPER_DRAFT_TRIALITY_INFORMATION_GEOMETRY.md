@@ -70,7 +70,7 @@ The same-view and cross-view overlaps are
 and
 
 \[
-\operatorname{tr}(P_r(x)P_s(y))=\frac74,qquad r\ne s.
+\operatorname{tr}(P_r(x)P_s(y))=\frac74,\qquad r\ne s.
 \]
 
 Thus correlations within a representation change information quadratically,
@@ -128,7 +128,7 @@ At `c=0`,
 
 \[
 \det I=\frac{81}{1024},\qquad
-\operatorname{tr}I=35,qquad
+\operatorname{tr}I=35,\qquad
 \operatorname{tr}I^{-1}=43.
 \]
 
@@ -142,7 +142,7 @@ estimation objective.
 Collect the four moving unit probes into `X`, put
 
 \[
-G=XX^T,qquad \Delta=\det G,qquad
+G=XX^T,\qquad \Delta=\det G,\qquad
 c=\frac{\Phi(X)}{\sqrt\Delta},
 \]
 
@@ -197,7 +197,7 @@ v=\frac{x-y}{\sqrt2},
 with
 
 \[
-u\perp v,qquad \|u\|^2=1+\rho,qquad \|v\|^2=1-\rho.
+u\perp v,\qquad \|u\|^2=1+\rho,\qquad \|v\|^2=1-\rho.
 \]
 
 Correlation between repeated equal-strength probes is therefore exactly an

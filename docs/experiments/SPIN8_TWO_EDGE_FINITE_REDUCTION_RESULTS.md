@@ -35,7 +35,7 @@ odd sectors:  2, 1, 1, 2
 Now set
 
 \[
-y=\sqrt{1-x},\qquad x=1-y^2,qquad 0\le y\le1.
+y=\sqrt{1-x},\qquad x=1-y^2,\qquad 0\le y\le1.
 \]
 
 Define
