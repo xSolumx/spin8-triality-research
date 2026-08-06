@@ -267,6 +267,13 @@ problem that has already been proved. So the new theorem problem is two
 four-by-four blocks built as controlled deformations of a solved case—not
 eight unrelated monsters.
 
+The first danger point has also been settled. Starting from four perfectly
+orthogonal probes, turning on the new correlation always makes the determinant
+smaller, never larger. After exact simplification the difference is a positive
+two-variable polynomial whose nine Bernstein coefficients are all positive;
+the smallest is still `103`. Other exceptional boundary arrangements remain
+to be checked.
+
 On two outer faces, the remaining 162-term formula collapses to products of
 only a few simple factors. One face is always nonpositive and another is always
 nonnegative. That catches a tempting but wrong proof plan: the eight internal
@@ -302,6 +309,7 @@ integer arithmetic.
 | Common two-edge Cayley boundary factor `(1-c^2)^3` | Proved exactly |
 | All eight two-edge sector polynomials and endpoint factors | Proved exactly |
 | Universal two-edge flag law and paired four-block reduction | Proved exactly |
+| Two-edge stability transverse to the orthonormal equality line | Proved exactly |
 | Variable-Cayley two-edge inequality | Open; block positivity remains |
 | Unrestricted seven-parameter inequality | Open |
 | Global best possible five-query design | Open |

@@ -836,6 +836,167 @@ def verify_factor_atlas_report(
     return report == _factor_atlas_from_coefficient_report(coefficient_report)
 
 
+def _orthonormal_transverse_from_coefficient_report(
+    coefficient_report: dict[str, object],
+) -> dict[str, object]:
+    """Certify the new residual is strictly determinant-decreasing at equality."""
+
+    if not verify_coefficient_report(coefficient_report):
+        raise ValueError("coefficient report failed replay verification")
+    a2, d2, e2, g2, i2, c2 = sp.symbols("a2 d2 e2 g2 i2 c2")
+    variables = (a2, d2, e2, g2, i2, c2)
+    trivial = next(
+        row for row in coefficient_report["sector_rows"] if row["mask"] == [0] * 6
+    )
+    polynomial = sp.Poly(
+        sum(
+            sp.Rational(row["coefficient"])
+            * sp.prod(variables[axis] ** int(row["powers"][axis]) for axis in range(6))
+            for row in trivial["coefficient_rows"]
+        ),
+        *variables,
+        domain=sp.QQ,
+    )
+    restricted = sp.factor(polynomial.as_expr().subs({a2: 0, d2: 0, e2: 0, g2: 0}))
+    margin_core = sp.factor((9 - c2) ** 2 - restricted)
+    quotient = sp.factor(2 * margin_core / i2)
+    quotient_polynomial = sp.Poly(quotient, i2, c2, domain=sp.QQ)
+    degrees = tuple(quotient_polynomial.degree(variable) for variable in (i2, c2))
+    bernstein_rows = []
+    for first in range(degrees[0] + 1):
+        for second in range(degrees[1] + 1):
+            coefficient = sum(
+                quotient_polynomial.coeff_monomial(i2**left * c2**right)
+                * sp.binomial(first, left)
+                / sp.binomial(degrees[0], left)
+                * sp.binomial(second, right)
+                / sp.binomial(degrees[1], right)
+                for left in range(first + 1)
+                for right in range(second + 1)
+            )
+            bernstein_rows.append(
+                {"index": [first, second], "coefficient": str(coefficient)}
+            )
+    coefficients = [sp.Rational(row["coefficient"]) for row in bernstein_rows]
+    masks, signs, _inverse, complements = _shared_setup()
+    coefficient_rows = {
+        tuple(row["mask"]): row["coefficient_rows"]
+        for row in coefficient_report["sector_rows"]
+    }
+
+    def binary_polynomial_value(mask, values):
+        return sum(
+            sp.Rational(row["coefficient"])
+            for row in coefficient_rows[mask]
+            if all(value or power == 0 for value, power in zip(values, row["powers"]))
+        )
+
+    def binary_forced_factor(mask, values, *, first_order_i=False):
+        for axis, (lower_bit, complement_bit) in enumerate(
+            zip(mask, complements[mask], strict=True)
+        ):
+            if first_order_i and axis == 4:
+                if lower_bit != 1:
+                    return 0
+                continue
+            if lower_bit and values[axis] == 0:
+                return 0
+            if complement_bit and values[axis] == 1:
+                return 0
+        return 1
+
+    even_masks = [mask for mask in masks if mask[4] == 0]
+    odd_masks = [mask for mask in masks if mask[4] == 1]
+    equality_rows = []
+    for base_vertex in itertools.product((0, 1), repeat=5):
+        values = base_vertex[:4] + (0, base_vertex[4])
+        even_amplitudes = {
+            mask: binary_polynomial_value(mask, values)
+            * binary_forced_factor(mask, values)
+            for mask in even_masks
+        }
+        odd_derivatives = {
+            mask: binary_polynomial_value(mask, values)
+            * binary_forced_factor(mask, values, first_order_i=True)
+            for mask in odd_masks
+        }
+        for orientation_index, sign_row in enumerate(signs):
+            base_margin = (9 - values[5]) ** 2 - sum(
+                _character(sign_row, mask) * even_amplitudes[mask]
+                for mask in even_masks
+            )
+            if base_margin != 0:
+                continue
+            odd_derivative = -sum(
+                _character(sign_row, mask) * odd_derivatives[mask] for mask in odd_masks
+            )
+            equality_rows.append(
+                {
+                    "base_vertex": list(base_vertex),
+                    "orientation_index": orientation_index,
+                    "odd_first_derivative": str(sp.factor(odd_derivative)),
+                }
+            )
+    all_vertex_derivatives_vanish = all(
+        sp.Rational(row["odd_first_derivative"]) == 0 for row in equality_rows
+    )
+    expected_quotient = (
+        c2**2 * (i2**2 - 4 * i2 + 5)
+        + c2 * (-8 * i2**2 + 42 * i2 - 70)
+        + 16 * i2**2
+        - 104 * i2
+        + 225
+    )
+    passed = bool(
+        sp.expand(quotient - expected_quotient) == 0
+        and degrees == (2, 2)
+        and len(coefficients) == 9
+        and min(coefficients) == 103
+        and all(coefficient > 0 for coefficient in coefficients)
+        and len(equality_rows) == 16
+        and all_vertex_derivatives_vanish
+    )
+    return {
+        "experiment": "two-edge orthonormal transverse stability theorem",
+        "source_sector_rows_sha256": coefficient_report["sector_rows_sha256"],
+        "slice": "a2=d2=e2=g2=0",
+        "restricted_trivial_sector": str(restricted),
+        "normalized_margin_factorization": str(margin_core),
+        "full_margin_identity": ("target-det=(1-c2)^3*i2*P(i2,c2)/2"),
+        "positive_quotient": str(quotient),
+        "positive_quotient_multidegree": list(degrees),
+        "bernstein_rows": bernstein_rows,
+        "bernstein_rows_sha256": _digest(bernstein_rows),
+        "minimum_bernstein_coefficient": str(min(coefficients)),
+        "all_bernstein_coefficients_strictly_positive": all(
+            coefficient > 0 for coefficient in coefficients
+        ),
+        "coordinate_base_vertices_audited": 32,
+        "coordinate_orientation_margins_audited": 256,
+        "coordinate_equality_rows": equality_rows,
+        "coordinate_equality_row_count": len(equality_rows),
+        "all_coordinate_equality_odd_derivatives_vanish": (
+            all_vertex_derivatives_vanish
+        ),
+        "interpretation": (
+            "the new residual strictly lowers the determinant away from i2=0 "
+            "and the common Cayley boundary on the orthonormal base slice"
+        ),
+        "passed": passed,
+    }
+
+
+def orthonormal_transverse(coefficients_path: Path) -> dict[str, object]:
+    coefficient_report = json.loads(coefficients_path.read_text(encoding="utf-8"))
+    return _orthonormal_transverse_from_coefficient_report(coefficient_report)
+
+
+def verify_orthonormal_transverse_report(
+    report: dict[str, object], coefficient_report: dict[str, object]
+) -> bool:
+    return report == _orthonormal_transverse_from_coefficient_report(coefficient_report)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="stage", required=True)
@@ -859,6 +1020,9 @@ def main() -> None:
     factor_parser = subparsers.add_parser("factor-atlas")
     factor_parser.add_argument("--coefficients", type=Path, required=True)
     factor_parser.add_argument("--output", type=Path, required=True)
+    transverse_parser = subparsers.add_parser("orthonormal-transverse")
+    transverse_parser.add_argument("--coefficients", type=Path, required=True)
+    transverse_parser.add_argument("--output", type=Path, required=True)
     arguments = parser.parse_args()
 
     if arguments.stage == "evaluate-tile":
@@ -884,8 +1048,13 @@ def main() -> None:
         arguments.output.write_text(
             json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
         )
-    else:
+    elif arguments.stage == "factor-atlas":
         report = factor_atlas(arguments.coefficients)
+        arguments.output.write_text(
+            json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        )
+    else:
+        report = orthonormal_transverse(arguments.coefficients)
         arguments.output.write_text(
             json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
         )

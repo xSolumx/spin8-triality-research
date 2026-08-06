@@ -18,6 +18,7 @@ from spin8_dirac_two_edge_shared_reconstruct import (
     verify_comparison_report,
     verify_factor_atlas_report,
     verify_holdout_report,
+    verify_orthonormal_transverse_report,
     verify_tile_report,
 )
 
@@ -88,12 +89,18 @@ class Spin8DiracTwoEdgeSharedGridTests(unittest.TestCase):
                 artifact / "spin8_dirac_two_edge_all_sectors_factor_atlas_20260806.json"
             ).read_text(encoding="utf-8")
         )
+        transverse = json.loads(
+            (
+                artifact / "spin8_dirac_two_edge_orthonormal_transverse_20260806.json"
+            ).read_text(encoding="utf-8")
+        )
 
         self.assertTrue(verify_coefficient_report(alpha))
         self.assertTrue(verify_coefficient_report(beta))
         self.assertTrue(verify_comparison_report(comparison, alpha, beta))
         self.assertTrue(verify_holdout_report(holdouts, alpha))
         self.assertTrue(verify_factor_atlas_report(factor_atlas, alpha))
+        self.assertTrue(verify_orthonormal_transverse_report(transverse, alpha))
 
 
 if __name__ == "__main__":

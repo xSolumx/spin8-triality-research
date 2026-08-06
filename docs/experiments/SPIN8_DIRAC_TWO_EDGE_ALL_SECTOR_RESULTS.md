@@ -180,6 +180,53 @@ Still open:
 - the third residual Cholesky edge and unrestricted Gram--Cayley theorem;
 - global five-query D-optimality outside the proved families.
 
+## First exact transverse-stability corollary
+
+The cheapest equality-stratum falsifier has passed exactly. On the
+orthonormal one-edge base `a=d=e=g=0`, every nontrivial character amplitude
+vanishes and
+
+\[
+\det_{\mathrm{normalized}}
+=-\frac{i^2-2}{2}\left(c^2i^2-c^2-4i^2+9\right)^2.
+\]
+
+Subtracting this from the target gives
+
+\[
+\text{margin}=\frac{(1-c^2)^3i^2}{2}P(i^2,c^2),
+\]
+
+where
+
+\[
+\begin{aligned}
+P(x,z)={}&z^2(x^2-4x+5)+z(-8x^2+42x-70)\\
+&+16x^2-104x+225.
+\end{aligned}
+\]
+
+In its native degree-`(2,2)` Bernstein basis on the unit square, the nine
+coefficients are
+
+```text
+225, 190, 160,
+173, 297/2, 127,
+137, 119, 103.
+```
+
+They are all strictly positive. Therefore activating `i` strictly lowers the
+determinant on this complete transverse slice, except at `i=0` or the common
+Cayley boundary `c^2=1`. This proves stability at the principal orthonormal
+equality line. It does not yet classify or settle every exceptional equality
+stratum of the one-edge theorem.
+
+An exact audit of all 32 squared-coordinate vertices and all eight orientation
+rows found 16 base equality rows, all at the two endpoints of this orthonormal
+line. The odd first derivative is exactly zero in all 16. Thus no coordinate
+corner hides the simplest sign-splitting counterexample; nonvertex exceptional
+strata remain the next target.
+
 ## Next best theorem gate
 
 Do not attempt raw Bernstein positivity on individual sectors: exact boundary
@@ -200,7 +247,8 @@ character monomials retained inside `L_odd`. Then seek either:
 3. a sum-of-squares certificate after factoring the known one-edge boundary
    nullspaces.
 
-The first required check is equality-kernel compatibility: the odd first-order
+The principal orthonormal equality line has passed the first required check.
+Next classify the remaining exceptional equality kernels: the odd first-order
 block must annihilate every boundary null vector of `K_0`, or else the proposed
-global inequality is false near that boundary. This is a cheap exact
-falsifier and should precede any large positivity run.
+global inequality is false near that stratum. This exact falsifier should
+precede any large positivity run.

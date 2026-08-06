@@ -332,6 +332,19 @@ group-circulants. At `i=0` the odd amplitudes vanish, the matrices coincide,
 and their spectrum is exactly the previously proved one-edge spectrum. This
 is the decisive structural reduction for the remaining positivity problem.
 
+On the principal orthonormal equality line `a=d=e=g=0`, the first exact
+transverse audit gives
+
+\[
+\text{margin}=\frac{(1-c^2)^3i^2}{2}P(i^2,c^2),
+\]
+
+where `P` has degree `(2,2)` and all nine native Bernstein coefficients are
+strictly positive; their minimum is `103`. Thus the added residual strictly
+decreases the determinant on this slice away from `i=0` and the common
+Cayley-rank boundary. Exceptional one-edge equality strata remain to be
+classified before this becomes a global perturbative argument.
+
 ## 8. Connection to sequence models
 
 Three reusable architectural principles emerge.

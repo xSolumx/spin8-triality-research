@@ -112,7 +112,9 @@ maps, and 256 fresh exact equalities hold. Every predicted endpoint factor is
 global. The endpoint-reduced sectors obey an exact flag law connecting them to
 the proved one-edge theorem, while their eight orientation margins split into
 two commuting four-dimensional Hadamard blocks. Positivity of those two blocks,
-and hence of the full two-edge family, remains open. See the
+and hence of the full two-edge family, remains open. On the principal
+orthonormal equality line, however, the new residual is now proved to lower the
+determinant strictly by a positive nine-coefficient Bernstein polynomial. See the
 [complete reconstruction results](docs/experiments/SPIN8_DIRAC_TWO_EDGE_ALL_SECTOR_RESULTS.md).
 
 See the [exact theorem writeup](docs/experiments/SPIN8_DIRAC_STAR_RESULTS.md),
