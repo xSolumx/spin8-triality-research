@@ -69,6 +69,11 @@ module name. Editable installation adds this directory to the Python path.
   campaign that reuses each exact determinant across all eight Walsh sectors;
   verifies two independent complete coefficient maps, exact holdouts, endpoint
   factors, the one-edge flag bridge, and the even/odd Hadamard block split.
+- `spin8_dirac_two_edge_kernel.py`: four-channel boundary-kernel reduction,
+  exact local jet and endpoint certificate, exact rejection of the naive
+  global quadratic Schur strategy, and float64 CUDA face falsifier.
+- `spin8_dirac_two_edge_kernel_flint.py`: independent FLINT replay of the
+  rational jet slices and the singular-block factorization.
 - `spin8_multiplicity_gauge.py`: exact covariance and `O(m)` gauge theorem for
   repeated probes in the same triality representation.
 

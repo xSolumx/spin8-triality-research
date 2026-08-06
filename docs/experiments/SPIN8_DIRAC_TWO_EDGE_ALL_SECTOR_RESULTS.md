@@ -247,8 +247,14 @@ character monomials retained inside `L_odd`. Then seek either:
 3. a sum-of-squares certificate after factoring the known one-edge boundary
    nullspaces.
 
-The principal orthonormal equality line has passed the first required check.
-Next classify the remaining exceptional equality kernels: the odd first-order
-block must annihilate every boundary null vector of `K_0`, or else the proposed
-global inequality is false near that stratum. This exact falsifier should
-precede any large positivity run.
+The first boundary-kernel campaign is now complete on the full orthonormal
+equality line. The odd block annihilates that line exactly, the transverse
+quadratic form is positive-definite for `c^2<1`, and the sole endpoint tangent
+kernel is lifted quartically. The same campaign found an exact rational
+counterexample to the tempting global quadratic Schur certificate; higher
+powers of the new edge cannot be discarded. See
+`SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md`.
+
+The remaining exact gate is to classify any other equality strata implicit in
+the one-edge Duffy/Bernstein proof and check the full odd amplitude there,
+before attempting finite-edge positivity with the complete `i^2` polynomial.
