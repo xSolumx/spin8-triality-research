@@ -3,15 +3,23 @@
 from __future__ import annotations
 
 import json
+import math
 import unittest
 from pathlib import Path
 
+import torch
+
+from spin8_dirac_one_edge import _projector
+from spin8_dirac_star import rational_circle
 from spin8_dirac_two_edge import (
     ANCHORS,
     exact_normalized_determinant,
     exact_sign_symmetry_certificate,
     verify_anchor_report,
 )
+from spin8_dirac_two_edge_attack import log_advantage
+from spin8_dirac_two_edge_degree import verify_degree_report
+from spin8_triality import torch_triality_generators
 
 
 class Spin8DiracTwoEdgeTests(unittest.TestCase):
@@ -40,6 +48,39 @@ class Spin8DiracTwoEdgeTests(unittest.TestCase):
             ANCHORS[first["anchor_index"]], tuple(first["signs"])
         )
         self.assertEqual(str(direct), first["normalized_determinant"])
+
+    def test_float_falsifier_matches_an_exact_anchor(self) -> None:
+        generators = torch_triality_generators(dtype=torch.float64)
+        basis_zero = torch.zeros(1, 8, dtype=torch.float64)
+        basis_zero[0, 0] = 1
+        fixed = _projector(generators, 0, basis_zero) + _projector(
+            generators, 1, basis_zero
+        )
+        parameters = torch.tensor(
+            [[float(rational_circle(value)[0]) for value in ANCHORS[0]]],
+            dtype=torch.float64,
+        )
+        observed = float(log_advantage(parameters, generators, fixed)[0])
+        direct = exact_normalized_determinant(ANCHORS[0], (1, 1, 1, 1, 1, 1))
+        cayley = rational_circle(ANCHORS[0][-1])[0]
+        target = (1 - cayley**2) ** 3 * (9 - cayley**2) ** 2
+        expected = math.log(float(direct / target))
+        self.assertAlmostEqual(observed, expected, places=13)
+
+    def test_exact_degree_artifact_replays_its_acceptance_predicate(self) -> None:
+        artifact = (
+            Path(__file__).parents[1]
+            / "artifacts"
+            / "spin8_dirac_two_edge_degree_20260806.json"
+        )
+        report = json.loads(artifact.read_text(encoding="utf-8"))
+        self.assertTrue(verify_degree_report(report))
+        self.assertEqual(report["exact_determinant_count"], 2736)
+        self.assertEqual(report["slice_count"], 144)
+        self.assertEqual(
+            sum(row["confirmation_nodes_passed"] for row in report["slice_rows"]),
+            576,
+        )
 
 
 if __name__ == "__main__":

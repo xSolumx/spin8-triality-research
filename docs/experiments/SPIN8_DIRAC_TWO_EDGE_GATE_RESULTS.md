@@ -10,13 +10,16 @@
 **CUDA falsifier artifact:**
 `../../artifacts/spin8_dirac_two_edge_attack_20260806.json`
 
+**Exact degree artifact:**
+`../../artifacts/spin8_dirac_two_edge_degree_20260806.json`
+
 ## Result in one sentence
 
-The clean second-residual bridge passed its first three frozen gates: exact
+The clean second-residual bridge passed its first four frozen gates: exact
 common-triality symmetry permits eight Walsh sectors, both disjoint rational
-anchors activate all eight, and a 249,152-sample plus 32-restart CUDA attack
-found no violation; this advances the family to exact degree analysis but does
-not prove its inequality.
+anchors activate all eight, a 249,152-sample plus 32-restart CUDA attack found
+no violation, and 144 exact degree slices passed all 576 disjoint-node checks.
+This licenses an amplitude-factor derivation; it does not prove the inequality.
 
 ## Exact sign quotient
 
@@ -80,16 +83,53 @@ approximately zero and the two existing residual-scale values were near
 `5e-8`. The tiny positive value is below the frozen `1e-8` violation threshold
 by more than five orders of magnitude and is consistent with float64 roundoff.
 
+The PyTorch objective was also checked against a direct exact determinant at a
+rational anchor and agreed to 13 decimal places. This closes the risk that the
+GPU search was optimizing a subtly different quantity from the exact program.
+
+## Exact degree and endpoint audit
+
+The crash-safe audit evaluated `2,736` exact `28 x 28` determinants:
+
+- three unrelated rational base points;
+- six squared-coordinate axes `(a,d,e,g,i,c)`;
+- eight symmetry-allowed Walsh sectors;
+- fifteen interpolation nodes per slice;
+- four disjoint confirmation nodes per slice.
+
+All `144` univariate reconstructions passed all `576/576` confirmation checks.
+The maximum observed degree was `10`, below the predeclared conservative bound
+of `14`. Per-axis maxima were:
+
+| Squared coordinate | `a^2` | `d^2` | `e^2` | `g^2` | `i^2` | `c^2` |
+|---|---:|---:|---:|---:|---:|---:|
+| Maximum observed degree | 6 | 6 | 6 | 6 | 5 | 10 |
+
+For every nontrivial character, the audited quantity is the sector squared
+after division by the square of the character-forced signed coordinates. The
+large and repeatable multiplicities at coordinate value one expose candidate
+complement factors for the next exact derivation. They are not yet called
+global factors: three generic slices can discover a pattern, but only a
+quotient-ring or exact coefficient argument can prove it over the whole cube.
+
+In plain language, the determinant could have hidden high-degree behavior
+between the original samples. It did not: independently chosen rational test
+points landed exactly on the same low-degree polynomials. The remaining hard
+problem is no longer guessing the algebra's size; it is proving the common
+factors and certifying positivity of the resulting eight-sector matrix.
+
 ## Scientific status
 
-The family has passed Gates 1--3. It has **not** passed the degree,
-reconstruction, exact holdout, or global positivity gates. In particular:
+The family has passed Gates 1--4. It has **not** passed full tensor
+reconstruction, fresh all-sign holdouts, or global positivity. In particular:
 
 - numerical non-violation is not a theorem;
 - two anchor supports do not establish radical amplitude factorizations;
-- no interpolation degree has been frozen yet;
+- the observed degree atlas is exact on 144 slices but is not a reconstructed
+  six-variable coefficient tensor;
 - the unrestricted family still has the `h` residual beyond this bridge.
 
-The next action is the preregistered multi-slice exact degree and amplitude
-audit. Full tensor interpolation is forbidden until conservative structural
-bounds and disjoint slice checks agree.
+The next action is an exact global amplitude-factor derivation from the common
+triality sign characters, circle quotient, and boundary rank. Full tensor
+interpolation remains forbidden until those factors are proved and the reduced
+grid size is known.

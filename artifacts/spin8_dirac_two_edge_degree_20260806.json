@@ -1,0 +1,3923 @@
+{
+  "base_points": [
+    [
+      "1/7",
+      "2/9",
+      "3/11",
+      "2/13",
+      "3/14",
+      "4/15"
+    ],
+    [
+      "2/7",
+      "1/9",
+      "4/11",
+      "3/13",
+      "5/14",
+      "2/15"
+    ],
+    [
+      "3/10",
+      "4/11",
+      "2/13",
+      "5/17",
+      "1/9",
+      "6/19"
+    ]
+  ],
+  "confirmation_nodes": [
+    "1/23",
+    "5/23",
+    "11/23",
+    "17/23"
+  ],
+  "degree_atlas": [
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 3,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 3,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "a",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 3,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "d",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        4,
+        4,
+        4
+      ],
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 4,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "e",
+      "base_slice_degrees": [
+        4,
+        4,
+        4
+      ],
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 4,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 2,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "g",
+      "base_slice_degrees": [
+        6,
+        6,
+        6
+      ],
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 6,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        4,
+        4,
+        4
+      ],
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 4,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        4,
+        4,
+        4
+      ],
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 4,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        3,
+        3,
+        3
+      ],
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 3,
+      "minimum_one_multiplicity": 1,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "i",
+      "base_slice_degrees": [
+        4,
+        4,
+        4
+      ],
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 4,
+      "minimum_one_multiplicity": 0,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        5,
+        5,
+        5
+      ],
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 5,
+      "minimum_one_multiplicity": 3,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        8,
+        8,
+        8
+      ],
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 8,
+      "minimum_one_multiplicity": 6,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        10,
+        10,
+        10
+      ],
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 10,
+      "minimum_one_multiplicity": 6,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        8,
+        8,
+        8
+      ],
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 8,
+      "minimum_one_multiplicity": 6,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        8,
+        8,
+        8
+      ],
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "maximum_observed_degree": 8,
+      "minimum_one_multiplicity": 6,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        8,
+        8,
+        8
+      ],
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "maximum_observed_degree": 8,
+      "minimum_one_multiplicity": 6,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        8,
+        8,
+        8
+      ],
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "maximum_observed_degree": 8,
+      "minimum_one_multiplicity": 6,
+      "minimum_zero_multiplicity": 0
+    },
+    {
+      "axis": "c",
+      "base_slice_degrees": [
+        8,
+        8,
+        8
+      ],
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maximum_observed_degree": 8,
+      "minimum_one_multiplicity": 6,
+      "minimum_zero_multiplicity": 0
+    }
+  ],
+  "discovery_nodes": [
+    "1/19",
+    "2/19",
+    "3/19",
+    "4/19",
+    "5/19",
+    "6/19",
+    "7/19",
+    "8/19",
+    "9/19",
+    "10/19",
+    "11/19",
+    "12/19",
+    "13/19",
+    "14/19",
+    "15/19"
+  ],
+  "exact_determinant_count": 2736,
+  "experiment": "variable-Cayley two-edge exact multi-slice degree audit",
+  "interpretation": "These are exact multi-slice degrees under a structural upper bound. They freeze conservative full-grid degrees only after radical amplitudes and cross-sector products are derived.",
+  "passed": true,
+  "quotient_representative_signs": [
+    [
+      1,
+      1,
+      -1,
+      1,
+      -1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      -1,
+      -1
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      -1
+    ],
+    [
+      1,
+      1,
+      -1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      -1,
+      1
+    ],
+    [
+      1,
+      1,
+      -1,
+      1,
+      -1,
+      -1
+    ],
+    [
+      1,
+      1,
+      -1,
+      1,
+      1,
+      -1
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  ],
+  "slice_count": 144,
+  "slice_rows_sha256": "9b752299cbbe299b1dff42ca9dccf3ec139a5282c5a4e64f67c4d7cc9cb1883a",
+  "slice_rows": [
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "6c890c008ada8b64f8aad86529d94599713b0a72e8e7b181e20f2c24b16061c6",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "89ce3e3bb9c73485a878a476f5802772b1a4b2a70e8913a1cffcba7b9519157e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "b76551882059c4d0b6b9f3bc3b70e2079391f65a5a15275f106a6d2452bbffde",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "3620d0a6918e2104b201c9de64cdae05068010e9b2d67b44e3dcd26c5c5caaa1",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "b6adf51c6a744ae8801a16c46060d7bae124dd3ac1daadeefa5aa21f5a064fe8",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "4a00bde06bafae62a739b118b768f3c6f616b79626ef72ca6f91c9454a29da68",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "53bdff4644e0072654efdf37ec2bf9a555df9d9e330fcd11a073e8c5a06fdfa6",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "2b6944a96e6cd764745f2c683f8d4bf0cb3805948b25825ad0b86c288d1aa205",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "6fb97d0a5a9dddb185b86dc13ca18c8a93cf580e8b5396c64aa01320b9cb19db",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "89d2371516269031e97db56cd6a432f6e2a82822e5b70ba994ed0add566634fa",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "4889774e0fcfa8ce27b3f1b9595b757df5878aa1565463e65620bd3083e6251d",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "5a65478c7bd3773af11043973f5ea67f358814ebacc8cbef8542bddbf5bc37d3",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "ac3268652ad427d48705f68203498ac395edc7320d33501cc38b7b3a2c004195",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "36720ca719cb7a149681c378b61ff0d30f284528d67595385c42698497b2ff5d",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "ca485665814e690d01ef5e67fe854196be7043d73cfe94dfb8ca0652582505ab",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "9100281c092a67eeb1c90cbac1a6d477ac2db7138521247451174b8d63daa713",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "9db0f9375c53ebc7a9eed37e1a2ee043d80358dfe090be996d3580c084d3e5e0",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "9f9f423b869ef4fa4f755b69261566709788954dd3736fad71a1402257c45f10",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "5477c3274b12e1490a0f2fd4c4963700093638864f15d312a41cccd087e37fde",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 5,
+      "coefficients_sha256": "a01dbc274783e8a7ad94e229f42aa476aaa450b422c7e9d5e5aaaf41b2f98a93",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "1b337e1ada71f4db9a34e5fc31b4ff08d628854487bb33aa021de23cade6c559",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "707ecad59334fb1b4f2251685fe467ea49824076b6036e902b0457c83231af9a",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "bf122f14b5cb9ca00265d563633c03e8969f138a02b331fbe27bd9464335ff7f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 0,
+      "coefficient_count": 5,
+      "coefficients_sha256": "0d9a620da3ef14b8de034aa4c517ae96413ab2604696e79083d54dbc99f6a50e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "e51e5053798619816da3f28f52f2883332380e9c7dd2e53459f6a707d50d0f87",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "81d7e71284a17c054973c9a239f289a358fee53a509e8597e85c4b044bd33e6f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "48710c6f31c0609752d4bf8c0f5667d71eaa64b07cac77fac76a0a5e6218facc",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "0a619427c2a837f6d8de6827674a4ed5c7b9a7412f4ac0fb93162054dc3b4c58",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "4af36c9234fa71e554fef8055645d94051e948ef9031cde132cbc7de3f1c9b46",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "7d448fcf65305cfac077983365f0fb71d0dc8ac5bc0fa3c975cb59dabac5462c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "085a97ebd2e24d3a1b677ca54556f4c5fb892e51ad1b357ac71af563dcc3573e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 0,
+      "coefficient_count": 7,
+      "coefficients_sha256": "bfbacb7b130572abe2128297064a57052c853f3ba6f003fb40458306596b4cde",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "b01463df5db1bd76b2372788f0688d3da4fb98ab7af3a41fdd955ec929fa50be",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "a724e8d31903d9b8f9c09d697b5fa33762fb6fbdaaaccab3299ee36b0b40491a",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 5,
+      "coefficients_sha256": "98c36f63c7f36add18ec9335fc6e34122dae70cacc16413886d1a264c6155581",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "4068625edfae3667963f4402cb34d1e6dbed503e7620150d31065a82b7b19bea",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "399203536ff26af97216d592e090ed61f5f8ec44ea3b49c24fc8ffbbdeb03131",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 5,
+      "coefficients_sha256": "e06ddcddd5097fc04189c47c84cd05ada5615dca98b50001f13464a4622f53a1",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 4,
+      "coefficients_sha256": "f37c05487468cb1a41e61f85a5e4459e61021c265878575baf2b9396a2b0745c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 0,
+      "coefficient_count": 5,
+      "coefficients_sha256": "03d5846a432cf2f7d99d270036f94d2704399fe1e529c2306bf286ce86875639",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 6,
+      "coefficients_sha256": "61031b4ff18ba3059b50179d5d1f13bf328846eb5bf4f4f7e237ef3ed7c304c0",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 9,
+      "coefficients_sha256": "a4e41af4e7abdc3e5db5352f6bdc972efe309157de2caf252eb1a5ce37fbfe3d",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 11,
+      "coefficients_sha256": "bf28683bdb28115f8adf921fe706853df5f1e48fcac2e349b9db1f1aa2e9fc70",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 10,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 9,
+      "coefficients_sha256": "3c783e5eab38af56601e10cad8c1557295b755b2d2e89c4de7144f5dc8b0b9dc",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 9,
+      "coefficients_sha256": "598502681d3b5785c05855fcdedae30187272ee70d0e8b65297ffbe1de496b36",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 9,
+      "coefficients_sha256": "34f1dd3cfb0a93de78338457cb091a816a7da179b5b24d19a1f5027bdb31786e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 9,
+      "coefficients_sha256": "c7602f15ee3027dc55585b39a5a662d5e2fac167afc86a52f369df9f4a0bfb89",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 0,
+      "coefficient_count": 9,
+      "coefficients_sha256": "3b38f475535afa519bb3d2134d4b7f3bc4114ffcf7e8ea0a10580ea9a6a0190b",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "0a606959a5805813851485bb4c17d292435922c1f40ef7d1f2a0c0424070914e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "516959d02911b369b9aa7f12f78980654d8e253a30d687bf34c16c119605293c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "89e62c5cc90be8dd041aafe4c295b90493f7b7a9a1819f380621e7fc715a7bf8",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "07cb8e51f381f372dbdf612c5b87b05f8c37da4d99e457850553e1e014f8a61f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "1528b9c5d349e1bb3ddbb9ae7a0cce84ac7582fbddb5a5a5fb0a3d13b4a4602e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "80321915330fa2dacd574a46a8b291d20275a85de6d0d8e012e02bb75d253881",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "7e4032a18393ec2f4445d6abe45a577fb1e91688fc4db8b4a76567607d394696",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "b40d7cb1e09c53271f543cbf7ad2b82c50a37688576102a7bec2fa2bc4792403",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "34251a6adece8f3bce469293bf399f5b71c1691ed65cab4289b9a6619546935d",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "981eb7af9d95fc0bafbf30ca028677d81bc685041ea34c053143c10a6d64459d",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "cac54da9a0efa9927353388882e61ce387926e8d6aff353a37b2cf03a843e88b",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "545c21ee905a0289cfd3c8b9d75eb0e787353195236220ee692039d5caf42f9c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "4c9572c4669d363fdc0911b128458f54190400f1fb7d4affcdab0198a90ef15e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "2b16eba473b07e899e5af1491b78cb78eb61a93e1c8df131f69f9a392a0d319e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "786fd13e9b7357b842cd15a98d971cf6cd309735639558a7cce0240d29617052",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "63023fd9e95ab300111af211390541794d58564efd5519024fc1b0043af914d2",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "8c57e0389c32b6beb8aa36c723142cce56d8695e576634a61d1315445016a06d",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "3ecd2d95a74ec83e1318b447ef6f91c3bf210c8d7225c6cd1aeeeecf00708487",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "3ef2dabf4692b571a15e6733d4d0bbb2a9cda8f88b5ee2183d73fd20ac8c5795",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 5,
+      "coefficients_sha256": "9647aa3346f81f1f489b2a886662be0ae6550904c93fa01c9c23c26655fa7cd5",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "f56e7137e76222fabffa8e956aa9cab857b0d61bc2a89da851756ba3cab7bc0a",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "2d844477ffc55e2f03ff986d3a4a026d2aa6cfa0abae592f34d12e3a7f74e9be",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "42cd36f643957cbb0f82a78b2cfc4aa4462f151655f8eaad5dfb5fe86b1a906c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 1,
+      "coefficient_count": 5,
+      "coefficients_sha256": "01779c0bea19a0875dcf648d1bfaf773942615d3549b51d498aac20896d909e1",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "bfebf6d8294362300bd4d3208e403638d6c2df792386aa53230ff721b1dbc0fb",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "f8cde251ed1206813cd0dbf9eb27ee289195c6780e2ca320e98b48225ee9902c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "3216080ec8aa140b83cdc69ba703accd3c01607d3a69f52fa0eea2efa2eb6413",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "512202f83ef3244b490987ff19a9ff6b4e497c27d20b09dd612cc4a3b3d4425f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "53e1b906843115782b439519b16fab137e381fd8543dbebfee0a5ae2180f0151",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "0f3ea76cb5f5cc92e55771dbaa1ee097ccb9da44fc35bfe55cfd630974151a34",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "bfd2dff1716791664831b13d1d7dd1953560d45d7b9af5567f7647e536f50191",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 1,
+      "coefficient_count": 7,
+      "coefficients_sha256": "890296d1df4e35ea964267fccb75d7913a6a9b3591b9d62831523758f867ea7c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "51dead419c627ac479bf23f7e94672abe6aed18dc3c6b02a168d772482ed5f63",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "b873544cd2f6091cec7933fa125eb0513a7990660c250eb620741de14c346562",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 5,
+      "coefficients_sha256": "9d0a1c4e837c639dd2873a9d5debf08d71868931389ae185caca438fc3119f6f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "f08af1b4518dc819ed38f7e082f7f67a18a49ac3d42eef84174288d0fc19b960",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "ed384fb9189e127c402f260c5f0674c89e6ffcdd8aa59a7f684b02b51460a24c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 5,
+      "coefficients_sha256": "975eeceeb4ba09691abf8163e4dc31228e38e2cb64461a39d0fe1d7e133b2e74",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 4,
+      "coefficients_sha256": "1a2d107bb7d1eabffc2b70bfcee1bb38bf511a8bf369a032a02806f1a3148e26",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 1,
+      "coefficient_count": 5,
+      "coefficients_sha256": "6ee0f712198e54f5591ae87714ead3985a92c811ce790e4831664a0e58349eff",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 6,
+      "coefficients_sha256": "6bc47ccf3c362c4cd512ac1afb83f79ba39bf15b0b8150ed9590a992cd4cd60a",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 9,
+      "coefficients_sha256": "2585bde4fb60f49a6381dde202113ab90fbca576d64a69b91810bb83cd9beb5f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 11,
+      "coefficients_sha256": "5111592092c40db2950a34cd37d3c4ce6df07cf373928c70ef7ef0f429a3c6a6",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 10,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 9,
+      "coefficients_sha256": "3e25b1ac6d15d1a7fbd6c762b250118eda8f5329e00a836c54e701b88cbef63e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 9,
+      "coefficients_sha256": "e1e5f73720d29f166baf00cd01dbc99c125fc427b9728f56ac6c35b94b27f0b9",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 9,
+      "coefficients_sha256": "c17ae41f635a7096764042fd6e9272c8414fcdfc9bda7c993c1e61d9f860ab0c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 9,
+      "coefficients_sha256": "6c177119aef09b183aa4b8b34291fc654bb7bf236fbd1e995749289aafb84d06",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 1,
+      "coefficient_count": 9,
+      "coefficients_sha256": "4062bab387fce06d3e7ffa9a8e06f62e707d26186f6f0a1d4f711d42ffc119a6",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "914e98b8845519d53e00f62f6ae2e4b32281ec23430ec98c19887b534c70f433",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "a502afd47b68adbd021df6c2b7010af9687659854869a49b17725fbd354b3d61",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "252ffa0f3036bf1b7bbbfae9c77b226aa2d07353f33579db22da4af6953fae94",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "9e6ddb040cdda783d30bbdbf3e069f5704712b0e6c8c486c3dc07bd8e7e9867f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "d0067efe5d7b2bef0986aa4f23f01b45fc48a8629866cffb93518eccdd3a168a",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "5b5c6a11874f079cc5d0aa3dc3cea105aaa06cd245287a621dfa39700ba9304b",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "0a948ed9312aba2ed52b58f0f8896e21bc3e3362ffe0c0ce04c22b1f54f6a5bb",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "a",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "080e92542445bef2f353a31c6f3edc17fcf143be4aedfdf1e5c68731c7e0db46",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "48bc6914d0643cf1a6aecc86694fae9d45a8550807d08e34d133468bbcc34cd5",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "d48f656d2fdfb741a4963c2a44246a4ebc8edaf8fd74ad645f2b2ab071d3db0f",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "b7c7aba780f448e525aeed1510685b2f0ace0435ab583820ad59ecb8872f5f42",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "e36abe90377625a21f71bdb8131f46288faf9d7684522f41cdeebd2b8367a688",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "f040a38a68be3ff74547e490a49d1c9cfdc48ff8d552b115504d6a3e59b648e0",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "915224ffed2871c7a244ca5218ea27b598dafc0e0ec5a11ad8405e0a53843d12",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "fed318687dfd89ddff49bc081daa4e862ccc3713a832489ab462bdb78eb70fa8",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "d",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "1aa54bcc0ef0c7a34f54b5c8a488fa965971aa962839d2a1af0590c3ab2a3caa",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "b4a53962272f91f5d9e2ebcc34282016bc43b79d45bb89d3517f16cd818e9f66",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "c56c1eb3229e3da17c9694d038c598f7bb0eb087d11e6ac6a80cc1a8f6ead5d5",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "f9d31dfe95142c871cc9da343b967ef1bf0411fae21208b501429a1ed16aed62",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 5,
+      "coefficients_sha256": "ea8ec150aabd67d3f128b030f7c57939390e3892d4792631623476caf3d68dd2",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "2f37fde7bbc01c97059d7d9163b8d1000de5704a4c78ce53e9ea0af3a1416363",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "ac01ed1ba5f411ae1b13fa2c8313cef728806fb09673ba379b54d34e83783337",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "24cd6137a75803e8e15abafb3bb263997e0fc5fd4171a3d77ce92292e23f79f4",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "e",
+      "base_index": 2,
+      "coefficient_count": 5,
+      "coefficients_sha256": "66bba92e8149683df7cac2ae69a96123b7f6468a800c0df9a185c21f5fc1c662",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "689ede5332513ae4d39eceb8096869a8dfbefc6933937d4afbcc5a8bea6580d1",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "a2e360b59c7dbf24983bd5fe8e506aa591fbd07d4841b183a6afe0cdc785b567",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "4d03e30ff288016156ac029bf83cae7c7a02de266d9dbfebf4ed7c458dd62887",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "9d5ca4e9adc1d568a7bec0aca24d967ed8f01738f833840444b960be78cdeb17",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "85b62f3c27a39b5088ba7345716d76f928cfffbe9e8b61d3bce2210686ab682e",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 2,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "31b1fc95d791c5b95c332d1ac7ac329780d4224afe6be3faafaf77d5d62822b0",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "f72daca872c2dda71f5be08e366c93cc81aabd0c91e704bed26c20696acde67b",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "g",
+      "base_index": 2,
+      "coefficient_count": 7,
+      "coefficients_sha256": "54f828e8f6c9cd45397c3b86bdec58ca32d36e1866b0a831457a627aaba34d70",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 6,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "ff43aeb52c5f554a0afd43d468ccf0c20bf1d94ca24f276b3b5fa4a8db985f9c",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "44d8a3a223d2be992b49e41f68dc75108decc858e54f092e883b51d0be3a1ca2",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 5,
+      "coefficients_sha256": "ac6a17025bbeaee0fa984d8f39c65c4ce6ff4cee80611f96c247e6153972dffd",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "c2ad05e977796b664cd972d6eef115e8eb1115e382bf9f9d30cdc828823ad0cb",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "7d399ad6bbd7e74db800b5c38486a9d220367f85449b299999f7f5a3e5d2bd6b",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 5,
+      "coefficients_sha256": "12042ce416545ca90044cacde492ec637ea07c86f5ae854d28feb4afeee65ff2",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 4,
+      "coefficients_sha256": "809fcad059f5b1ac2bc1f9c1a247ed451c8831844ed6883075049c895ee622d1",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 3,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 1,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "i",
+      "base_index": 2,
+      "coefficient_count": 5,
+      "coefficients_sha256": "848bd12b9293dde2b3d1443a3f6f0a4053ae00a328160d8feb259716bed41998",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 4,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 0,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 6,
+      "coefficients_sha256": "83e85a6f8b701a54c1e25906f04afc813349124abb8320cb5664a4a5246319cd",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 5,
+      "mask": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector",
+      "multiplicity_at_one": 3,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 9,
+      "coefficients_sha256": "c947da52d7e9762c66bf32f814a8dfea8b204e694f2ff4e9972b6306f6518aac",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 11,
+      "coefficients_sha256": "bc6f6fc999f1fbc0f1baa6f46dbc91beb78b8a0c8b93945485d843ecb3b36a99",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 10,
+      "mask": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 9,
+      "coefficients_sha256": "e0e10ec6501656672b1ed68930bd3c74dca0310a0ebb72afb1b17a8443d63f15",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 9,
+      "coefficients_sha256": "079b4245345974d09f967e829b762ec81fde00924f1e20977dee1f1f81b0e4fc",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 9,
+      "coefficients_sha256": "03ba405cde4056c95e59335181cf9a86dc793bf8a54563adc4c833876f7f41a9",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 9,
+      "coefficients_sha256": "94503c648134b14fbd0f947f10608149184b8767483f255b44fedcdf3d27b032",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    },
+    {
+      "axis": "c",
+      "base_index": 2,
+      "coefficient_count": 9,
+      "coefficients_sha256": "4058721ec1c769c6df1850ae041c387dcc92543454160119df0dd26eb1862239",
+      "confirmation_nodes_passed": 4,
+      "confirmation_nodes_total": 4,
+      "degree": 8,
+      "mask": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measure": "sector^2/forced_odd_square",
+      "multiplicity_at_one": 6,
+      "multiplicity_at_zero": 0
+    }
+  ],
+  "structural_degree_bound": {
+    "maximum_squared_sector_degree_per_squared_coordinate": 14,
+    "reason": "A query contributes a rank-seven projector, so Cauchy-Binet uses its coordinate pair at most seven times; squaring and passing to the squared coordinate gives degree at most 14."
+  }
+}
