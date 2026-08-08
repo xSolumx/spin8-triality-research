@@ -102,3 +102,51 @@ only unresolved object is the (u_i=0) face.  That four-variable quotient
 will be split into its 16 dyadic half-boxes.  The face passes only if every
 box has a nonnegative exact Bernstein tensor.  A partial box count is not a
 certificate.
+
+## Prospective amendment for the second quadratic mode
+
+**Added after both depth-two atlases completed and before computing any
+second-mode blow-up coefficient — 2026-08-08.**
+
+For mode `0101010`, the exact dyadic audit independently reproduced the same
+finite localization pattern: 30 of 32 coarse boxes passed, every child of
+`00010` passed, and only `00001/00001` failed among the children of `00001`.
+No equality chart from mode `0011001` is assumed to transfer.
+
+The sole residual box will be covered by the five max-coordinate blow-up
+charts of
+
+\[
+(u_d,u_e,u_g,u_i,1-y).
+\]
+
+Every chart must again have exact radial order four. Each chart requires its
+own domain-wide exact quotient certificate. Coincident negative-control
+counts, numerical similarity, or reuse of a first-mode pass flag is
+insufficient.
+
+## Prospective amendment for the third quadratic mode
+
+**Added after both depth-two atlases completed and before computing any
+third-mode blow-up coefficient — 2026-08-08.**
+
+For mode `0110011`, the independent exact dyadic audit again localized every
+native Bernstein failure to the same self-similar equality corner: 30 of 32
+coarse boxes passed, all 32 children of `00010` passed, and 31 of 32 children
+of `00001` passed.  The only residual box is `00001/00001`.  This agreement is
+evidence of a common boundary geometry, but no algebraic identity or
+certificate from either earlier mode is assumed to transfer.
+
+The residual box will therefore be covered by all five max-coordinate
+blow-up charts of
+
+\[
+(u_d,u_e,u_g,u_i,1-y).
+\]
+
+Each chart must have exact radial order four.  Each radial quotient must then
+receive its own exact domain-wide nonnegativity certificate.  If a native
+Bernstein tensor contains negative controls, any replacement factorization or
+subdivision must be recorded before it is used and must cover the complete
+residual chart; numerical agreement, a positive tangent form, or reuse of an
+earlier mode's pass flag is not sufficient.

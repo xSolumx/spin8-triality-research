@@ -209,6 +209,82 @@ def _pivot_middle_tangent_product_identity(face) -> dict[str, object]:
     }
 
 
+def _shared_ud_exceptional_square_identity(face) -> dict[str, object]:
+    """Verify the perfect-square tangent law shared by minors 1 and 2."""
+
+    _radius, e, g, i, t = face.context().gens()
+    base = (
+        4 * e**2
+        + 24 * e * g
+        + 20 * e * i
+        + 16 * e * t
+        + 8 * e
+        + 4 * g**2
+        + 20 * g * i
+        + 16 * g * t
+        + 8 * g
+        + 25 * i**2
+        + 40 * i * t
+        + 20 * i
+        + 16 * t**2
+        - 16 * t
+        + 4
+    )
+    content = _positive_content(face)
+    identity = face == content * base**2
+    return {
+        "identity": "positive_content*B(e,g,i,t)^2",
+        "base_polynomial": (
+            "4e^2+24eg+20ei+16et+8e+4g^2+20gi+16gt+8g+"
+            "25i^2+40it+20i+16t^2-16t+4"
+        ),
+        "positive_content": str(content),
+        "identity_verified": identity,
+        "passed": identity,
+    }
+
+
+def _shared_ud_radial_remainder_certificate(remainder) -> dict[str, object]:
+    """Certify the hard radial corner shared by minors 1 and 2."""
+
+    _radius, e, g, i, _t = remainder.context().gens()
+    corner = remainder.subs({"x0": 0, "x1": 0, "x2": 0})
+    boxes = []
+    for bits in ("00000", "00001", "10000", "10001"):
+        audit = _native_bernstein_audit(
+            _restrict_half_box(corner, bits), sample_limit=16
+        )
+        boxes.append(
+            {
+                "five_axis_bits_radius_e_g_i_t": bits,
+                "native_bernstein": audit,
+                "passed": audit["negative_scaled_coefficient_count"] == 0,
+            }
+        )
+    rest = remainder - corner * (1 - e) ** int(
+        remainder.degrees()[1]
+    ) * (1 - g) ** int(remainder.degrees()[2]) * (1 - i) ** int(
+        remainder.degrees()[3]
+    )
+    rest_audit = _native_bernstein_audit(rest, sample_limit=32)
+    passed = bool(
+        all(row["passed"] for row in boxes)
+        and rest_audit["negative_scaled_coefficient_count"] == 0
+    )
+    return {
+        "corner": "e_ratio=g_ratio=i_ratio=0",
+        "corner_four_box_atlas": boxes,
+        "corner_atlas_covers_radius_t_square": True,
+        "selector": (
+            f"(1-e_ratio)^{int(remainder.degrees()[1])}*"
+            f"(1-g_ratio)^{int(remainder.degrees()[2])}*"
+            f"(1-i_ratio)^{int(remainder.degrees()[3])}"
+        ),
+        "second_remainder_native_bernstein": rest_audit,
+        "passed": passed,
+    }
+
+
 def _divide_coordinate_order(polynomial, axis: int):
     coefficients = polynomial.to_dict()
     order = min(powers[axis] for powers in coefficients)
@@ -522,6 +598,14 @@ def run(
                 == 0
             ),
         }
+    elif minor_index in (1, 2) and pivot == 0:
+        exceptional_square = _shared_ud_exceptional_square_identity(
+            exceptional_face
+        )
+        exceptional_nested = {
+            "complete_exceptional_square": exceptional_square,
+            "passed": exceptional_square["passed"],
+        }
     radius_degree = int(quotient.degrees()[0])
     exceptional_selector = (1 - radius) ** radius_degree
     remainder = quotient - exceptional_face * exceptional_selector
@@ -650,6 +734,14 @@ def run(
                 ]
                 == 0
             ),
+        }
+    elif minor_index in (1, 2) and pivot == 0:
+        radial_exact_certificate = _shared_ud_radial_remainder_certificate(
+            remainder
+        )
+        remainder_nested = {
+            "radial_exact_certificate": radial_exact_certificate,
+            "passed": radial_exact_certificate["passed"],
         }
     exceptional_passed = bool(
         exceptional_audit["negative_scaled_coefficient_count"] == 0

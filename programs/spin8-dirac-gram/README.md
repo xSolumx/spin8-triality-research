@@ -23,16 +23,15 @@ distinct from probe identifiability and from sequence modelling.
 | Unrestricted sector reconstruction | [`SPIN8_DIRAC_UNRESTRICTED_RECONSTRUCTION_RESULTS.md`](../../docs/experiments/SPIN8_DIRAC_UNRESTRICTED_RECONSTRUCTION_RESULTS.md) | Exact polynomial reconstruction and held-out identity checks; not positivity |
 | Fourier-energy inequality | [`UNRESTRICTED_FOURIER_ENERGY.md`](../../docs/manuscripts/UNRESTRICTED_FOURIER_ENERGY.md) | Exact aggregate second-moment bound; not orientation-wise positivity |
 | Endpoint Klein-four face | [`UNRESTRICTED_ENDPOINT_KLEIN_FACE.md`](../../docs/manuscripts/UNRESTRICTED_ENDPOINT_KLEIN_FACE.md) | Exact complete boundary-face theorem |
-| Adjacent endpoint octet | [`UNRESTRICTED_ENDPOINT_OCTET_REDUCTION.md`](../../docs/manuscripts/UNRESTRICTED_ENDPOINT_OCTET_REDUCTION.md) | Exact reduction, complete first block, scalar second-block theorem, and one of three global quadratic second-block theorems |
-| First global octet quadratic | [`SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md`](../../docs/experiments/SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md) | Exact five-cube theorem for mode `0011001`; two quadratics, cubic, and determinant remain open |
+| Adjacent endpoint octet | [`UNRESTRICTED_ENDPOINT_OCTET_REDUCTION.md`](../../docs/manuscripts/UNRESTRICTED_ENDPOINT_OCTET_REDUCTION.md) | Exact reduction, complete first block, scalar second-block theorem, and all three global quadratic second-block theorems |
+| Global octet quadratics | [`SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md`](../../docs/experiments/SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md) | Complete exact five-cube quadratic gate for modes `0011001`, `0101010`, and `0110011`; cubic and determinant remain open |
 
 ## Open claims
 
 - positivity of every one of the sixteen unrestricted orientation margins on
   the complete feasible seven-variable domain;
 - the remaining elementary-symmetric orientation gates (e_5,\ldots,e_{16});
-- the other two quadratic, cubic, and determinant Schur minors on the adjacent
-  endpoint face;
+- the cubic and determinant Schur minors on the adjacent endpoint face;
 - any deduction of global five-query optimality from these partial results.
 
 ## Certificate boundary

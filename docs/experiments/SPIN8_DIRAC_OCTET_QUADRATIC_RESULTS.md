@@ -1,8 +1,8 @@
-# A Global Quadratic Schur-Minor Certificate on the Adjacent Endpoint Octet
+# The Complete Quadratic Schur-Minor Gate on the Adjacent Endpoint Octet
 
 **Exact computer-assisted theorem result — 2026-08-08**
 
-**Status:** first of three quadratic principal-minor families proved globally
+**Status:** all three quadratic principal-minor families proved globally
 
 **Preregistration:**
 [`SPIN8_DIRAC_OCTET_QUADRATIC_PREREGISTRATION.md`](SPIN8_DIRAC_OCTET_QUADRATIC_PREREGISTRATION.md)
@@ -10,11 +10,19 @@
 **Assembly verifier:**
 [`spin8_dirac_endpoint_octet_quadratic_certificate.py`](../../src/spin8_dirac_endpoint_octet_quadratic_certificate.py)
 
-**Assembled artifact:**
+**Assembled artifacts:**
 [`spin8_dirac_endpoint_octet_quadratic_0_global_20260808.json`](../../artifacts/spin8_dirac_endpoint_octet_quadratic_0_global_20260808.json)
 
-**Artifact SHA-256:**
+[`spin8_dirac_endpoint_octet_quadratic_1_global_20260808.json`](../../artifacts/spin8_dirac_endpoint_octet_quadratic_1_global_20260808.json)
+
+[`spin8_dirac_endpoint_octet_quadratic_2_global_20260808.json`](../../artifacts/spin8_dirac_endpoint_octet_quadratic_2_global_20260808.json)
+
+**Artifact SHA-256 values:**
 `b596f3a845a2f67a7e545c767da51524104980007ff5ac855f7ee7b23c0eddd0`
+
+`21329fbb76c19d665407e51f63936730bcd2b66a7afd4ce065d331c2ab1a5520`
+
+`1e6b96e90f8c55edafdf6fdbf33ece9da40c48e735b4fbe0f321ff64409cbbb7`
 
 ## Result
 
@@ -27,11 +35,15 @@ Z=X^2-(1-y^2)R^2,
 (u_d,u_e,u_g,u_i,y)\in[0,1]^5.
 \]
 
-Let \(Z_0\) be its identity coefficient and let \(Z_\mu\) be the coefficient
-associated with the first nontrivial Klein-four mode
+Let \(Z_0\) be its identity coefficient and let \(Z_\mu\) be a nontrivial
+Klein-four coefficient. The three nontrivial modes are
 
 \[
-\mu=0011001.
+\mu_1=0011001,
+\qquad
+\mu_2=0101010,
+\qquad
+\mu_3=0110011.
 \]
 
 The corresponding two-by-two principal-minor condition is
@@ -41,11 +53,29 @@ q_\mu=Z_0^2-s_\mu Z_\mu^2,
 \]
 
 where \(s_\mu\) is the exact forced-square monomial carried by that mode. The
-assembled certificate establishes
+assembled certificates establish
 
 \[
 \boxed{
 q_{0011001}(u_d,u_e,u_g,u_i,y)\ge 0
+\quad\text{throughout }[0,1]^5.
+}
+\]
+
+and
+
+\[
+\boxed{
+q_{0101010}(u_d,u_e,u_g,u_i,y)\ge 0
+\quad\text{throughout }[0,1]^5.
+}
+\]
+
+and
+
+\[
+\boxed{
+q_{0110011}(u_d,u_e,u_g,u_i,y)\ge 0
 \quad\text{throughout }[0,1]^5.
 }
 \]
@@ -55,10 +85,11 @@ sampled statement, or an inference from a failed counterexample search.
 
 ## Why the native certificate failed
 
-The polynomial has 233,064 power terms. Its native tensor-product Bernstein
-form contains 224 negative controls. Those controls do **not** imply that the
-polynomial is negative: Bernstein coefficients are sufficient, not necessary,
-for positivity.
+The three polynomials have respectively 233,064, 233,051, and 233,048 power
+terms, with 224, 202, and 206 negative controls in their native tensor-product
+Bernstein forms. Those controls do **not** imply that any polynomial is
+negative: Bernstein coefficients are sufficient, not necessary, for
+positivity.
 
 A bounded float64 CUDA falsifier searched 4,096 random points and optimized
 eight starts for every physical orientation. It found no negative value. Its
@@ -68,16 +99,19 @@ the local analysis but contributes no step to the proof.
 
 ## Exact domain decomposition
 
-The proof begins with a dyadic partition of the five-cube. At the first level,
-30 of 32 boxes are natively Bernstein-nonnegative. The two exceptions are
+Each proof begins with a dyadic partition of the five-cube. Independently for
+all three modes, 30 of 32 first-level boxes are natively
+Bernstein-nonnegative. The
+two exceptions are
 labelled `00001` and `00010`, using the coordinate order
 
 \[
 (u_d,u_e,u_g,u_i,y).
 \]
 
-All 32 children of `00010` certify. Of the 32 children of `00001`, 31
-certify. The sole residual box is `00001/00001`, namely
+For each mode, all 32 children of `00010` certify. Of the 32 children of
+`00001`, 31 certify. The sole residual box in all three cases is
+`00001/00001`, namely
 
 \[
 0\le u_d,u_e,u_g,u_i\le\frac14,
@@ -108,7 +142,7 @@ five charts whose union covers the complete residual box. In every chart, the
 minor is exactly divisible by \(r^4\). Thus the unresolved equality is a
 quartic germ, as predicted independently before the blow-up calculation.
 
-The quotient is certified differently in the five charts:
+For mode `0011001`, the quotient is certified differently in the five charts:
 
 | Pivot deviation | Exact certificate |
 |---|---|
@@ -145,6 +179,34 @@ so it is strictly positive on \([0,1]\). The square records the only remaining
 axis equality. Four exact half-boxes certify the transverse two-variable
 remainder around that equality.
 
+### The shared tangent law of the second and third modes
+
+For each of modes `0101010` and `0110011`, four of the five blow-up quotients
+are natively Bernstein-nonnegative. More strongly, the exceptional divisors in
+their remaining \(u_d\)-pivot charts are identical, including their positive
+integer content:
+
+\[
+C\,B(e,g,i,t)^2,
+\qquad C=2^{160}>0,
+\]
+
+where
+
+\[
+\begin{aligned}
+B={}&4e^2+24eg+20ei+16et+8e+4g^2+20gi+16gt+8g\\
+&+25i^2+40it+20i+16t^2-16t+4.
+\end{aligned}
+\]
+
+For each mode, the radial remainder has negative native controls only on
+\(e=g=i=0\). Four exact half-boxes cover the remaining \((r,t)\)-square,
+and the complementary five-variable remainder is natively
+Bernstein-nonnegative. Thus both charts pass without importing any first-mode
+factorization. The exact equality of the two tangent squares is an output of
+the independent reconstructions, not an assumption in either preregistration.
+
 ## What the lightweight verifier checks
 
 The assembly verifier recomputes:
@@ -178,16 +240,14 @@ subdivision by a finite max-coordinate blow-up.
 
 ## Nonclaims and next gate
 
-This result proves exactly one of the three quadratic conditions required for
-\(Z\succeq0\). It does not prove:
+These results close all three quadratic principal-minor conditions required for
+\(Z\succeq0\). They do not prove:
 
-- the other two quadratic principal minors;
-- the cubic principal minor or (det Z);
+- the cubic principal minor or \(\det Z\);
 - positivity of the complete adjacent endpoint octet;
 - the unrestricted seven-circle Dirac--Gram inequality;
 - global five-query D-optimality.
 
-The next exact gate is to apply the same adversarial sequence—native audit,
-finite dyadic localization, and only then a boundary-adapted blow-up—to the
-other two quadratic modes. Their superficially similar native failures are not
-assumed to share this certificate.
+The next exact gate is the cubic principal minor. It must be reconstructed and
+audited independently; three nonnegative quadratic minors do not imply the
+cubic or determinant conditions.

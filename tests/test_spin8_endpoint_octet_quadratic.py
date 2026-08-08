@@ -51,10 +51,12 @@ def test_zero_degree_axes_are_not_reported_as_boundaries() -> None:
     assert audit["negative_boundary_histogram"] == {"interior-control": 1}
 
 
-def test_assembled_global_quadratic_certificate_replays() -> None:
-    report = ROOT / "artifacts" / (
-        "spin8_dirac_endpoint_octet_quadratic_0_global_20260808.json"
-    )
-    verification = verify(report)
-    assert verification["verified"] is True
-    assert verification["source_artifact_count"] == 8
+def test_assembled_global_quadratic_certificates_replay() -> None:
+    for minor_index in (0, 1, 2):
+        report = ROOT / "artifacts" / (
+            f"spin8_dirac_endpoint_octet_quadratic_{minor_index}_global_"
+            "20260808.json"
+        )
+        verification = verify(report)
+        assert verification["verified"] is True
+        assert verification["source_artifact_count"] == 8

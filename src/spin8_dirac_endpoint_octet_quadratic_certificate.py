@@ -15,19 +15,26 @@ import tempfile
 from pathlib import Path
 
 DEFAULT_ARTIFACT_DIR = Path("artifacts")
-ATLAS_FILES = {
-    "coarse": "spin8_dirac_endpoint_octet_quadratic_0_half_atlas_20260808.json",
-    "child_00001": (
-        "spin8_dirac_endpoint_octet_quadratic_0_half_atlas_00001_20260808.json"
-    ),
-    "child_00010": (
-        "spin8_dirac_endpoint_octet_quadratic_0_half_atlas_00010_20260808.json"
-    ),
-}
-BLOWUP_FILES = {
-    pivot: f"spin8_dirac_endpoint_octet_blowup_q0_p{pivot}_20260808.json"
-    for pivot in range(5)
-}
+MODE_MASKS = {0: "0011001", 1: "0101010", 2: "0110011"}
+
+
+def _atlas_files(minor_index: int) -> dict[str, str]:
+    stem = f"spin8_dirac_endpoint_octet_quadratic_{minor_index}_half_atlas"
+    return {
+        "coarse": f"{stem}_20260808.json",
+        "child_00001": f"{stem}_00001_20260808.json",
+        "child_00010": f"{stem}_00010_20260808.json",
+    }
+
+
+def _blowup_files(minor_index: int) -> dict[int, str]:
+    return {
+        pivot: (
+            f"spin8_dirac_endpoint_octet_blowup_q{minor_index}_p{pivot}_"
+            "20260808.json"
+        )
+        for pivot in range(5)
+    }
 
 
 def _sha256(path: Path) -> str:
@@ -98,15 +105,38 @@ def _check_atlas(
     }
 
 
-def _check_blowup(report: dict[str, object], pivot: int) -> dict[str, object]:
-    if int(report["minor_index"]) != 0 or int(report["pivot_index"]) != pivot:
+def _check_blowup(
+    report: dict[str, object], pivot: int, *, minor_index: int
+) -> dict[str, object]:
+    if (
+        int(report["minor_index"]) != minor_index
+        or int(report["pivot_index"]) != pivot
+    ):
         raise AssertionError("blow-up artifact identity mismatch")
     if int(report["exact_radius_divisibility_order"]) != 4:
         raise AssertionError("the equality germ must have exact radius order four")
     if not report["passed"]:
         raise AssertionError(f"pivot {pivot} did not pass")
 
-    if pivot in (3, 4):
+    if minor_index in (1, 2) and pivot == 0:
+        exceptional = report["exceptional_divisor"][
+            "nested_ui_zero_certificate"
+        ]["complete_exceptional_square"]
+        radial = report["exceptional_boundary_selector"][
+            "nested_ui_zero_certificate"
+        ]["radial_exact_certificate"]
+        if not exceptional["identity_verified"] or not exceptional["passed"]:
+            raise AssertionError("shared exceptional square failed")
+        boxes = radial["corner_four_box_atlas"]
+        if len(boxes) != 4 or not all(
+            row["passed"] and _audit_passed(row["native_bernstein"])
+            for row in boxes
+        ):
+            raise AssertionError("shared radial corner atlas failed")
+        if not _audit_passed(radial["second_remainder_native_bernstein"]):
+            raise AssertionError("shared radial complement failed")
+        mechanism = "complete tangent square plus four-box radial corner atlas"
+    elif minor_index in (1, 2) or pivot in (3, 4):
         if not _audit_passed(report["quotient_native_bernstein"]):
             raise AssertionError("native-positive pivot contains a negative control")
         mechanism = "native tensor-product Bernstein positivity"
@@ -176,15 +206,20 @@ def _check_blowup(report: dict[str, object], pivot: int) -> dict[str, object]:
 def assemble(
     artifact_dir: Path = DEFAULT_ARTIFACT_DIR,
     *,
+    minor_index: int = 0,
     output: Path | None = None,
 ) -> dict[str, object]:
+    if minor_index not in (0, 1, 2):
+        raise ValueError("minor index must be 0, 1, or 2")
+    atlas_files = _atlas_files(minor_index)
+    blowup_files = _blowup_files(minor_index)
     paths = {
-        name: artifact_dir / filename for name, filename in ATLAS_FILES.items()
+        name: artifact_dir / filename for name, filename in atlas_files.items()
     }
     paths.update(
         {
             f"blowup_p{pivot}": artifact_dir / filename
-            for pivot, filename in BLOWUP_FILES.items()
+            for pivot, filename in blowup_files.items()
         }
     )
     reports = {name: _read(path) for name, path in paths.items()}
@@ -201,15 +236,26 @@ def assemble(
         ),
     }
     blowup_checks = [
-        _check_blowup(reports[f"blowup_p{pivot}"], pivot)
+        _check_blowup(
+            reports[f"blowup_p{pivot}"], pivot, minor_index=minor_index
+        )
         for pivot in range(5)
     ]
-    report = {
-        "experiment": "global certificate for endpoint-octet quadratic minor 0",
-        "theorem": (
+    mode_mask = MODE_MASKS[minor_index]
+    theorem = (
+        "Z_trivial^2 - s_mu*Z_mu^2 is nonnegative on "
+        "[0,1]^4 x [-1,1] for the first nontrivial H0 mode"
+        if minor_index == 0
+        else (
             "Z_trivial^2 - s_mu*Z_mu^2 is nonnegative on "
-            "[0,1]^4 x [-1,1] for the first nontrivial H0 mode"
+            f"[0,1]^4 x [-1,1] for H0 mode {mode_mask}"
+        )
+    )
+    report = {
+        "experiment": (
+            f"global certificate for endpoint-octet quadratic minor {minor_index}"
         ),
+        "theorem": theorem,
         "domain_reduction": {
             "even_cayley_coordinate": "y=abs(c) in [0,1]",
             "coarse_binary_partition_box_count": 32,
@@ -265,6 +311,23 @@ def assemble(
             "on the adjacent endpoint octet. The other two quadratics, the "
             "cubic, determinant, full endpoint octet, and unrestricted "
             "Dirac--Gram theorem remain open."
+            if minor_index == 0
+            else (
+                (
+                    "This proves the second of three quadratic principal-minor "
+                    "inequalities on the adjacent endpoint octet. The final "
+                    "quadratic, cubic, determinant, full endpoint octet, and "
+                    "unrestricted Dirac--Gram theorem remain open."
+                )
+                if minor_index == 1
+                else (
+                    "This proves the final quadratic principal-minor inequality "
+                    "on the adjacent endpoint octet. Together the three global "
+                    "quadratic certificates close the complete quadratic gate. "
+                    "The cubic, determinant, full endpoint octet, and unrestricted "
+                    "Dirac--Gram theorem remain open."
+                )
+            )
         ),
     }
     if output is not None:
@@ -276,7 +339,13 @@ def assemble(
 def verify(report_path: Path) -> dict[str, object]:
     stored = _read(report_path)
     artifact_dir = report_path.parent
-    rebuilt = assemble(artifact_dir)
+    theorem = str(stored["theorem"])
+    matches = [index for index, mask in MODE_MASKS.items() if mask in theorem]
+    if "first nontrivial H0 mode" in theorem:
+        matches = [0]
+    if len(matches) != 1 or matches[0] not in (0, 1, 2):
+        raise AssertionError("could not infer the certified quadratic mode")
+    rebuilt = assemble(artifact_dir, minor_index=matches[0])
     for key in (
         "theorem",
         "domain_reduction",
@@ -301,12 +370,19 @@ def main() -> None:
     subparsers = parser.add_subparsers(dest="command", required=True)
     assemble_parser = subparsers.add_parser("assemble")
     assemble_parser.add_argument("--artifact-dir", type=Path, default=DEFAULT_ARTIFACT_DIR)
+    assemble_parser.add_argument(
+        "--minor-index", type=int, choices=(0, 1, 2), default=0
+    )
     assemble_parser.add_argument("--output", type=Path, required=True)
     verify_parser = subparsers.add_parser("verify")
     verify_parser.add_argument("report", type=Path)
     arguments = parser.parse_args()
     if arguments.command == "assemble":
-        report = assemble(arguments.artifact_dir, output=arguments.output)
+        report = assemble(
+            arguments.artifact_dir,
+            minor_index=arguments.minor_index,
+            output=arguments.output,
+        )
     else:
         report = verify(arguments.report)
     print(json.dumps(report, indent=2, sort_keys=True))

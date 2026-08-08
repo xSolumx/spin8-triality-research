@@ -210,7 +210,7 @@ and
 and
 [unrestricted reconstruction and tangent theorem](docs/experiments/SPIN8_DIRAC_UNRESTRICTED_RECONSTRUCTION_RESULTS.md),
 and
-[first global adjacent-octet quadratic theorem](docs/experiments/SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md).
+[complete global adjacent-octet quadratic gate](docs/experiments/SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md).
 
 ### 5. Learning and compilation lineage
 
