@@ -100,7 +100,8 @@ Spin(8) Triality*.
 
 ### Paper C: Cayley-null D-optimal triality sensing
 
-**Exact result already present.** On the complete orthonormal balanced orbit,
+**Exact result already present.** On the complete orthonormal balanced
+information family,
 the information determinant depends only on the Cayley coordinate `c`:
 
 \[
@@ -146,17 +147,21 @@ Triality*.
 equivariant bilinear drive to be evaluated using two associative scan stages.
 For triality, independently scanned positive- and negative-spinor streams drive
 the vector stream through the invariant tensor while streaming only 24 scalars.
-A homogeneous 81-dimensional lift gives an exact closure proof.
+A homogeneous 81-dimensional lift closes the two source streams and their
+tensor product. The complete single-stage proof lift, including the downstream
+vector state, is 89-dimensional. The staged runtime materializes neither lift.
 
-**General theorem waiting to be stated.** For representations `U`, `V`, and
-`W` with an equivariant bilinear intertwiner
+**General theorem now stated and checked.** For representations \(U\), \(V\),
+and \(W\) with an equivariant bilinear intertwiner
 
 \[
 \beta:U\otimes V\longrightarrow W,
 \]
 
-independent affine scans on `U` and `V`, followed by an affine `W` scan driven
-pointwise by `beta(u_t,v_t)`, form a scan-compatible semidirect construction.
+independent affine scans on \(U\) and \(V\), followed by an affine \(W\) scan
+driven pointwise by \(\beta(u_t,v_t)\), form a scan-compatible triangular
+construction. An explicit homogeneous lift supplies an independent finite
+linear closure, and the SO(3) cross product supplies a nonexceptional control.
 The relevant object is a representation quiver or triangular semidirect scan;
 Spin(8) triality is an exceptional multiplicity-one instance.
 
@@ -392,23 +397,26 @@ normal-form list and introduce the additional continuous invariants explicitly.
 
 ### Target 2 -- certify the reconstructed second-residual bridge
 
-The planned reconstruction is now complete: two disjoint shared grids recover
-the same 6,664 exact coefficients, all global endpoint factors, a universal
-one-edge flag bridge, and an exact even/odd four-block decomposition.
+The reconstruction, boundary-kernel audit, and radical elimination are now
+complete. Two disjoint grids recover the same 6,664 exact coefficients. The
+new edge is locally stable along the complete orthonormal equality line, and
+the finite problem reduces exactly to four degree-six sign premises and four
+degree-twelve squared margins.
 
-1. Compute the equality kernels of the proved one-edge group-circulant on every
-   boundary stratum.
-2. Test whether the new odd first-order block annihilates those kernels. Any
-   failure is an exact local counterexample to the proposed inequality.
-3. If compatibility holds, factor the paired `4 x 4` principal minors by the
-   known boundary ideals.
-4. Attempt Schur-complement or boundary-adapted SOS certificates on the reduced
-   polynomials; do not require individual Walsh sectors to be nonnegative.
+1. Factor the \(y=1\) endpoint and its first inward derivative. It must recover
+   the proved one-edge theorem and the local boundary-kernel jet.
+2. Factor the independent \(y=0\) endpoint and its first inward derivative.
+3. Remove all proved boundary factors before attempting an interior
+   certificate.
+4. Try Bernstein/Duffy subdivision or constrained SOS on the remaining compact
+   polynomial gates. A negative native Bernstein coefficient rejects only that
+   certificate basis, not the inequality.
 5. Activate the final Cholesky residual only after this family is proved or
    falsified.
 
-**Success condition:** an exact theorem or exact counterexample for positivity
-of both paired group-circulants on the second-residual bridge.
+**Success condition:** an exact nonnegativity certificate or an exact rational
+counterexample for every degree-six and degree-twelve gate in the finite
+second-residual family.
 
 ### Target 2B -- globalize or falsify the equal-five local optimum
 
@@ -419,11 +427,15 @@ rationalized and checked exactly; absence of a challenger is not a proof.
 
 ### Target 3 -- benchmark the now-stated Intertwiner SchurScan theorem
 
-The affine theorem, finite lift, feedback obstruction, and SO(3) cross-product
-control are now complete. Next compare triality, SO(3), a learned generic
-bilinear map, and same-width direct memory on matched tasks and measured
-throughput. Spin(8) earns credit only for equivariant transport, sample/state
-efficiency, or extrapolation beyond the universal scan construction.
+The affine theorem, complete 89-dimensional lift, feedback obstruction, and
+SO(3) cross-product control are complete. The scan implementation now also has
+a linear-work ordered tree, gradient parity, dense CPU/CUDA timing, and a
+replicated long-sequence crossover against the earlier Hillis--Steele tensor
+program. These are eager-runtime results, not fused-kernel or model-quality
+claims. Next compare triality, SO(3), a learned generic bilinear map, and
+same-width direct memory on matched tasks. Spin(8) earns credit only for
+equivariant transport, sample/state efficiency, or extrapolation beyond the
+universal scan construction.
 
 ### Target 4 -- run the first language-shaped gate
 

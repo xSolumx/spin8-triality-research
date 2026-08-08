@@ -1,5 +1,10 @@
 # The Eight-Sector Amplitude Theorem
 
+> **Subsequent result (2026-08-07).** The amplitude theorem remains the exact
+> reconstruction foundation. Positivity on the complete frozen `h=0` family
+> is now certified by the
+> [two-edge triangular atlas](experiments/SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md).
+
 ## Scope
 
 This note proves the global algebraic form of the eight orientation sectors in

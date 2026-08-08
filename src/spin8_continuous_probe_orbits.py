@@ -389,6 +389,24 @@ def run() -> dict[str, object]:
                 "global isotropy; therefore each mixed principal isotropy is trivial."
             ),
         },
+        "proof_layers": {
+            "exact_repository_premises": (
+                "Invariant Jacobians, action ranks, stabilizer Lie algebras, "
+                "triality closure, and explicit trivial-isotropy witnesses are "
+                "computed in exact arithmetic."
+            ),
+            "classical_global_input": (
+                "For a smooth compact-group action, the principal stratum is "
+                "open and dense and every isotropy group contains a conjugate "
+                "of the principal isotropy group."
+            ),
+            "deduction": (
+                "The exact four-probe representatives saturate the invariant "
+                "codimension bound, fixing the principal stabilizer dimension. "
+                "The exact mixed five-probe free points force trivial principal "
+                "isotropy in each mixed allocation."
+            ),
+        },
         "claims": claims,
         "proof_boundary": (
             "The theorem concerns unit probes and shared Spin(8) action. It classifies "

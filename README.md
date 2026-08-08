@@ -1,21 +1,54 @@
 # Spin(8) Triality and Noncommutative State-Space Research
 
 This repository is a provenance-preserving research archive and executable
-theorem harness for noncommutative recurrence, shared-family learning, and
-\(\operatorname{Spin}(8)\) triality sensing. It is not a claim of a
+theorem harness. It contains five separable programs rather than one compound
+claim:
+
+1. [shared-family representation learning](programs/shared-family-learning/README.md);
+2. [triality memory and intertwiner scans](programs/triality-memory/README.md);
+3. [Spin(8) sensing and Cayley design](programs/spin8-sensing-and-design/README.md);
+4. [Spin(8) signed Dirac--Gram inequalities](programs/spin8-dirac-gram/README.md);
+5. [Spin(9) Dirac--Clifford sensing and exact design](programs/spin9-dirac-clifford-sensing/README.md).
+
+The [program index](programs/README.md) is the recommended scientific entry
+point. The [public release boundary](PUBLICATION_SCOPE.md) states what is and
+is not committed. A result in one program is not evidence for another without
+an explicit bridge. In particular, this repository does not claim a
 production-ready language model.
+
+The current claim statuses, replay tiers, and failure boundaries are defined in
+the [gate and boundary audit](docs/GATE_AND_BOUNDARY_AUDIT_2026-08-06.md).
+
+Reviewers of the strongest compact theorem can bypass the chronological
+archive and begin with the
+[balanced Cayley-spectrum referee package](referee/cayley-information-spectrum/README.md).
 
 Positive results, negative results, and partially passed gates are retained
 together. The central open mathematical target is the unrestricted signed
 Dirac--Gram inequality. The repository proves several constrained and boundary
 families, reduces the present two-edge obstruction to explicit polynomial
-positivity gates, and records numerical counterexample searches without
-promoting them to proof.
+positivity gates, certifies those gates on the complete frozen `h=0` family,
+reconstructs the unrestricted seven-variable margin exactly, and records
+broader numerical counterexample searches without promoting them to proof.
 
 ## Current status
 
 ### Proved
 
+- The maintained Spin(8) gamma system extends exactly to the nine symmetric
+  Clifford involutions of the real 16-dimensional Spin(9) spin module. Three
+  generic spinor probes have trivial common stabilizer, whereas a generic pair
+  retains \(\operatorname{SU}(3)\). The associated sensing problem factors
+  through a rank-three frame operator. Its linear information map has an exact
+  nine-dimensional vector-grade kernel, and the convex approximate-design
+  relaxation has complete optimizer family
+  \(3I_{16}/16+\sum_i v_iP_i\), \(\lVert v\rVert\leq3/16\). No exact
+  three-probe frame attains that relaxed optimum; its global optimum remains
+  open. The algebraic symmetric candidate is nevertheless now proved to be a
+  strict local optimum on the complete \(44\)-dimensional rank-three frame
+  stratum modulo Spin(9): its quotient Hessian decomposes as
+  \(V_1\oplus(V_5\otimes\mathbb R^2)\), and the exact coupled \(V_5\)
+  multiplicity block is negative definite.
 - One shared 28-dimensional bivector action generates the vector and both
   chiral eight-dimensional triality representations. The implementation checks
   the full \(\mathfrak{so}(8)\) brackets, center signatures, triality
@@ -33,7 +66,10 @@ promoting them to proof.
   \]
 
   Its Cayley family splits into fixed invariant blocks of dimensions
-  \(8+8+8+4\), explaining the determinant structurally.
+  \(8+8+8+4\), explaining the determinant structurally. On the orthonormal
+  balanced information family, the Cayley-null design also uniquely minimizes
+  \(\operatorname{tr}(I^{-1})\) and \(\operatorname{tr}(I^{-2})\), while
+  \(\operatorname{tr}I=35\) and \(\operatorname{tr}(I^2)=67\) remain constant.
 - The strengthened Dirac--Gram inequality
 
   \[
@@ -42,18 +78,55 @@ promoting them to proof.
   \]
 
   is proved on the signed-star, Cayley-null edge, and variable-Cayley one-edge
-  families.
+  families. On the signed-star family the inequality is strict in the open
+  parameter box, and its orientation-sensitive sector has the exact asymmetry
+  factor \((1-u)(v-w)(1-z)^3\). Its normalized equality set is completely
+  classified: \(z=1\) or \((u,v,w)=(0,0,0)\).
 - The second residual edge is locally stable along the orthonormal equality
   line. At finite edge size, its eight signed margins reduce exactly to four
-  degree-six conditions and four degree-twelve polynomial conditions.
+  degree-six conditions and four degree-twelve polynomial conditions. A
+  complete 34-leaf triangular Bernstein atlas now proves all eight margins
+  nonnegative on the frozen `h=0` two-edge family; interval-indeterminate
+  controls are replayed with exact integer arithmetic.
+- On the unrestricted seven-circle chart, triality symmetry reduces all
+  physical margins to sixteen exact seven-variable polynomial sectors. Two
+  disjoint rational grids reconstruct identical coefficient maps from
+  2,500,000 exact determinants, and 32 fresh rational points verify all 512
+  sector identities. The full tangent cone along the orthonormal equality line
+  is nonnegative; at its calibrated endpoint, every tangent-null cone lifts by
+  the strictly positive quartic \(128(p^2+q^2)^2\). This is an exact structural
+  and local theorem, not yet a global positivity proof. A separate exact
+  boundary-supported Bernstein decomposition proves globally that the trivial
+  Fourier amplitude dominates the Euclidean norm of all fifteen nontrivial
+  modes. The proof isolates the only four native-basis obstructions onto two
+  identical three-variable faces, certifies those faces in triangular charts,
+  and leaves a 588,245-control nonnegative remainder. This controls the RMS
+  orientation deviation on the complete seven-cube, but does not yet force
+  every individual orientation margin to be nonnegative. A Walsh-convolution
+  bound additionally proves the first four elementary-symmetric orientation
+  invariants nonnegative, leaving the invariant hierarchy
+  \(e_5,\ldots,e_{16}\) open. A complementary exact theorem closes the
+  complete four-variable face \(u_a=u_h=0,\ c^2=1\): its three surviving
+  nontrivial Walsh modes form a Klein-four block, and every principal minor
+  of the associated group-circulant matrix is nonnegative. This is a boundary
+  theorem, not the unrestricted seven-variable result.
+- On the adjacent five-variable face \(u_a=0,\ c^2=1\), eight surviving
+  sectors form \((\mathbb Z/2\mathbb Z)^3\). An exact subgroup-chain Schur
+  reduction splits the problem into two commuting Klein-four blocks. The
+  complete first block is now proved positive semidefinite, and the scalar
+  minor of the second block follows exactly from the global Fourier-energy
+  theorem. The second block's quadratic, cubic, and determinant gates remain
+  open, so the full adjacent face is not yet a theorem.
 - A triangular recurrence driven by an equivariant bilinear intertwiner has an
   exact finite lift, an associative staged scan, and fixed recurrent state.
   \(\operatorname{Spin}(8)\) triality is the exceptional instance studied here.
 
 ### Numerical and empirical evidence
 
-- A float64 CUDA campaign tested 851,968 interior and boundary points of the
-  finite two-edge polynomial gates without finding a violation.
+- Before the exact atlas was constructed, a float64 CUDA campaign tested
+  851,968 interior and boundary points of the finite two-edge polynomial gates
+  without finding a violation. That historical screen is now supporting
+  falsification evidence, not the theorem certificate.
 - A separate ten-seed search tested 860,160 five-query designs and 1,680
   gradient starts without finding a global equal-five-query challenger.
 - The historical SSM experiments verify streaming recurrence, scan/recurrent
@@ -65,8 +138,6 @@ substitutes for the open global proofs or matched large-scale benchmarks.
 
 ### Still open
 
-- global nonnegativity of the finite two-edge degree-six and degree-twelve
-  polynomial families;
 - the unrestricted seven-invariant signed Dirac--Gram inequality;
 - global equal-five-query D-optimality over all allocations and frames;
 - classification of exceptional nonprincipal five-probe strata;
@@ -89,6 +160,8 @@ Read:
 [foundations](docs/FOUNDATIONS.md),
 [triality algebra](docs/experiments/SPIN8_TRIALITY_ALGEBRA_RESULTS.md), and
 [Intertwiner SchurScans](docs/experiments/INTERTWINER_SCHURSCAN_THEOREM.md).
+The [work-efficient scan benchmark](docs/experiments/INTERTWINER_SCHURSCAN_BENCHMARK_RESULTS.md)
+separates algebraic work, dependency depth, memory, and eager CPU/CUDA timing.
 
 ### 2. Identifiability and shared-family learning
 
@@ -120,16 +193,22 @@ Read:
 
 The exact proof program uses common triality symmetry, rational reconstruction,
 rank-predicted boundary factors, and Bernstein/Duffy positivity certificates.
-The one-edge family is complete. For the second edge, local stability and the
-radical-to-polynomial reduction are proved; global polynomial positivity
-remains the next exact gate.
+The one-edge and frozen `h=0` two-edge families are complete. The latter uses a
+34-leaf rational-circle triangular atlas, outward Bernstein enclosures, and
+exact integer replay for every cancellation control. The final Cholesky
+residual has now been reconstructed exactly in sixteen sectors; the remaining
+gap is a domain-wide sign certificate, not an unknown polynomial identity.
 
 Read:
-[current synthesis](docs/ITERATION_NOTE_2026-08-06.md),
+[current synthesis](docs/DIRAC_GRAM_TWO_EDGE_STATUS_2026-08-06.md),
 [one-edge theorem](docs/experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md),
 [two-edge local theorem](docs/experiments/SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md),
 and
-[finite polynomial reduction](docs/experiments/SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md).
+[finite polynomial reduction](docs/experiments/SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md),
+and
+[two-edge atlas theorem](docs/experiments/SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md),
+and
+[unrestricted reconstruction and tangent theorem](docs/experiments/SPIN8_DIRAC_UNRESTRICTED_RECONSTRUCTION_RESULTS.md).
 
 ### 5. Learning and compilation lineage
 
@@ -151,9 +230,14 @@ Read:
 |---|---|
 | Non-specialist | [The Mathematics in Plain Language](docs/MATHEMATICS_IN_PLAIN_LANGUAGE.md) |
 | Mathematician | [Triality Information Geometry manuscript](docs/PAPER_DRAFT_TRIALITY_INFORMATION_GEOMETRY.md) |
+| Publication reader | [Cayley Spectrum paper](docs/manuscripts/CAYLEY_INFORMATION_SPECTRUM.md) and [Signed-Star paper](docs/manuscripts/SIGNED_STAR_DIRAC_GRAM.md) |
 | Sequence-model researcher | [Foundations](docs/FOUNDATIONS.md) and [Research Map](docs/RESEARCH_MAP.md) |
 | Reproducer or reviewer | [Reproducibility](docs/REPRODUCIBILITY.md) and [Artifact Manifest](ARTIFACTS.sha256) |
 | Future contributor | [Mathematical Writing Standard](docs/MATHEMATICAL_WRITING_STANDARD.md) |
+| Manuscript reviewer | [Full Manuscript Audit](docs/MANUSCRIPT_AUDIT_2026-08-06.md) |
+
+For a complete, status-labelled tour of the documentation, begin with the
+[Documentation Guide](docs/README.md).
 
 ## Repository map
 
@@ -161,10 +245,13 @@ Read:
 |---|---|
 | [src](src/README.md) | Algebra, recurrence, exact-certificate, and falsifier harnesses |
 | [tests](tests/) | Foundational, theorem, streaming, and documentation contracts |
+| [Documentation Guide](docs/README.md) | Reader paths, claim-status legend, and logically grouped manuscripts |
+| [Manuscripts](docs/manuscripts/README.md) | Self-contained theorem papers separated from the chronological archive |
 | [Research Map](docs/RESEARCH_MAP.md) | Detailed research lineage and interpretation boundaries |
 | [Experiment Index](docs/EXPERIMENT_INDEX.md) | Every preregistration, result, correction, and negative finding |
 | [Research Audit and Next Strategy](docs/RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md) | Paper-scale contributions, correction ledger, and next strategy |
 | [Literature Audit](docs/LITERATURE_AUDIT_2026-08-06.md) | Primary-source literature audit and baseline requirements |
+| [Provenance and History](docs/PROVENANCE_AND_HISTORY.md) | Extraction snapshot, post-extraction amendments, and historical-reading policy |
 | [artifacts](artifacts/README.md) | Raw outputs retained for reproducibility |
 | [Artifact Manifest](ARTIFACTS.sha256) | SHA-256 manifest for published artifacts |
 | [Provenance](PROVENANCE.json) | Original extraction boundary and source hashes |
@@ -186,10 +273,12 @@ lineage.
 
     python -m unittest discover -s tests -p "test_*.py"
     python tools/audit_math_docs.py
+    python tools/verify_artifact_manifest.py
 
-The maintained suite currently contains 175 passing tests. The latest bounded
-run used six CPU cores, peaked at 3.962 GiB of process-tree resident memory, and
-completed without crossing the 15 GiB watchdog. Read
+The maintained suite currently contains 188 passing tests. The latest bounded
+run used six CPU cores, took 375.8 seconds including supervision, peaked at
+4.074 GiB of process-tree resident memory, and completed without crossing the
+15 GiB watchdog. Read
 [Reproducibility](docs/REPRODUCIBILITY.md) before comparing a rerun with a
 frozen artifact.
 
@@ -202,9 +291,10 @@ The archive maintains four interpretation boundaries:
 3. a theorem on a constrained family is not the unrestricted theorem;
 4. a mechanism-level SSM result is not a competitive language-model result.
 
-The next mathematical task is endpoint factorization and staged positivity for
-the finite two-edge polynomial gates. Language-model scale-up remains
-downstream of the missing matched baselines and mechanism gates.
+The next mathematical task is a covariance-orbit reduction for the final
+Cholesky residual in the unrestricted Dirac--Gram inequality. Language-model
+scale-up remains downstream of the missing matched baselines and mechanism
+gates.
 
 ## Provenance and license
 

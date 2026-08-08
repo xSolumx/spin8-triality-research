@@ -137,7 +137,7 @@ five-probe move.
 
 ## Triality and exceptional stabilizers
 
-Katz--Shnider proves that the Cayley form has `Spin(7)` stabilizer. McRae gives
+Katz and Shnider prove that the Cayley form has `Spin(7)` stabilizer. McRae gives
 explicit triality bases and the intersection picture producing `G2`. These
 sources support the archive's stabilizer interpretation, but the local theorem
 does not rely on analogy: the maintained harness checks action ranks, closure,
@@ -213,9 +213,15 @@ the exact mathematics:
 
 ## Ordered next strategy
 
-1. Finish the preregistered second-residual boundary-kernel compatibility test.
-   It can give an exact theorem or exact counterexample without another huge
-   determinant expansion.
+1. The frozen `h=0` two-edge gate is now complete. For the unrestricted gate,
+   use the exact sixteen-sector reconstruction rather than regenerating
+   determinants. The local obstruction has been isolated at the calibrated
+   endpoint: its complete weighted leading form is positive definite. The two
+   first-order coupled modes also satisfy an exact global Bernstein inequality
+   on \(0\le c^2\le2/3\). The next certificate must combine that low-Cayley
+   core, a boundary-adapted endpoint blow-up, and a sign bound for the remaining
+   thirteen higher-order sectors. Exact reconstruction, local positivity,
+   domain-wide positivity, and CUDA non-violation remain separate layers.
 2. For the equal-five-query problem, quotient the 35-dimensional probe tangent
    space by the exact 28-dimensional orbit and use the seven negative Hessian
    eigendirections to construct a rational finite-deformation atlas. Search
@@ -227,6 +233,18 @@ the exact mathematics:
 4. In ML experiments, compare Intertwiner SchurScan against p-BIM,
    DeltaProduct, direct slots, Gated DeltaNet-2/Erase-then-Delta, and a generic
    bilinear intertwiner at matched state and compute.
+
+There is also a serious analytic alternative to a purely polynomial atlas.
+The target is a homogeneous determinant ratio, and the operator-scaling /
+Brascamp--Lieb literature supplies geodesically convex determinant-capacity
+functionals. The local information map is not yet proved to be a completely
+positive map of the whitening Gram matrix, because whitening mixes probes that
+belong to different triality views. Therefore operator scaling is a research
+route, not a cited proof. The precise next question is whether triality enlarges
+the state space so that the mixed-view whitening becomes a positive linear map
+with the required determinant weight three. A successful lift would replace a
+large box certificate by a structural capacity theorem; failure would explain
+why the remaining sector interactions are genuinely exceptional.
 
 ## Primary sources
 
@@ -251,6 +269,10 @@ the exact mathematics:
 - [Terzic et al.: Structured Sparse Transition Matrices / PD-SSM](https://papers.neurips.cc/paper_files/paper/2025/file/77b830c18836a9b2e1395a4936dd687a-Paper-Conference.pdf)
 - [Garibaldi, Guralnick: Generic Stabilizers for Simple Algebraic Groups](https://arxiv.org/abs/2105.09486)
 - [Hiratani, Sompolinsky: Optimal Quadratic Binding](https://arxiv.org/abs/2204.07186)
+- [Farouki: The Bernstein polynomial basis -- a centennial retrospective](https://doi.org/10.1016/j.cagd.2012.03.001)
+- [Garg, Gurvits, Oliveira, Wigderson: Brascamp--Lieb inequalities via operator scaling](https://arxiv.org/abs/1607.06711)
+- [Vishnoi, Yildiz: Geodesically convex formulations for the Brascamp--Lieb constant](https://arxiv.org/abs/1804.04051)
+- [Heijmans-Kuryatnikova, Vera, Zuluaga: Degree bounds for Positivstellensaetze on semialgebraic sets](https://arxiv.org/abs/2605.15821)
 
 The bibliography is a targeted primary-source audit of the local claims, not a
 claim to exhaust every paper containing the words `Spin(8)`, `SSM`, or

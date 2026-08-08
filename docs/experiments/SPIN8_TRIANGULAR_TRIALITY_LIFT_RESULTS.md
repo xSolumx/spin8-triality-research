@@ -7,9 +7,12 @@ Date executed: 2026-08-03. Gates were frozen in
 ## Result
 
 Every frozen algebraic and scan gate passed. The 24-scalar staged scan was a
-post-gate optimization derived after observing that the 81D lift is redundant
-at recurrent inference; its parity number is therefore an exploratory
-implementation result, not a preregistered gate.
+post-gate optimization derived after observing that the 81D source/binding lift
+is redundant at recurrent inference; its parity number is therefore an
+exploratory implementation result, not a preregistered gate. The 81D lift does
+not contain the downstream vector state. The later general theorem supplies
+the complete 89D lift `[1,s+,s-,s+ tensor s-,v]` for the full triangular
+recurrence.
 
 | Diagnostic | Result |
 |---|---:|
@@ -39,9 +42,11 @@ b_t[i] = s-_t^T rho[i] s+_t
 
 is bilinear in the original states. It has two exact parallel realizations.
 
-1. **Single lifted scan.** Carry homogeneous coordinates
+1. **Single lifted source/binding scan.** Carry homogeneous coordinates
    `[1,s+,s-,vec(s+ tensor s-)]`. Each token is one 81x81 linear map, so
-   ordinary ordered matrix multiplication gives an associative scan.
+   ordinary ordered matrix multiplication gives an associative scan, and the
+   triality binding is a linear readout. Adding the recurrent vector stream to
+   this proof state produces the complete 89D lift.
 2. **Staged scan.** Scan the two independent spinor streams first, evaluate
    `b_t` pointwise, then use it as the drive of a vector-state affine scan.
    This uses two logarithmic-depth scan stages and retains only `s+`, `s-`, and

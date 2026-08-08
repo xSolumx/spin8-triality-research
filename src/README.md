@@ -18,7 +18,11 @@ module name. Editable installation adds this directory to the Python path.
   proving universal four-probe insufficiency and generic mixed five-probe
   global identifiability.
 - `intertwiner_schurscan.py`: generic triangular bilinear scan, finite
-  homogeneous lift, SO(3) control, and cyclic-feedback degree obstruction.
+  homogeneous lift, ordered linear-work scan, SO(3) control, and
+  cyclic-feedback degree obstruction.
+- `benchmark_intertwiner_schurscan.py`: correctness-qualified eager CPU/CUDA
+  benchmark separating composition work, dependency depth, memory, and wall
+  time. It is not a fused-kernel benchmark.
 - `spin8_active_sensing.py`: information operator and sensor metrics.
 - `spin8_joint_sensor_retraction.py`: joint sensor-family continuation.
 - `spin8_cayley_spectrum.py`: exact Cayley spectrum certificates.
@@ -79,6 +83,21 @@ module name. Editable installation adds this directory to the Python path.
   polynomial gates, plus a full-six-cube CUDA falsifier.
 - `spin8_multiplicity_gauge.py`: exact covariance and `O(m)` gauge theorem for
   repeated probes in the same triality representation.
+
+## Spin(9) Dirac--Clifford sensing
+
+- `spin9_dirac_clifford.py`: nine-involution Clifford system, Hopf identities,
+  and exact one/two/three-probe rank witnesses.
+- `spin9_three_spinor_conditioning.py`: exact symmetric-curve spectrum,
+  determinant, feasible interval, and algebraic curve optimum.
+- `spin9_frame_operator.py`: frame-operator factorization, nine-dimensional
+  information gauge, approximate-design optimum, and boundary order.
+- `spin9_three_spinor_symmetry.py`: exact interior curve stabilizer and
+  \(2V_7\oplus2V_5\oplus4V_3\) branching.
+- `spin9_grassmann_slice.py`: exact \(V_1\oplus V_5\) normal-slice theorem.
+- `spin9_local_hessian.py`: exact quotient projection and coupled
+  \(V_5\otimes\mathbb R^2\) Hessian certificate proving strict local
+  D-optimality modulo Spin(9).
 
 ## Blind action and addressing line
 

@@ -26,7 +26,9 @@ The balanced \(\operatorname{Spin}(8)\) arrangement has the information score
 The determinant is a local volume measure. A large value means that nearby
 transformations produce clearly distinguishable measurements. A zero value
 means that at least one infinitesimal direction of motion is completely
-invisible.
+invisible. This is a local conditioning statement; by itself it does not
+describe finite-noise estimation error or guarantee that an optimizer will
+find the correct transformation.
 
 The value \(81/1024\) now has a direct structural explanation. At the balanced
 point, the 28-dimensional information operator separates into four independent
@@ -49,6 +51,17 @@ symmetry, so their equality is forced rather than accidental. At either
 calibrated endpoint of the Cayley parameter, one eigenvalue in each of three
 blocks vanishes. This is why the observation map loses exactly three ranks.
 
+Why is one Cayley number enough? A classical orbit theorem says that, after
+the singleton probe is fixed, the underlying oriented four-plane is classified
+by one signed Cayley coordinate \(c\in[-1,1]\). The repository then checks
+exactly that the stabilizer of the four-plane acts as the full \(SO(4)\) inside
+that plane, so dividing the four probes into two orthogonal pairs introduces no
+second continuous coordinate. Reversing one pair changes \(c\) to \(-c\)
+without changing the information operator. The observable family is therefore
+parameterized by \(z=c^2\in[0,1]\). The global orbit classification is a cited
+classical theorem; the split-isotropy and information calculations are the
+exact local contributions of this repository.
+
 ## Why perpendicular probes are the natural benchmark
 
 Let the four probe vectors be the rows of \(X\). Their Gram matrix is
@@ -69,10 +82,13 @@ information score after the natural volume penalty is included:
 \det I(X)\leq \det(XX^{\mathsf T})^3\det I(Q).
 \]
 
-Here \(Q\) is the orthonormal frame obtained from \(X\) by removing this purely
-geometric distortion. The exponent 3 is not an adjustable penalty: it is the
-order forced by the rank-loss geometry when one probe becomes redundant and
-three independent observation directions disappear.
+When the four rows are independent, \(Q=G^{-1/2}X\) is the orthonormal frame
+obtained from \(X\) by removing this purely geometric distortion. On the
+singular boundary \(G^{-1/2}\) is undefined; the exact theorem families use the
+equivalent polynomial inequality and its continuous boundary extension. No
+pseudoinverse is being hidden. The exponent 3 is not an adjustable penalty: it
+is the order forced by the rank-loss geometry when one probe becomes redundant
+and three independent observation directions disappear.
 
 ## The repeated-sensor gauge
 
@@ -102,6 +118,12 @@ The inequality is proved for three increasingly large continuous families:
 2. the Cayley-null edge family, with four active correlations;
 3. the variable-Cayley one-edge family, which keeps those four correlations
    while allowing the Cayley angle to vary.
+
+For the first family, the equality cases are now known exactly. After the
+natural Gram-volume factor is divided out, equality occurs only when the star
+is orthonormal or when the Cayley calibration reaches its singular endpoint.
+Every other signed-star arrangement loses a strictly positive amount of
+information relative to the bound.
 
 The proof layers are described later. In brief, rational reconstruction and
 off-grid determinant identities establish the target polynomials, while
@@ -361,10 +383,69 @@ L(y)^2-(1-y^2)R(y)^2\geq0.
 
 The first expression has degree six in \(y\); the second has degree twelve.
 Thus a nested-radical, eight-sign problem has become eight ordinary polynomial
-sign problems. This conversion is an exact algebraic identity. A GPU search
-over 851,968 interior and boundary samples found no negative value, but the
-global signs of those polynomials remain open until an exact positivity
-certificate is built.
+sign problems. This conversion is an exact algebraic identity. A historical
+GPU search over 851,968 interior and boundary samples found no negative value.
+The sign question on that frozen two-edge family has since been settled by a
+34-region exact Bernstein atlas, including exact integer checks wherever
+floating-point interval bounds were inconclusive.
+
+The last residual correlation has also been incorporated algebraically. The
+full problem becomes sixteen ordinary coefficient maps in seven squared
+variables. Two completely separate rational grids reconstructed the same maps
+from 2.5 million exact determinants, and 32 new rational points checked all
+sixteen maps again. This proves that the formulas are the right formulas; it
+does not yet prove that every one has the right sign everywhere.
+
+Near the perpendicular configuration, however, the sign is now understood
+exactly. The leading change is nonnegative for every Cayley angle. At the one
+endpoint where that leading term becomes flat, the next term is
+
+\[
+128(p^2+q^2)^2,
+\]
+
+which is positive unless there was no movement at all. A more complete zoom
+that includes every way of approaching the flat endpoint becomes a sum of
+plain squares. In addition, an exact 588,245-coefficient check proves that the
+main amplitude is at least as large as the combined root-mean-square size of
+all fifteen fluctuating modes throughout the entire seven-dimensional box.
+The proof had to isolate four troublesome coefficients onto two small boundary
+faces and certify those faces in coordinates adapted to their triangular
+shape. Equivalently, the sixteen orientation scores cannot fluctuate too much
+on average. One bad orientation can still hide inside an average bound,
+however, so this is not yet the unrestricted inequality.
+
+There is one more exact consequence. Put the sixteen orientation scores into
+one polynomial whose roots are their negatives. The first four coefficients
+of that polynomial are now proved nonnegative. The third coefficient does not
+need a four-million-term expansion: a convolution inequality for the sixteen
+Walsh sign patterns bounds all 35 cubic interactions at once. Twelve
+coefficients remain, so this is a real reduction of the open problem rather
+than a claim that the open problem has disappeared.
+
+The most dangerous-looking endpoint now has a further exact safeguard. On one
+complete four-variable boundary, only three fluctuation patterns survive.
+Those patterns behave like the three nonzero moves in a four-state toggle
+system. Instead of checking sixteen square-root formulas separately, the proof
+puts the four distinct scores into one symmetric \(4\times4\) matrix. It then
+checks every principal minor of that matrix exactly. All are nonnegative, so
+the matrix has no negative eigenvalue and none of the sixteen scores can be
+negative there. This settles the whole boundary face, but not neighboring
+faces or the seven-dimensional interior.
+
+The neighboring boundary is harder but now partly understood. Eight
+fluctuation patterns survive there, and their on/off labels form a three-bit
+toggle system. Splitting on one bit turns its (8\times8) score matrix into
+two coupled copies of the four-state matrix above. An exact change of basis
+reduces the question to two smaller matrices. The first smaller matrix is now
+proved nonnegative throughout the whole five-variable boundary. The first
+scalar test for the second matrix is also proved by rewriting it as the global
+average-energy margin plus explicit squares. Its larger determinant tests are
+still open. There is one more exact foothold: on a particular corner shared by
+all three quadratic tests, each test becomes the same perfect square and is
+therefore automatically nonnegative. In ordinary language: the neighboring wall has been reduced to a
+much smaller lock, and half of that lock is open, but the door itself has not
+yet been proved safe.
 
 ## Why the crashes did not count as evidence
 
@@ -374,12 +455,114 @@ completed stage can be checked and reused after a restart. The GPU is used only
 to search quickly for counterexamples. The final signs came from exact CPU
 integer arithmetic.
 
+## What Spin(9) changes
+
+The Spin(8) triality programme uses three different eight-dimensional views.
+The Spin(9) extension asks a different question: how much can be learned from
+several probes in one faithful sixteen-dimensional spinor view?
+
+Nine symmetric matrices \(P_0,\ldots,P_8\) satisfy the exact rule
+
+\[
+P_iP_j+P_jP_i=2\delta_{ij}I.
+\]
+
+This is the finite matrix form of a nine-dimensional Clifford algebra. Three
+generic spinors are enough to identify a shared Spin(9) transformation; two
+are not, because a continuous \(\operatorname{SU}(3)\) ambiguity remains.
+
+The newest reduction says that the information carried by several probes does
+not remember the probes one by one. It remembers only their combined
+"shadow"
+
+\[
+M=\sum_rs_rs_r^{\mathsf T}.
+\]
+
+This \(16\times16\) matrix is called the frame operator. For three unit probes
+it is positive, has trace three, and has rank at most three. Conversely, every
+matrix with exactly those properties can be built from three unit probes.
+The global design problem is therefore a precise low-rank matrix problem, not
+an unstructured search over 48 probe coordinates.
+
+There is also an exact blind spot. Symmetric \(16\times16\) matrices split into
+three Clifford pieces of sizes
+
+\[
+1+9+126=136.
+\]
+
+The information operator sees the one-dimensional scalar piece and all 126
+four-form directions, but it cannot see the nine vector directions at all.
+This is a structural gauge, not a numerical failure.
+
+The 126 visible numbers are not an arbitrary list. They fit together as a
+single geometric object called a four-form. That four-form acts on the 36
+possible rotation planes in nine dimensions, and the full information matrix
+is exactly one quarter of
+
+\[
+\text{trace of }M\times\text{identity}
+\;-\;
+\text{four-form action}.
+\]
+
+In other words, the determinant problem is really a spectral problem: choose
+an admissible four-form so that its 36 plane-action eigenvalues stay as evenly
+spread away from the trace threshold as possible. This is the Spin(9)
+counterpart of letting the Dirac/Clifford algebra reveal the correct
+coordinates before attempting a large polynomial proof.
+
+If the rank-three restriction is removed, the relaxed problem can be solved
+completely. The best possible information matrix is perfectly uniform:
+
+\[
+I=\frac34I_{36},
+\qquad
+\det I=\left(\frac34\right)^{36}.
+\]
+
+Every relaxed optimizer has rank eight or sixteen. Since a frame made from
+three probes has rank at most three, no exact three-probe design can attain
+that ideal score. This proves that a genuine exact-design gap exists. It does
+not yet identify the best rank-three point; that final global optimization is
+still open.
+
+The edge of this problem is unusually sharp. Two generic spinors leave eight
+directions invisible. If a genuinely new third probe is turned on with small
+strength \(\varepsilon\), each missing observation amplitude grows like
+\(\varepsilon\). Information is a squared amplitude, and there are eight
+missing directions, so
+
+\[
+\det I(\varepsilon)
+=C\varepsilon^{16}+\text{higher-order terms},
+\qquad C>0.
+\]
+
+The power sixteen is therefore forced by rank loss; it is not a curve fitted
+to numerical data.
+
+The best symmetric three-probe arrangement is now known to be a genuine
+strict local peak, not merely the best point on a specially chosen curve. The
+full nearby problem has 44 directions. Thirty-three only rotate the whole
+configuration and cannot change the score. The remaining eleven split into
+one curve direction and two five-direction packs. The two packs can interact,
+so checking each one alone would be unsafe. Exact arithmetic computes their
+coupled \(2\times2\) curvature matrix and proves both of its eigenvalues are
+negative. Therefore every sufficiently small change that is not just a shared
+Spin(9) rotation lowers the information determinant.
+
+This is a local theorem. A distant, differently shaped three-probe design
+could still have a larger score; excluding that possibility is the remaining
+global problem.
+
 ## Honest scoreboard
 
 | Claim | Status |
 |---|---|
-| Balanced sensor invariants \(81/1024\), \(35\), and \(43\) | Computed by symbolic identity |
-| Five generic multiview probes identify 28 local action dimensions | Proved locally by full differential rank |
+| Balanced sensor invariants \(81/1024\), \(35\), and \(43\) | Proved on the complete orthonormal balanced information family by exact block identities plus the classical orbit classification |
+| Generic mixed-view five-probe tuples have trivial shared stabilizer | Proved from exact witnesses and invariant ranks plus the compact principal-orbit theorem; exceptional tuples are not all classified |
 | Displayed five-probe tuple has trivial stabilizer | Proved |
 | Displayed four-probe subset has an \(\mathfrak{su}(2)\) stabilizer | Proved |
 | All multiview coordinate four/five-probe closures follow \(\mathbb F_2^5\) span | Exhaustively verified over the finite coordinate atlas |
@@ -388,6 +571,8 @@ integer arithmetic.
 | Generic triangular bilinear drive has a finite exact staged scan | Constructively proved |
 | Signed star Dirac--Gram inequality | Proved |
 | Cayley-null four-correlation edge inequality | Proved |
+| Complete \(u_a=u_h=0,c^2=1\) endpoint face | Proved by an exact Klein-four matrix principal-minor certificate |
+| Adjacent \(u_a=0,c^2=1\) endpoint face | Exact eight-sector reduction; first Schur block and scalar second-block minor proved; higher second-block minors open |
 | Removing residual correlations is always helpful | Disproved |
 | Variable-Cayley one-edge inequality | Proved |
 | Repeated-view covariance gauge | Proved by symbolic identity |
@@ -396,17 +581,27 @@ integer arithmetic.
 | Universal two-edge flag law and paired four-block reduction | Proved by symbolic identity |
 | Two-edge stability transverse to the orthonormal equality line | Proved |
 | Finite two-edge radical-to-polynomial reduction | Proved |
-| Degree-six and degree-twelve finite two-edge gates are globally nonnegative | Open; no violation in 851,968 sampled points |
+| Degree-six and degree-twelve finite two-edge gates are globally nonnegative | Proved on the complete frozen `h=0` family by a 34-leaf triangular Bernstein atlas with exact integer fallbacks |
 | Balanced five-query sensor is a strict local optimum after removing rotations | Proved |
-| All 35 one-camera coordinate-circle deformations | Proved |
+| All 35 one-probe coordinate-circle deformations | Proved |
 | Equal balanced sensor is best with fractional measurement weights | Disproved by exact counterexample |
 | Eight-probe isotropic approximate design is globally best | Proved |
 | 24 coloured sensors are spectrally optimal as an ordinary subspace packing | Disproved by exact comparison |
 | 24 coloured sensors attain the chordal simplex bound | Disproved by exact comparison |
 | 24 coloured sensors are chordally optimal | Open; missing the bound is not a proof |
-| Variable-Cayley two-edge inequality | Open; block positivity remains |
+| Variable-Cayley two-edge inequality | Proved on the complete frozen `h=0` family by an exact 34-region atlas |
+| Full seven-variable margin formulas | Reconstructed exactly in sixteen symmetry sectors from two disjoint grids and checked at 32 new exact points |
+| Full tangent cone and singular-endpoint weighted leading form | Proved nonnegative; the endpoint form is positive away from its origin |
+| Two dangerous coupled modes for (0\le c^2\le2/3) | Controlled by an exact 588,245-coefficient Bernstein certificate |
 | Unrestricted seven-parameter inequality | Open |
 | Global best possible five-query design | Open |
+| Three generic Spin(9) spinors identify a shared action | Proved by a stabilizer-chain argument with independent exact rank witnesses |
+| Spin(9) frame-operator reduction and nine-dimensional information gauge | Proved |
+| Spin(9) information as a four-form spectrum on rotation planes | Proved |
+| Spin(9) convex approximate-design optimum | Proved; unattainable by three exact probes |
+| Spin(9) transverse two-to-three-probe boundary order | Proved to be sixteen |
+| Symmetric Spin(9) three-spinor candidate is a strict local optimum on the full rank-three frame space | Proved exactly modulo Spin(9); global optimality remains open |
+| Global best possible exact three-spinor design | Open |
 
 The central methodological result is a proof strategy rather than a single
 determinant value: exploit triality symmetry before expanding signs, use exact

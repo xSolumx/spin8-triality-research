@@ -54,10 +54,12 @@ the existing affine scan. The exact scan-compatible form is triangular:
 2. bind their prefix states pointwise with the triality tensor;
 3. use the result as the drive of a downstream vector scan.
 
-`spin8_triality_lift.py` proves the construction two ways: an 81D homogeneous
-single-scan lift and a practical two-stage scan with a 24-scalar streaming
-cache. It also exposes the obstruction: two-way feedback causes unbounded
-polynomial-degree growth.
+`spin8_triality_lift.py` proves closure of the two source streams and their
+binding with an 81D homogeneous lift, then verifies the practical two-stage
+scan with a 24-scalar streaming cache. The complete homogeneous lift including
+the downstream vector state is 89D in `intertwiner_schurscan.py`. The harnesses
+also expose the obstruction: two-way feedback causes unbounded polynomial-degree
+growth.
 
 ## The strongest combined frontier
 

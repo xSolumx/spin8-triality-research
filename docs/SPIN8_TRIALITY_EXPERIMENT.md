@@ -61,7 +61,9 @@ An exact triangular triality coupling is now implemented in
 `spin8_triality_lift.py`. Two independent chiral-spinor affine streams are
 scanned first, their `S+ x S- -> V` binding is evaluated pointwise, and the
 bound vector drives a second affine scan. A homogeneous 81D lift proves
-single-scan closure, while the practical staged implementation retains only 24
+single-scan closure of the two spinor streams and their bilinear binding. The
+complete lift including the downstream vector state is 89D, while the practical
+staged implementation retains only 24
 streaming scalars and matches direct recurrence to `4.27e-14`. Two-way binding
 feedback is not claimed: its generic polynomial degree grows without bound and
 breaks fixed-dimensional affine closure. See
@@ -559,9 +561,12 @@ See `experiments/SPIN8_JOINT_SENSOR_RETRACTION_PREREGISTRATION.md` and
 
 The first part of that proof is now complete. Fixing the singleton query by
 `Spin(8)` gauge identifies the other four probes with a four-frame in the common
-eight-real representation of its `Spin(7)` stabilizer. The unique invariant
-Cayley four-form supplies the remaining orbit coordinate `c` after the Gram
-matrix is fixed. Exact symbolic elimination over the unit circle gives
+eight-real representation of its `Spin(7)` stabilizer. A classical
+cohomogeneity-one theorem classifies the oriented four-plane by its signed
+Cayley coordinate. The maintained exact isotropy audit separately proves that
+the internal `2+2` split adds no continuous invariant; pair reflections then
+identify `c` with `-c`. Exact symbolic elimination over the resulting unit
+circle gives
 
 \[
 \det I_c=\frac{(1-c^2)^3(9-c^2)^2}{1024}.
@@ -609,6 +614,36 @@ Cholesky residual edges remain absent.
 The balanced degree-28 information family also has a fixed `8 + 8 + 8 + 4`
 invariant coordinate-block split. The two middle blocks are exactly conjugate,
 and their balanced determinant contributions are `9/16` each; together with
-`1/4` and `1`, this explains `81/1024` structurally. See
+`1/4` and `1`, this explains `81/1024` structurally. The exact local and
+classical global proof layers are separated in
+`CAYLEY_FLAG_QUOTIENT_AUDIT_2026-08-06.md`. See
 `experiments/SPIN8_CAYLEY_BLOCK_THEOREM.md` and
 `experiments/SPIN8_DIRAC_ONE_EDGE_RESULTS.md`.
+
+### 2026-08-06 current-status addendum
+
+The paragraph above beginning “The next mathematical target” records the
+frontier at the time it was written. It is not the current roadmap. Subsequent
+exact work proves more of the proposed bridge without proving the unrestricted
+theorem.
+
+For the second Cholesky residual edge, the complete orthonormal equality line
+is locally stable: the only nontrivial quadratic tangent block has determinant
+
+\[
+4(c^2-9)^3(c^2-1)>0,
+\qquad 0\leq c^2<1,
+\]
+
+and the degenerate endpoint is lifted positively at fourth order. At finite
+edge size, the paired radical margins reduce exactly—without dropping the
+necessary sign premise—to four degree-six polynomials and four degree-twelve
+polynomials on a compact interval. A float64 CUDA sweep found no violation in
+851,968 samples, but that sweep is a falsifier, not a positivity proof.
+
+The current theorem gate is therefore the exact endpoint and interior
+nonnegativity of those finite polynomials. The final residual edge, the
+unrestricted Gram--Cayley inequality, and global five-query D-optimality remain
+open. See
+`experiments/SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md` and
+`experiments/SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md`.

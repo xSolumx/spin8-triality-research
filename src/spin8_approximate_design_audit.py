@@ -230,6 +230,22 @@ def run() -> dict[str, object]:
                 "five-query problem."
             ),
         },
+        "proof_layers": {
+            "exact_repository_premises": (
+                "The eight-point information matrix, constant unit-probe "
+                "sensitivity, trace-seven identity, and five-query reweighting "
+                "counterexample are computed exactly."
+            ),
+            "classical_global_input": (
+                "The Kiefer--Wolfowitz general equivalence theorem identifies "
+                "a design with sensitivity bounded by the parameter dimension "
+                "as globally D-optimal in the approximate-design domain."
+            ),
+            "deduction": (
+                "The exact sensitivity is identically 28, so the eight-support "
+                "isotropic design saturates the equivalence criterion globally."
+            ),
+        },
         "correction": (
             "The exact five-query and approximate weighted-design problems must "
             "not be called the same global D-optimality problem. Equal five-query "

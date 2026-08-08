@@ -1,5 +1,13 @@
 # GA-SSM experiments
 
+> **Extracted historical README.** This document preserves the source-tree
+> instructions and claims as they stood in `SSM-Models`. Paths beginning with
+> `SSM-Models/` refer to that original workspace layout, not to runnable paths
+> inside this standalone archive. Published raw reports were relocated to
+> `artifacts/` and their source-to-destination hashes are recorded in
+> `PROVENANCE.json`. For current status and commands, start with the repository
+> [README](../README.md) and [reproducibility guide](REPRODUCIBILITY.md).
+
 `ga_ssm.py` is the maintained JAX/Flax implementation. Its primary model is
 `GASSMLanguageModel`, built from input-selective damped-rotor state transitions
 that compose through an associative parallel scan. It contains the model,
@@ -58,7 +66,8 @@ The experimental Spin(8) branch now includes:
   obeys one prospectively replicated exact degree-28 characteristic polynomial
   that implies `det(I)=81/1024` and `trace(I^-1)=43`.
 - the Cayley-spectrum theorem: after fixing the singleton triality view, the
-  remaining four probes form a `Spin(7)` four-frame. On the orthonormal orbit,
+  remaining four probes form a `Spin(7)` four-frame. On the orthonormal
+  balanced information family,
   the determinant is exactly
   `(1-c^2)^3(9-c^2)^2/1024`, where `c` is its Cayley calibration. Thus the
   information optimum is the Cayley-null orbit `c=0`, while calibrated Cayley
@@ -93,7 +102,7 @@ generic state/action pairs per token and constructively proves the four-probe
 ambiguity. Learned hard probe selection now works but retains discrete
 allocation traps; joint late query-family retraction removes all four fresh
 allocation failures. The spectrum is now proved on the complete orthonormal
-balanced orbit, and its nonorthogonal extension is now exact on the signed
+balanced information family, and its nonorthogonal extension is now exact on the signed
 star family; the general nonorthogonal completion lemma, cross-allocation
 upper bounds, scalable joint retraction, nonorthogonal capacity stress,
 endpoint-only action discovery, and naturalistic downstream utility remain
@@ -129,8 +138,8 @@ python SSM-Models\train_rotor_ssm_torch.py --steps 300 --seed 0 `
   --output SSM-Models\experiments\my_run.json
 ```
 
-The checked-in `experiments/final_seed*_300.json` reports and
-`experiments/final_summary.json` record the final three-seed local-GPU result.
+In this archive, `artifacts/final_seed*_300.json` and
+`artifacts/final_summary.json` record the final three-seed local-GPU result.
 
 ## Recurrence-family harness
 

@@ -51,6 +51,27 @@ def exact_cayley_information_family() -> tuple[sp.Matrix, sp.Symbol, sp.Symbol]:
     return information, cayley, sine
 
 
+def _pair_basis_invariance_certificate(view: int) -> bool:
+    """Check exact O(2) basis invariance of a same-view query pair."""
+
+    generators = symbolic_triality_generators()
+    basis = [[sp.Integer(row == column) for column in range(8)] for row in range(8)]
+    cosine, sine = sp.symbols("r t")
+    first = basis[2 * (view - 1)]
+    second = basis[2 * (view - 1) + 1]
+    rotated_first = [cosine * first[index] + sine * second[index] for index in range(8)]
+    rotated_second = [
+        -sine * first[index] + cosine * second[index] for index in range(8)
+    ]
+    reference = symbolic_query_projector(view, first, generators) + (
+        symbolic_query_projector(view, second, generators)
+    )
+    rotated = symbolic_query_projector(view, rotated_first, generators) + (
+        symbolic_query_projector(view, rotated_second, generators)
+    )
+    return sp.expand(rotated - (cosine**2 + sine**2) * reference) == sp.zeros(28)
+
+
 def exact_support_components(matrix: sp.Matrix) -> list[list[int]]:
     """Return connected components of the exact off-diagonal support graph."""
 
@@ -111,6 +132,14 @@ def _expected_block_characteristics(
     )
     constant = (eigenvalue - 1) ** 2 * (eigenvalue**2 - 3 * eigenvalue + 1)
     return [first, twin, twin, constant]
+
+
+def expected_block_characteristics(
+    cayley: sp.Symbol, eigenvalue: sp.Symbol
+) -> list[sp.Expr]:
+    """Return the four exact characteristic laws in block order."""
+
+    return _expected_block_characteristics(cayley, eigenvalue)
 
 
 def _twin_intertwiner() -> sp.Matrix:
@@ -187,6 +216,10 @@ def exact_cayley_block_certificate() -> dict[str, object]:
         (1 - cayley**2) ** 3 * (9 - cayley**2) ** 2 / sp.Integer(1024)
     )
     balanced_determinants = [sp.factor(value.subs(cayley, 0)) for value in determinants]
+    pair_basis_invariance = {
+        "positive_chiral": _pair_basis_invariance_certificate(1),
+        "negative_chiral": _pair_basis_invariance_certificate(2),
+    }
 
     passed = (
         [len(component) for component in components] == [8, 8, 8, 4]
@@ -198,6 +231,7 @@ def exact_cayley_block_certificate() -> dict[str, object]:
         and sp.expand(determinant_product - expected_determinant) == 0
         and balanced_determinants
         == [sp.Rational(1, 4), sp.Rational(9, 16), sp.Rational(9, 16), 1]
+        and all(pair_basis_invariance.values())
     )
     return {
         "theorem": "exact constant invariant blocks for the balanced Cayley family",
@@ -214,6 +248,7 @@ def exact_cayley_block_certificate() -> dict[str, object]:
         "balanced_global_determinant": str(
             sp.factor(determinant_product.subs(cayley, 0))
         ),
+        "same_view_pair_basis_invariance": pair_basis_invariance,
         "characteristic_product_identity": sp.expand(
             characteristic_product - full_characteristic
         )

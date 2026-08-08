@@ -1,9 +1,10 @@
 # Intertwiner SchurScans: the general triangular theorem
 
-**Date:** 2026-08-06  
-**Status:** constructive algebraic theorem with executable parity checks  
-**Reference implementation:** `src/intertwiner_schurscan.py`  
-**Artifact:** `artifacts/intertwiner_schurscan_20260806.json`  
+- **Date:** 2026-08-07
+- **Status:** constructive algebraic theorem with executable parity checks
+- **Reference implementation:** `src/intertwiner_schurscan.py`
+- **Theorem artifact:** `artifacts/intertwiner_schurscan_20260807.json`
+- **Benchmark results:** `docs/experiments/INTERTWINER_SCHURSCAN_BENCHMARK_RESULTS.md`
 **Preregistration:** none; this generalization was extracted from the earlier
 triality-specific staged scan
 
@@ -50,6 +51,30 @@ V affine scan ----/
 
 Both stages have logarithmic parallel depth. The number of stages is a fixed
 constant independent of sequence length.
+
+### Work and depth are separate claims
+
+The original executable scan used Hillis--Steele.  That tree has logarithmic
+dependency depth but \(O(N\log N)\) total matrix-composition work.  The
+maintained default is now an ordered Blelloch-style tree.  For
+
+\[
+P=2^{\lceil\log_2N\rceil},
+\]
+
+it uses \(3P-2=O(N)\) compositions, while preserving logarithmic depth and
+the noncommutative chronological order.  The tradeoff is a longer critical
+path:
+
+\[
+d_{\mathrm{Hillis}}=\lceil\log_2N\rceil,
+\qquad
+d_{\mathrm{work\text{-}efficient}}
+=2\lceil\log_2N\rceil+1.
+\]
+
+The source retains both trees so that correctness, operation count, memory,
+and wall time can be compared rather than inferred from asymptotic notation.
 
 ## Exact homogeneous lift
 
@@ -122,13 +147,20 @@ It is an equivariant bilinear intertwiner
 At float64 precision over random length-31 recurrences, the maintained artifact
 reports:
 
-- staged scan versus recurrence: `2.84e-14` maximum absolute error;
-- homogeneous lift versus recurrence: `4.97e-14`;
+- default work-efficient scan versus recurrence: `3.55e-14` maximum absolute
+  error;
+- Hillis--Steele versus recurrence: `2.84e-14`;
+- direct affine tree versus recurrence: `2.84e-14`;
+- homogeneous lift versus recurrence: `4.26e-14`;
 - SO(3) equivariance: `1.78e-15`;
 - streaming state: 9 scalars;
 - proof lift: 19 scalars.
 
 Thus scan compatibility is not a triality-only effect.
+
+These are floating-point discrepancies caused by different parenthesizations.
+The displayed recurrence is equal algebraically, not bitwise under finite
+precision.
 
 ## What Spin(8) adds
 
@@ -187,11 +219,24 @@ Not yet established:
 - novelty relative to every prior cascaded-scan, semidirect-product, or
   equivariant recurrent construction.
 
+## Engineering result
+
+The work-efficient implementation has passed non-power-of-two ordering,
+autograd, malformed-input, and length-2,048 tests.  On the maintained RTX 2070
+SUPER at batch 8 and length 4,096, its homogeneous form replicated a 3.59-fold
+forward speedup over the previous Hillis--Steele tensor program while retaining
+a same-dtype relative discrepancy below \(8\times10^{-7}\).  This is an eager
+PyTorch implementation comparison.  It is not a throughput comparison against
+fused production SSM kernels.  Full protocol, CPU results, memory measurements,
+and raw hashes are recorded in the benchmark-results document.
+
 ## Replay
 
 ```powershell
 $env:PYTHONPATH='src'
 python -m intertwiner_schurscan `
-  --output artifacts/intertwiner_schurscan_20260806.json
-python -m unittest discover -s tests -p "test_intertwiner_schurscan.py" -v
+  --output artifacts/intertwiner_schurscan_20260807.json
+python -m pytest -q `
+  tests/test_intertwiner_schurscan.py `
+  tests/test_benchmark_intertwiner_schurscan.py
 ```

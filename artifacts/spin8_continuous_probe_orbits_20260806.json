@@ -402,5 +402,10 @@
     "step_4": "For a compact group action every isotropy group contains a conjugate of the principal isotropy group, so special tuples cannot have a smaller stabilizer.",
     "step_5": "A full-closure point in every mixed five-probe allocation has trivial global isotropy; therefore each mixed principal isotropy is trivial."
   },
-  "proof_boundary": "The theorem concerns unit probes and shared Spin(8) action. It classifies principal stabilizer dimension and proves universal four-probe insufficiency; it does not enumerate every nonprincipal five-probe orbit."
+  "proof_boundary": "The theorem concerns unit probes and shared Spin(8) action. It classifies principal stabilizer dimension and proves universal four-probe insufficiency; it does not enumerate every nonprincipal five-probe orbit.",
+  "proof_layers": {
+    "classical_global_input": "For a smooth compact-group action, the principal stratum is open and dense and every isotropy group contains a conjugate of the principal isotropy group.",
+    "deduction": "The exact four-probe representatives saturate the invariant codimension bound, fixing the principal stabilizer dimension. The exact mixed five-probe free points force trivial principal isotropy in each mixed allocation.",
+    "exact_repository_premises": "Invariant Jacobians, action ranks, stabilizer Lie algebras, triality closure, and explicit trivial-isotropy witnesses are computed in exact arithmetic."
+  }
 }

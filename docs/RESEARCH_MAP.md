@@ -7,6 +7,8 @@ better-posed questions.
 For the current adversarial claim audit, standalone paper opportunities,
 correction ledger, and compressed next-research strategy, see
 [Research audit and next strategy](RESEARCH_AUDIT_AND_NEXT_STRATEGY_2026-08-06.md).
+The executable status and boundary definitions for every maintained test suite
+are recorded in the [gate and boundary audit](GATE_AND_BOUNDARY_AUDIT_2026-08-06.md).
 
 ## 1. Recurrent and streaming baseline
 
@@ -99,9 +101,11 @@ Primary documents:
 
 ## 7. Five-probe identifiability and active sensing
 
-Five multiview probes have full shared rank 28; four probes retain a
-three-dimensional stabilizer. Active sensing then optimized the conditioning
-of an already identifiable design.
+Generic five-probe designs using at least two triality views have full shared
+rank 28 and trivial stabilizer. Every mixed four-probe allocation has a
+three-dimensional principal stabilizer; the single-view four-probe family has
+a six-dimensional principal stabilizer. Active sensing then optimized the
+conditioning of an already identifiable design.
 
 Primary documents:
 
@@ -140,6 +144,7 @@ geometry and invariant polynomial certificates.
 Primary documents:
 
 - [Cayley spectrum theorem](experiments/SPIN8_CAYLEY_SPECTRUM_RESULTS.md)
+- [Cayley flag quotient audit](CAYLEY_FLAG_QUOTIENT_AUDIT_2026-08-06.md)
 - [Dirac–Gram gate](experiments/SPIN8_DIRAC_GRAM_RESULTS.md)
 - [Signed star theorem](experiments/SPIN8_DIRAC_STAR_RESULTS.md)
 - [Exact decorrelation counterexample](experiments/SPIN8_CONDITIONAL_DECORRELATION_COUNTEREXAMPLE.md)
@@ -151,6 +156,8 @@ Primary documents:
 - [Eight-sector amplitude theorem](SPIN8_TWO_EDGE_AMPLITUDE_THEOREM.md)
 - [Two-edge boundary-kernel theorem](experiments/SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md)
 - [Finite two-edge polynomial reduction](experiments/SPIN8_TWO_EDGE_FINITE_REDUCTION_RESULTS.md)
+- [Certified two-edge triangular atlas](experiments/SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md)
+- [Unrestricted exact reconstruction and tangent theorem](experiments/SPIN8_DIRAC_UNRESTRICTED_RECONSTRUCTION_RESULTS.md)
 
 The coordinatewise conditional-decorrelation lemma is exactly false. The
 variable-Cayley one-edge family is proved through its tetrahedral
@@ -159,13 +166,64 @@ complete exact coefficient maps for all eight sectors. Their endpoint factors,
 universal one-edge flag bridge, and paired four-block Hadamard reduction are
 proved. Its repeated negative-spinor probes also possess an exact multiplicity
 `O(2)` gauge, reducing correlation to orthogonal-mode energy imbalance.
-Positivity of the paired blocks remains the gate; one further residual edge
-separates this bridge from the unrestricted family.
+The paired blocks are now globally nonnegative on the complete frozen `h=0`
+family by a 34-leaf rational-circle triangular Bernstein atlas. The remaining
+residual edge has been incorporated into a complete sixteen-sector exact
+reconstruction on the unrestricted seven-circle chart. Two disjoint grids and
+fresh exact holdouts prove the polynomial identities; a positive tangent cone
+and positive endpoint quartic lift settle the local equality geometry. A
+boundary-supported exact Bernstein decomposition now also bounds the combined
+energy of all fifteen nontrivial Fourier sectors by the square of the trivial
+sector on the complete seven-cube. This is an aggregate RMS bound, not an
+orientation-by-orientation sign theorem. What remains open is the one-sided
+sign of every physical margin.
+
+Equivalently, form the degree-sixteen polynomial whose roots are the negatives
+of the orientation margins. Its first four elementary-symmetric coefficients
+are now globally nonnegative:
+\(e_1=16A_0\), \(e_2=112A_0^2+8E\), and
+\(e_3\ge(1280/3)A_0^3\), and
+\(e_4\ge(2348/3)A_0^4\). The remaining invariant proof target is
+the positivity of \(e_5,\ldots,e_{16}\). This removes orientation radicals
+before the next certificate campaign begins.
+
+The first matrix-valued boundary continuation is also exact. On
+\(u_a=u_h=0,\ c^2=1\), only three nontrivial Walsh modes survive and form the
+nonidentity part of a Klein-four subgroup. The sixteen margins reduce to four
+eigenvalues of a \(4\times4\) symmetric group-circulant matrix, each repeated
+four times. Exact principal-minor certificates prove this matrix positive
+semidefinite on the complete \((u_d,u_e,u_g,u_i)\) cube. The result explains
+the high-energy endpoint regime without extending the claim to other endpoint
+faces or the unrestricted interior.
+
+The adjacent endpoint face now has an exact subgroup-chain reduction as well.
+On \(u_a=0,\ c^2=1\), eight sectors survive and form
+\((\mathbb Z/2\mathbb Z)^3\). Splitting by the \(u_h\)-bit gives a
+Klein-four subgroup and one coset, so the eight-margin matrix is exactly
+
+\[
+\begin{pmatrix}X&\sqrt{1-y^2}R\\\sqrt{1-y^2}R&X\end{pmatrix}.
+\]
+
+The full five-variable certificate proves \(X\succeq0\). It also proves the
+identity coefficient of \(Z=X^2-(1-y^2)R^2\) nonnegative by reducing it to the
+global Fourier-energy polynomial plus explicit squares. The higher principal
+minors of \(Z\) remain open; neither the complete adjacent face nor the
+unrestricted theorem has been promoted.
+
+The next certificate attempt is deliberately bounded. The common
+\(u_d=u_g=0\) quadratic face is an exact square, but extending it with the
+single selector \((1-u_d)^{12}(1-u_g)^{12}\) leaves 122, 100, and 103 negative
+native Bernstein controls in the three remainders. This rejects that simple
+certificate, not the inequalities. The next gate is one symmetry-adapted
+\((u_e,u_g)\) triangular split; only if that remains obstructed will a
+bounded-degree cube-Positivstellensatz discovery search be justified.
 
 The local gate is now exact: the new edge cannot leave the one-edge equality
 set with a harmful first-order sign, and its sole quadratic endpoint kernel is
 lifted positively at fourth order. The finite-edge gate has also been reduced
 without approximation. Each of the four paired margins is nonnegative exactly
 when a degree-six polynomial \(L\) and a degree-twelve polynomial \(S\) are
-both nonnegative on \(0\leq y\leq1\). The reduction is proved; global
-positivity of those eight polynomials remains open.
+both nonnegative on \(0\leq y\leq1\). The reduction is proved, and the complete
+triangular atlas now certifies the resulting eight physical margins on their
+six-dimensional domain. The seventh invariant remains open.

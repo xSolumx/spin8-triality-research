@@ -1,5 +1,9 @@
 # Spin(8) Two-Edge Boundary-Kernel Results
 
+> **Subsequent result (2026-08-07).** This local theorem remains valid and is
+> now complemented by a complete-domain `h=0` proof in the
+> [two-edge triangular atlas](SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md).
+
 **Date:** 2026-08-06
 
 **Status:** exact local theorem, exact negative certificate result, and CUDA

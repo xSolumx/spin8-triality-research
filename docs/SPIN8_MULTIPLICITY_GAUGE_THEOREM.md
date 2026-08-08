@@ -119,5 +119,7 @@ covariance description removes it before the difficult proof begins.
 - Proved: exact two-probe correlation-to-energy conversion.
 - Proved: invariance of the information determinant, Gram determinant, and
   squared Cayley invariant under the permitted row gauge.
-- Open: global positivity of the variable-Cayley two-edge family.
+- Proved subsequently: global positivity of the frozen `h=0`
+  variable-Cayley two-edge family; see
+  [the atlas theorem](experiments/SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md).
 - Open: the final `h` residual and unrestricted Dirac--Gram inequality.

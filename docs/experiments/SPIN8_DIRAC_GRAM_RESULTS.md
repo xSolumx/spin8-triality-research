@@ -301,7 +301,7 @@ The classical Cayley calibration and this information objective extremize
 different functionals. A Cayley-calibrated plane (`|c|=1`) is special in
 calibrated geometry, but it is the **informationally worst** endpoint here: the
 information rank falls from 28 to 25. The Cayley-null orbit (`c=0`) is the
-information-determinant maximizer on the orthonormal balanced orbit.
+information-determinant maximizer on the orthonormal balanced information family.
 
 This is compatible with the unit-comass Cayley form and its `Spin(7)`
 stabilizer established in the triality construction of

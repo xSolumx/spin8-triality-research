@@ -1,5 +1,9 @@
 # Spin(8) Finite Two-Edge Polynomial Reduction
 
+> **Subsequent result (2026-08-07).** The reduction recorded here remains the
+> exact algebraic input to a now-complete positivity proof on the frozen `h=0`
+> domain. See the [certified triangular atlas](SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md).
+
 **Date:** 2026-08-06
 
 **Status:** exact algebraic reduction and CUDA falsifier pass. Global
@@ -80,6 +84,35 @@ The exact degrees are
 \]
 
 in every one of the four channels at the generic exact audit point.
+
+## Exact endpoint-jet flag law
+
+The first endpoint audit is now complete at the sector level. For every one of
+the eight reconstructed core polynomials (H_m), exact substitution gives
+
+\[
+\deg_{c^2}\!\left(H_m\big|_{i^2=1}\right)=0.
+\]
+
+Thus the core value at the fully active endpoint is independent of the Cayley
+coordinate. The first transverse derivative satisfies the stronger ideal
+membership
+
+\[
+\left.\frac{\partial H_m}{\partial i^2}\right|_{i^2=1}
+\in (1-d^2)(1-e^2)(1-g^2)\,\mathcal J_m,
+\]
+
+where \(\mathcal J_m\) also contains every endpoint factor already forced by
+that sector's Walsh character. Since (i^2=1-y^2), the polynomial-core
+variation begins at order (y^2). Any order-(y) endpoint term in a complete
+orientation margin must therefore come from a character amplitude carrying
+the explicit complement factor (I=y), not from hidden linear variation in
+the reconstructed core.
+
+This is an exact flag-geometry reduction, not a positivity proof. In
+particular, the assembled endpoint margins can still depend on (c^2) through
+their forced character monomials.
 
 ## Why this matters
 
@@ -166,7 +199,9 @@ Bernstein/Duffy campaign be launched for the interior `y` controls.
 ## Code and artifacts
 
 - `../../src/spin8_dirac_two_edge_finite.py`
+- `../../src/spin8_dirac_two_edge_endpoints.py`
 - `../../tests/test_spin8_dirac_two_edge_finite.py`
+- `../../artifacts/spin8_dirac_two_edge_endpoints_20260806.json`
 - `../../artifacts/spin8_two_edge_finite_falsifier_20260806.json`
 - `../../artifacts/spin8_two_edge_finite_resource_20260806.json`
 - `../../artifacts/spin8_two_edge_finite_test_resource_20260806.json`

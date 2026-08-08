@@ -131,6 +131,38 @@ all three quadratic principal minors, and the cubic principal minor. The final
 determinant is therefore not promoted in isolation: every principal-minor
 condition for the tetrahedral orientation matrix is certified.
 
+## Complete equality classification
+
+An exact zero-support audit now sharpens nonnegativity to a complete equality
+theorem. In the lower Duffy chart, all 4,500 zero controls obey
+
+\[
+k_t+k_r+k_w\le3,
+\]
+
+with the angular and Cayley indices unrestricted. The negative controls remain
+confined to the already-certified radial layers zero and one, whereas radial
+layers four and twenty-four are strictly positive at every remaining control.
+The upper Duffy chart is strictly positive.
+
+At the sole possible radial boundary \(t=0\), the determinant is \(G_0^2\).
+Its exact symmetric lower chart vanishes only at \(r=w=0\), and its upper chart
+is strictly positive. Therefore the reduced determinant vanishes exactly at
+
+\[
+u=v=r=w=0.
+\]
+
+Restoring the previously proved common factor gives the complete equality set
+
+\[
+\boxed{z=1\quad\text{or}\quad(u,v,r,w)=(0,0,0,0)}.
+\]
+
+This closes the equality-stratum ambiguity that remained after the positivity
+proof. The result is replayed from the exact determinant cache by
+`spin8_dirac_one_edge_equality.py`.
+
 ## Exact artifacts
 
 - reconstructed sector polynomials:
@@ -144,6 +176,9 @@ condition for the tetrahedral orientation matrix is certified.
 - assembled theorem certificate:
   `../../artifacts/spin8_dirac_one_edge_duffy_20260806.json`, SHA-256
   `edac47a3...c790b`.
+- equality-set certificate:
+  `../../artifacts/spin8_dirac_one_edge_equality_20260806.json`, SHA-256
+  `543f9fcc...a4e7`.
 
 ## Scientific status
 

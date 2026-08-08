@@ -1,4 +1,9 @@
-# Iteration Note: Structure and Positivity in Spin(8) Triality Sensing
+# Dirac--Gram Two-Edge Status: Structure, Reduction, and Positivity
+
+> **Historical status note (2026-08-07).** This document accurately records
+> the frontier on 2026-08-06. The finite `h=0` positivity gate was subsequently
+> closed by the [certified triangular atlas](experiments/SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md).
+> The final `h` residual and the unrestricted theorem remain open.
 
 **Date:** 2026-08-06
 
@@ -157,6 +162,20 @@ in all four channels. The original radical problem has therefore become eight
 finite polynomial-positivity problems: four degree-six center conditions and
 four degree-twelve separation conditions.
 
+An exact endpoint-jet audit further shows that every reconstructed sector core
+is independent of (c^2) at (i^2=1). Its first (i^2)-derivative there is
+divisible by
+
+\[
+(1-d^2)(1-e^2)(1-g^2),
+\]
+
+in addition to the endpoint factors already forced in that sector.
+Equivalently, after (i^2=1-y^2), core variation starts at order (y^2);
+order-(y) terms can arise only from explicit Walsh-character complement
+factors. This narrows the endpoint proof geometry but does not establish
+positivity.
+
 A float64 CUDA campaign checked 851,968 points across the interior and all
 twelve coordinate faces without finding a violation. That is strong
 falsification evidence, but it is not an exact positivity proof between the
@@ -198,10 +217,10 @@ blocks, then into scalar margins, and finally into ordinary polynomial signs.
 
 A defensible paper claim is:
 
-> We derive an exact invariant-block factorization for the balanced
-> \(\operatorname{Spin}(8)\) triality information family, prove the strengthened
+> This work derives an exact invariant-block factorization for the balanced
+> \(\operatorname{Spin}(8)\) triality information family, proves the strengthened
 > Dirac--Gram bound on a complete variable-Cayley four-correlation family, and
-> reduce the next finite residual edge to four degree-six and four
+> reduces the next finite residual edge to four degree-six and four
 > degree-twelve polynomial positivity gates.
 
 This is narrower—and stronger—than claiming global five-query optimality.
@@ -214,9 +233,23 @@ nonbalanced allocation upper bounds or global D-optimality among all
 five-query designs.
 
 The second residual edge is now active and algebraically reduced, but its
-finite positivity remains open. The next exact gate is to factor the endpoint
+finite positivity remains open. Exact Bernstein-support analysis has closed a
+previous prerequisite: the one-edge equality set is precisely
+
+\[
+z=1\quad\text{or}\quad(u,v,r,w)=(0,0,0,0).
+\]
+
+The distinction between physical and reduced equality is essential here. The
+complete two-edge family carries the same common factor \((1-z)^3\), so the
+\(z=1\) component disappears when the proved factor is cancelled. The reduced
+one-edge determinant therefore has only the orthonormal zero set, and that
+component already passes the full local kernel test. There is no additional
+hidden equality kernel left to audit.
+
+The next decisive exact gate is consequently to factor the finite endpoint
 layers \(y=1\) and \(y=0\), together with their first inward derivatives. The
-\(y=1\) face must recover the proved one-edge theorem and its boundary-kernel
+\(y=1\) face must recover the proved reduced one-edge theorem and its local
 jet; \(y=0\) is an independent five-dimensional face. Only after both faces
 are understood should the interior Bernstein/Duffy calculation begin.
 

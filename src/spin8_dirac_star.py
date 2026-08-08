@@ -144,6 +144,20 @@ def polynomial_records(polynomial: sp.Poly) -> list[dict[str, object]]:
     ]
 
 
+def polynomial_from_records(records: list[dict[str, object]]) -> sp.Poly:
+    """Reconstruct an exact polynomial from canonical artifact records."""
+
+    expression = sp.Integer(0)
+    for record in records:
+        powers = tuple(int(value) for value in record["powers"])
+        coefficient = sp.Rational(str(record["coefficient"]))
+        monomial = sp.prod(
+            variable**power for variable, power in zip(VARIABLES, powers, strict=True)
+        )
+        expression += coefficient * monomial
+    return sp.Poly(expression, *VARIABLES)
+
+
 def records_hash(records: list[dict[str, object]]) -> str:
     payload = json.dumps(records, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
@@ -405,10 +419,15 @@ def certificate_from_polynomials(even: sp.Poly, odd: sp.Poly) -> dict[str, objec
 
 
 def verify_report(report: dict[str, object]) -> bool:
-    """Replay all inexpensive integrity and sign checks from a saved report."""
+    """Replay stored maps, Bernstein signs, and exact off-grid determinants.
+
+    This verifier does not rerun the two interpolation grids.  A full replay is
+    obtained by calling :func:`run` and comparing the resulting artifact.
+    """
 
     discovery = report["discovery_node_set"]
     confirmation = report["confirmation_node_set"]
+    reconstructed: list[tuple[sp.Poly, sp.Poly, dict[str, object]]] = []
     for certificate in (discovery, confirmation):
         if (
             records_hash(certificate["even_coefficients"])
@@ -437,20 +456,43 @@ def verify_report(report: dict[str, object]) -> bool:
             )
             if coefficients.count("0") != certificate[zero_count_key]:
                 return False
+        even = polynomial_from_records(certificate["even_coefficients"])
+        odd = polynomial_from_records(certificate["odd_coefficients"])
+        fresh = certificate_from_polynomials(even, odd)
+        replay_keys = (
+            "even_degrees",
+            "odd_degrees",
+            "even_term_count",
+            "odd_term_count",
+            "even_coefficients_sha256",
+            "odd_coefficients_sha256",
+            "margin_bernstein_degrees",
+            "margin_bernstein_negative_count",
+            "margin_bernstein_zero_count",
+            "margin_bernstein_sha256",
+            "orientation_discriminant_bernstein_degrees",
+            "orientation_discriminant_negative_count",
+            "orientation_discriminant_zero_count",
+            "orientation_discriminant_bernstein_sha256",
+        )
+        if any(fresh[key] != certificate[key] for key in replay_keys):
+            return False
+        reconstructed.append((even, odd, fresh))
+
+    discovery_even, discovery_odd, _ = reconstructed[0]
+    confirmation_even, confirmation_odd, confirmation_fresh = reconstructed[1]
+    maps_match = (
+        discovery_even == confirmation_even and discovery_odd == confirmation_odd
+    )
+    fresh_holdouts = exact_holdout_certificate(confirmation_even, confirmation_odd)
     return bool(
-        report["coefficient_maps_match"]
-        and discovery["even_coefficients_sha256"]
-        == confirmation["even_coefficients_sha256"]
-        and discovery["odd_coefficients_sha256"]
-        == confirmation["odd_coefficients_sha256"]
-        and confirmation["even_degrees"] == [3, 3, 3, 5]
-        and confirmation["odd_degrees"] == [2, 2, 2, 4]
-        and confirmation["margin_bernstein_zero_count"] == 195
-        and confirmation["orientation_discriminant_zero_count"] == 2078
-        and report["off_grid_exact_holdouts"]["maximum_exact_error"] == "0"
-        and report["off_grid_exact_holdouts"]["exact_determinant_comparisons"] == 32
-        and report["star_family_theorem_proved"]
-        and not report["global_dirac_gram_theorem_proved"]
+        maps_match
+        and confirmation_fresh["even_degrees"] == [3, 3, 3, 5]
+        and confirmation_fresh["odd_degrees"] == [2, 2, 2, 4]
+        and confirmation_fresh["margin_bernstein_negative_count"] == 0
+        and confirmation_fresh["orientation_discriminant_negative_count"] == 0
+        and fresh_holdouts == report["off_grid_exact_holdouts"]
+        and fresh_holdouts["passed"]
     )
 
 

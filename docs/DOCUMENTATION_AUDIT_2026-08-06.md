@@ -3,15 +3,18 @@
 ## Scope
 
 This pass covered every Markdown writeup in the maintained
-`Spin8-Triality-Research` repository and the related `SSM-Models` archive. It
-had two distinct layers:
+`Spin8-Triality-Research` repository, the related `SSM-Models` archive, and the
+original plus overhauled `SpinorModel` documentation. It had three distinct
+layers:
 
 1. an editorial rewrite of the current synthesis, plain-language explanation,
    research map, and inherited frontier note;
 2. a mechanical audit of every Markdown file, including historical reports and
-   preregistrations.
+   preregistrations;
+3. an artifact/provenance reconciliation and a semantic claim audit of the
+   current manuscripts.
 
-The second layer is deliberately described as an audit rather than a literary
+The historical layer is deliberately described as an audit rather than a literary
 rewrite of every historical paragraph. Preserving older preregistrations and
 negative results verbatim is part of the scientific record; silently
 modernizing their claims would damage provenance.
@@ -55,12 +58,29 @@ test. The audit rejects:
 - raw double-dollar display delimiters;
 - known malformed generated-LaTeX fragments;
 - unbalanced `\[` and `\]` display delimiters;
+- unbalanced `\(` and `\)` inline delimiters;
+- unclosed fenced-code blocks;
 - broken relative Markdown links.
 
-At the time of this report, the combined audit passed all 281 maintained
-Markdown files in both research trees, and all 338 relative links resolved.
-The complete maintained theorem and regression suite then passed all 175 tests
-under six-core affinity, peaking at 3.962 GiB of process-tree resident memory.
+At the time of this report, the combined audit passed all 294 maintained
+Markdown files in the three scoped research trees, and all 451 relative links
+resolved. All 37 unique external references were reachable or independently
+resolved after one timeout. All 305 current JSON artifact hashes also matched. The
+provenance snapshot contained 463 destinations: 441 remained byte-identical to
+extraction, 22 had post-extraction Git history, and none was missing. The full
+maintained theorem and regression suite now contains 188 tests; its bounded
+rerun is recorded in the validation section below.
+
+The detailed semantic findings and publication boundary are recorded in the
+[Full Manuscript and Historical-Record Audit](MANUSCRIPT_AUDIT_2026-08-06.md).
+
+## Validation
+
+The complete 188-test suite passed in 366.3 seconds of test time and 375.8
+seconds including resource supervision. CPU affinity was restricted to six
+logical processors; peak process-tree resident memory was 4.074 GiB; the
+15 GiB watchdog did not fire. The combined 294-document mechanical audit and
+the complete 305-entry JSON artifact-manifest verifier also passed independently.
 
 ## Interpretation boundary
 

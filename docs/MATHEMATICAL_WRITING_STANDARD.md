@@ -44,6 +44,31 @@ theorem into a global theorem, or a decoder-level success into a mechanism
 claim. A failed auxiliary certificate rejects that certificate, not the target
 inequality, unless an actual counterexample to the target has been produced.
 
+## Voice and intellectual attribution
+
+The repository uses a hybrid academic voice. Authorship should remain visible
+where researchers made choices; established statements should read as claims
+about mathematics or evidence rather than as autobiographical announcements.
+
+- **Abstracts, theorem statements, result summaries, and conclusions:** give
+  agency to the theorem, proof, calculation, experiment, or present work.
+  Prefer “the theorem establishes,” “the exact calculation yields,” “the
+  experiment found,” or “this work proves.”
+- **Introductions and discussions:** first-person plural is appropriate when it
+  identifies an intellectual decision: “we chose this normalization,” “we
+  compare four controls,” or “we interpret the failure as...”
+- **Methods and reproducibility:** use active first person when it makes
+  responsibility clearer, especially for exclusions, stopping rules, and
+  deviations from a preregistration.
+- **Historical reports:** preserve the original voice. If later evidence
+  changes the interpretation, add a dated correction rather than silently
+  converting the old narrative into present-day prose.
+
+Avoid both extremes. Repeating “we proved” makes theorem statements sound
+personal and provisional; pervasive passive voice can hide who chose a method
+or changed a protocol. The preferred division is simple: authors own decisions,
+while results stand on their stated premises.
+
 ## Formula style
 
 - Use display mathematics for load-bearing equations and prose for their

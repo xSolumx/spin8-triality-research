@@ -47,7 +47,20 @@ I(c,s)=I_8^{(0)}\oplus I_8^{(1)}\oplus I_8^{(2)}\oplus I_4.
 This is a direct matrix identity. It does not depend on evaluating at generic
 numeric values or guessing eigenvalue multiplicities.
 
-## Local characteristic laws
+The certificate also verifies the same-view basis identity
+
+\[
+P_\alpha(r x+t y)+P_\alpha(-t x+r y)
+=(r^2+t^2)\bigl(P_\alpha(x)+P_\alpha(y)\bigr)
+\]
+
+entry by entry for both chiral representations. On \(r^2+t^2=1\), the summed
+information contribution therefore depends only on the two-plane spanned by a
+same-view probe pair. This is the algebraic step needed when the balanced
+design is treated as a labelled \(2+2\) flag rather than only as an unlabelled
+four-plane.
+
+## Block characteristic laws
 
 Writing the characteristic variable as `lambda`, exact reduction in
 `Q[c,s]/(s^2+c^2-1)` gives
@@ -133,6 +146,17 @@ This is a cleaner mathematical explanation, not a stronger global optimum
 claim.
 
 ## Scope boundary
+
+The one-parameter balanced-flag normal form used here combines a classical
+global orbit-classification theorem with a separate exact isotropy
+certificate: at five rational non-endpoint checks the four-plane stabilizer
+acts as the full `SO(4)` on the plane, and the residual stabilizer of the
+`2+2` split has dimension 2. The exact calculation tests the internal split;
+it does not independently rederive global separation of four-plane orbits by
+the Cayley coordinate. See
+[`spin8_cayley_flag.py`](../../src/spin8_cayley_flag.py) and the complete
+argument in
+[`CAYLEY_INFORMATION_SPECTRUM.md`](../manuscripts/CAYLEY_INFORMATION_SPECTRUM.md).
 
 The block theorem is exact for the orthonormal balanced Cayley family. It does
 not by itself prove a nonorthogonal inequality. A separate Duffy/Bernstein

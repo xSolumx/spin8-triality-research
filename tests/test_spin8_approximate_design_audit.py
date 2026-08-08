@@ -32,6 +32,11 @@ class Spin8ApproximateDesignAuditTests(unittest.TestCase):
                 "unit_probe_trace_seven_exact_by_polarization"
             ]
         )
+        self.assertIn("classical_global_input", report["proof_layers"])
+        self.assertIn(
+            "Kiefer--Wolfowitz",
+            report["proof_layers"]["classical_global_input"],
+        )
 
     def test_stored_artifact_replays_exactly(self) -> None:
         artifact = (

@@ -1,5 +1,9 @@
 # Exact Reconstruction of the Complete Two-Edge Sector Algebra
 
+> **Subsequent result (2026-08-07).** This reconstruction report correctly
+> stopped before a sign claim. Global sign on its frozen `h=0` domain is now
+> certified by the [two-edge triangular atlas](SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md).
+
 ## Status
 
 Completed on 2026-08-06 under the frozen shared-grid protocol.
@@ -144,6 +148,29 @@ At `i=0`, every odd amplitude vanishes and `K_+=K_-` becomes the one-edge
 matrix. The two-edge problem is therefore an exact paired deformation of the
 proved theorem, not an unrelated eight-sector positivity problem.
 
+## Fully active endpoint-jet law
+
+There is a second exact flag law at the opposite endpoint. For every sector
+core (H_m),
+
+\[
+\deg_{c^2}\!\left(H_m\big|_{i^2=1}\right)=0,
+\qquad
+\left.\frac{\partial H_m}{\partial i^2}\right|_{i^2=1}
+\in (1-d^2)(1-e^2)(1-g^2)\,\mathcal J_m,
+\]
+
+where \(\mathcal J_m\) includes the sector's previously certified endpoint
+factors. Hence, in the endpoint coordinate (i^2=1-y^2), every core changes
+only at order (y^2). Linear order in (y) is completely exposed: it can
+come only from character amplitudes carrying the explicit factor
+\(I=\sqrt{1-i^2}=y\).
+
+This does **not** make the complete endpoint margins Cayley-independent. Their
+forced character monomials can still carry (c) or \(\sqrt{1-c^2}\). The
+result removes hidden core dependence and supplies a smaller, auditable
+endpoint expansion; it is not yet a sign certificate.
+
 ## What a high-school reader should picture
 
 Imagine eight complicated answers written on eight cards. We discovered that
@@ -255,6 +282,11 @@ counterexample to the tempting global quadratic Schur certificate; higher
 powers of the new edge cannot be discarded. See
 `SPIN8_TWO_EDGE_BOUNDARY_KERNEL_RESULTS.md`.
 
-The remaining exact gate is to classify any other equality strata implicit in
-the one-edge Duffy/Bernstein proof and check the full odd amplitude there,
-before attempting finite-edge positivity with the complete `i^2` polynomial.
+The one-edge Duffy/Bernstein zero support has now been classified exactly. Its
+physical equality set is `z=1` or `u=v=r=w=0`; there are no hidden
+non-coordinate equality strata. The complete two-edge bridge inherits the
+same common `(1-z)^3` factor, so only the orthonormal component remains after
+normalization, and it already passes the local odd-kernel test. The
+equality-kernel prerequisite is therefore complete. The next exact gate is
+the `y=1` and `y=0` endpoint-factor audit for the finite degree-six and
+degree-twelve polynomials, followed by their first inward derivatives.

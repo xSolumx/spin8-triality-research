@@ -1,4 +1,13 @@
-#########################################################
+# Historical geometric-program sketch
+
+> **Historical status.** This is an early concept sketch, not the maintained
+> architecture or a theorem statement. The code is illustrative, untested, and
+> nondeterministic across Python processes because it uses the randomized
+> built-in `hash`. The “Category Engine” is an undeveloped placeholder. For the
+> tested recurrence and current theorem status, use
+> [FOUNDATIONS.md](../FOUNDATIONS.md), [RESEARCH_MAP.md](../RESEARCH_MAP.md), and
+> [the current repository README](../../README.md).
+
 Input (text, image, signal, symbol)
      ↓
 [Geometric Algebra Encoder]  → Encodes structure & spatial logic
@@ -68,3 +77,4 @@ scale = Morphism("scale", lambda v: 2*v)
 # Compose morphisms: scale then rotate
 composed = rotate_x.compose(scale)
 output = composed(apple)
+```

@@ -642,6 +642,10 @@ class CayleySpectrumTheoremTests(unittest.TestCase):
             ["1/4", "9/16", "9/16", "1"],
         )
         self.assertEqual(certificate["balanced_global_determinant"], "81/1024")
+        self.assertEqual(
+            certificate["same_view_pair_basis_invariance"],
+            {"positive_chiral": True, "negative_chiral": True},
+        )
 
     def test_two_orthogonalization_slices_are_exact(self) -> None:
         certificate = exact_restricted_orthogonalization_certificate()

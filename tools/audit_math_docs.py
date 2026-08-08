@@ -21,6 +21,7 @@ MALFORMED_PATTERNS = {
     ),
 }
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
+CODE_FENCE = re.compile(r"^\s*```", re.MULTILINE)
 
 
 @dataclass(frozen=True)
@@ -60,6 +61,10 @@ def audit_file(path: Path) -> list[Finding]:
 
     if text.count(r"\[") != text.count(r"\]"):
         findings.append(Finding(path, 0, "unbalanced display-math delimiters"))
+    if text.count(r"\(") != text.count(r"\)"):
+        findings.append(Finding(path, 0, "unbalanced inline-math delimiters"))
+    if len(CODE_FENCE.findall(text)) % 2:
+        findings.append(Finding(path, 0, "unbalanced fenced-code delimiters"))
 
     for line_number, line in enumerate(text.splitlines(), start=1):
         for raw_target in MARKDOWN_LINK.findall(line):

@@ -8,6 +8,12 @@ venv/
 dist/
 build/
 *.egg-info/
+output/
+tmp/
+.private/
+# Deterministic proof-search inputs are regenerated locally; compact
+# coefficient maps and published theorem artifacts remain versioned.
+artifacts/spin8_dirac_unrestricted_grid_20260807/
 *.pt
 *.pth
 *.ckpt

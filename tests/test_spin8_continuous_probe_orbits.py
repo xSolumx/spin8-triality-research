@@ -48,6 +48,10 @@ class Spin8ContinuousProbeOrbitTests(unittest.TestCase):
         self.assertTrue(
             all(row["global_stabilizer_trivial_by_full_closure"] for row in rows)
         )
+        self.assertIn("classical_global_input", self.report["proof_layers"])
+        self.assertIn(
+            "principal stratum", self.report["proof_layers"]["classical_global_input"]
+        )
         single = self.report["five_probe_allocation_certificates"][
             "single_view_control"
         ]

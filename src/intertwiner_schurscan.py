@@ -17,6 +17,7 @@ import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal
 
 import torch
 
@@ -45,7 +46,7 @@ def bilinear_contract(
 
     if u.shape[:-1] != v.shape[:-1]:
         raise ValueError("u and v must have equal leading shapes")
-    if beta.shape != (beta.shape[0], u.shape[-1], v.shape[-1]):
+    if beta.ndim != 3 or beta.shape[1:] != (u.shape[-1], v.shape[-1]):
         raise ValueError("beta must have shape (W, U, V)")
     return torch.einsum("...i,oij,...j->...o", u, beta, v)
 
@@ -63,11 +64,32 @@ def homogeneous_affine_matrix(
     return matrix
 
 
-def associative_matrix_scan(matrices: torch.Tensor) -> torch.Tensor:
-    """Inclusive ordered prefix products over sequence axis one."""
+ScanBackend = Literal[
+    "work_efficient",
+    "work_efficient_affine",
+    "work_efficient_homogeneous",
+    "hillis_steele",
+]
 
+
+def _validate_matrix_sequence(matrices: torch.Tensor) -> tuple[int, int, int]:
     if matrices.ndim != 4 or matrices.shape[-1] != matrices.shape[-2]:
         raise ValueError("matrices must have shape (batch, length, D, D)")
+    batch, length, dimension = matrices.shape[:3]
+    if length < 1:
+        raise ValueError("scan length must be positive")
+    return batch, length, dimension
+
+
+def associative_matrix_scan(matrices: torch.Tensor) -> torch.Tensor:
+    """Inclusive Hillis--Steele prefix products over sequence axis one.
+
+    This reference implementation has logarithmic dependency depth but
+    ``O(N log N)`` matrix-multiply work.  Use
+    :func:`work_efficient_associative_matrix_scan` when operation count matters.
+    """
+
+    _validate_matrix_sequence(matrices)
     prefixes = matrices
     offset = 1
     while offset < matrices.shape[1]:
@@ -77,10 +99,195 @@ def associative_matrix_scan(matrices: torch.Tensor) -> torch.Tensor:
     return prefixes
 
 
-def _scan_affine(
-    action: torch.Tensor, drive: torch.Tensor, initial: torch.Tensor
+def work_efficient_associative_matrix_scan(matrices: torch.Tensor) -> torch.Tensor:
+    """Inclusive ordered prefix products using a Blelloch-style tree.
+
+    For the chronological transition convention used here, a right segment
+    acts after a left segment, so their aggregate is ``right @ left``.  The
+    upsweep, downsweep, and final inclusive conversion require fewer than
+    ``3P`` matrix products for ``P`` the next power of two above the sequence
+    length.  All updates are out of place, so PyTorch autograd can traverse the
+    tree.
+    """
+
+    batch, length, dimension = _validate_matrix_sequence(matrices)
+    if length == 1:
+        return matrices
+    padded_length = 1 << (length - 1).bit_length()
+    if padded_length == length:
+        leaves = matrices
+    else:
+        identity = torch.eye(
+            dimension, dtype=matrices.dtype, device=matrices.device
+        ).reshape(1, 1, dimension, dimension)
+        padding = identity.expand(batch, padded_length - length, -1, -1)
+        leaves = torch.cat((matrices, padding), dim=1)
+
+    levels = [leaves]
+    nodes = leaves
+    while nodes.shape[1] > 1:
+        nodes = nodes[:, 1::2] @ nodes[:, 0::2]
+        levels.append(nodes)
+
+    identity = torch.eye(
+        dimension, dtype=matrices.dtype, device=matrices.device
+    ).reshape(1, 1, dimension, dimension)
+    exclusive = identity.expand(batch, 1, -1, -1)
+    for children in reversed(levels[:-1]):
+        left_totals = children[:, 0::2]
+        right_exclusive = left_totals @ exclusive
+        exclusive = torch.stack((exclusive, right_exclusive), dim=2).reshape(
+            batch, -1, dimension, dimension
+        )
+
+    inclusive = leaves @ exclusive
+    return inclusive[:, :length]
+
+
+def matrix_scan(
+    matrices: torch.Tensor, *, backend: ScanBackend = "work_efficient"
 ) -> torch.Tensor:
-    prefixes = associative_matrix_scan(homogeneous_affine_matrix(action, drive))
+    if backend in (
+        "work_efficient",
+        "work_efficient_affine",
+        "work_efficient_homogeneous",
+    ):
+        return work_efficient_associative_matrix_scan(matrices)
+    if backend == "hillis_steele":
+        return associative_matrix_scan(matrices)
+    raise ValueError(f"unknown scan backend: {backend}")
+
+
+def work_efficient_affine_prefixes(
+    action: torch.Tensor, drive: torch.Tensor
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Return inclusive affine prefixes without homogeneous augmentation."""
+
+    if (
+        action.ndim != 4
+        or drive.ndim != 3
+        or action.shape[:2] != drive.shape[:2]
+        or action.shape[-1] != action.shape[-2]
+        or action.shape[-1] != drive.shape[-1]
+    ):
+        raise ValueError(
+            "action and drive must have shapes (batch, length, D, D) and "
+            "(batch, length, D)"
+        )
+    batch, length, dimension = drive.shape
+    if length < 1:
+        raise ValueError("scan length must be positive")
+    if length == 1:
+        return action, drive
+
+    padded_length = 1 << (length - 1).bit_length()
+    if padded_length == length:
+        leaf_action, leaf_drive = action, drive
+    else:
+        identity = torch.eye(
+            dimension, dtype=action.dtype, device=action.device
+        ).reshape(1, 1, dimension, dimension)
+        zero = torch.zeros(1, 1, dimension, dtype=drive.dtype, device=drive.device)
+        leaf_action = torch.cat(
+            (
+                action,
+                identity.expand(batch, padded_length - length, -1, -1),
+            ),
+            dim=1,
+        )
+        leaf_drive = torch.cat(
+            (drive, zero.expand(batch, padded_length - length, -1)), dim=1
+        )
+
+    levels: list[tuple[torch.Tensor, torch.Tensor]] = [(leaf_action, leaf_drive)]
+    node_action, node_drive = leaf_action, leaf_drive
+    while node_action.shape[1] > 1:
+        left_action, right_action = node_action[:, 0::2], node_action[:, 1::2]
+        left_drive, right_drive = node_drive[:, 0::2], node_drive[:, 1::2]
+        node_action = right_action @ left_action
+        node_drive = (
+            torch.einsum("bnij,bnj->bni", right_action, left_drive) + right_drive
+        )
+        levels.append((node_action, node_drive))
+
+    identity = torch.eye(dimension, dtype=action.dtype, device=action.device).reshape(
+        1, 1, dimension, dimension
+    )
+    prefix_action = identity.expand(batch, 1, -1, -1)
+    prefix_drive = torch.zeros(
+        batch, 1, dimension, dtype=drive.dtype, device=drive.device
+    )
+    for child_action, child_drive in reversed(levels[:-1]):
+        left_action = child_action[:, 0::2]
+        left_drive = child_drive[:, 0::2]
+        right_prefix_action = left_action @ prefix_action
+        right_prefix_drive = (
+            torch.einsum("bnij,bnj->bni", left_action, prefix_drive) + left_drive
+        )
+        prefix_action = torch.stack(
+            (prefix_action, right_prefix_action), dim=2
+        ).reshape(batch, -1, dimension, dimension)
+        prefix_drive = torch.stack((prefix_drive, right_prefix_drive), dim=2).reshape(
+            batch, -1, dimension
+        )
+
+    inclusive_action = leaf_action @ prefix_action
+    inclusive_drive = (
+        torch.einsum("bnij,bnj->bni", leaf_action, prefix_drive) + leaf_drive
+    )
+    return inclusive_action[:, :length], inclusive_drive[:, :length]
+
+
+def scan_composition_counts(length: int) -> dict[str, int]:
+    """Return exact composition counts for the two reference scan trees.
+
+    Counts describe the Python tensor programs in this module, not GPU kernel
+    launches or wall-clock cost.  One affine composition comprises one matrix
+    product, one matrix-vector product, and one vector addition.
+    """
+
+    if length < 1:
+        raise ValueError("scan length must be positive")
+    hillis = 0
+    offset = 1
+    while offset < length:
+        hillis += length - offset
+        offset *= 2
+    if length == 1:
+        work_efficient = 0
+    else:
+        padded_length = 1 << (length - 1).bit_length()
+        work_efficient = 3 * padded_length - 2
+    return {"hillis_steele": hillis, "work_efficient": work_efficient}
+
+
+def scan_dependency_depths(length: int) -> dict[str, int]:
+    """Return matrix-composition dependency depth of each reference tree."""
+
+    if length < 1:
+        raise ValueError("scan length must be positive")
+    if length == 1:
+        return {"hillis_steele": 0, "work_efficient": 0}
+    levels = (length - 1).bit_length()
+    return {
+        "hillis_steele": levels,
+        "work_efficient": 2 * levels + 1,
+    }
+
+
+def _scan_affine(
+    action: torch.Tensor,
+    drive: torch.Tensor,
+    initial: torch.Tensor,
+    *,
+    backend: ScanBackend = "work_efficient",
+) -> torch.Tensor:
+    if initial.shape != (action.shape[0], action.shape[-1]):
+        raise ValueError("initial must have shape (batch, D)")
+    if backend == "work_efficient_affine":
+        prefix_action, prefix_drive = work_efficient_affine_prefixes(action, drive)
+        return torch.einsum("blij,bj->bli", prefix_action, initial) + prefix_drive
+    prefixes = matrix_scan(homogeneous_affine_matrix(action, drive), backend=backend)
     one = torch.ones(*initial.shape[:-1], 1, dtype=initial.dtype, device=initial.device)
     initial_h = torch.cat((one, initial), dim=-1)
     return torch.einsum("blij,bj->bli", prefixes, initial_h)[..., 1:]
@@ -97,14 +304,78 @@ def staged_intertwiner_scan(
     initial_v: torch.Tensor,
     initial_w: torch.Tensor,
     beta: torch.Tensor,
+    *,
+    scan_backend: ScanBackend = "work_efficient",
 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
     """Run the exact compact two-stage triangular scan."""
 
-    u = _scan_affine(u_action, u_drive, initial_u)
-    v = _scan_affine(v_action, v_drive, initial_v)
+    u = _scan_affine(u_action, u_drive, initial_u, backend=scan_backend)
+    v = _scan_affine(v_action, v_drive, initial_v, backend=scan_backend)
     binding = bilinear_contract(u, v, beta)
-    w = _scan_affine(w_action, w_drive + binding, initial_w)
+    w = _scan_affine(w_action, w_drive + binding, initial_w, backend=scan_backend)
     return u, v, w
+
+
+def recurrent_intertwiner_scan(
+    u_action: torch.Tensor,
+    u_drive: torch.Tensor,
+    v_action: torch.Tensor,
+    v_drive: torch.Tensor,
+    w_action: torch.Tensor,
+    w_drive: torch.Tensor,
+    initial_u: torch.Tensor,
+    initial_v: torch.Tensor,
+    initial_w: torch.Tensor,
+    beta: torch.Tensor,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    """Sequential ground truth for the triangular recurrence."""
+
+    batch, length, u_dim = u_drive.shape
+    v_dim = v_drive.shape[-1]
+    w_dim = w_drive.shape[-1]
+    if (
+        u_action.shape != (batch, length, u_dim, u_dim)
+        or v_action.shape != (batch, length, v_dim, v_dim)
+        or w_action.shape != (batch, length, w_dim, w_dim)
+        or v_drive.shape[:2] != (batch, length)
+        or w_drive.shape[:2] != (batch, length)
+        or initial_u.shape != (batch, u_dim)
+        or initial_v.shape != (batch, v_dim)
+        or initial_w.shape != (batch, w_dim)
+        or beta.shape != (w_dim, u_dim, v_dim)
+    ):
+        raise ValueError("incompatible triangular recurrence shapes")
+    if length < 1:
+        raise ValueError("scan length must be positive")
+
+    state_u, state_v, state_w = initial_u, initial_v, initial_w
+    rows: tuple[list[torch.Tensor], list[torch.Tensor], list[torch.Tensor]] = (
+        [],
+        [],
+        [],
+    )
+    for position in range(u_action.shape[1]):
+        state_u = (
+            torch.einsum("bij,bj->bi", u_action[:, position], state_u)
+            + u_drive[:, position]
+        )
+        state_v = (
+            torch.einsum("bij,bj->bi", v_action[:, position], state_v)
+            + v_drive[:, position]
+        )
+        state_w = (
+            torch.einsum("bij,bj->bi", w_action[:, position], state_w)
+            + w_drive[:, position]
+            + bilinear_contract(state_u, state_v, beta)
+        )
+        rows[0].append(state_u)
+        rows[1].append(state_v)
+        rows[2].append(state_w)
+    return (
+        torch.stack(rows[0], dim=1),
+        torch.stack(rows[1], dim=1),
+        torch.stack(rows[2], dim=1),
+    )
 
 
 def lift_state(u: torch.Tensor, v: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
@@ -201,6 +472,8 @@ def lifted_intertwiner_scan(
     initial_v: torch.Tensor,
     initial_w: torch.Tensor,
     beta: torch.Tensor,
+    *,
+    scan_backend: ScanBackend = "work_efficient",
 ) -> torch.Tensor:
     matrices = lifted_triangular_matrix(
         u_action,
@@ -211,7 +484,7 @@ def lifted_intertwiner_scan(
         w_drive,
         beta,
     )
-    prefixes = associative_matrix_scan(matrices)
+    prefixes = matrix_scan(matrices, backend=scan_backend)
     initial = lift_state(initial_u, initial_v, initial_w)
     return torch.einsum("blij,bj->bli", prefixes, initial)
 
@@ -276,6 +549,32 @@ def diagnostics(seed: int = 20260806) -> dict[str, object]:
         initial_w,
         beta,
     )
+    staged_hillis = staged_intertwiner_scan(
+        u_action,
+        u_drive,
+        v_action,
+        v_drive,
+        w_action,
+        w_drive,
+        initial_u,
+        initial_v,
+        initial_w,
+        beta,
+        scan_backend="hillis_steele",
+    )
+    staged_affine_tree = staged_intertwiner_scan(
+        u_action,
+        u_drive,
+        v_action,
+        v_drive,
+        w_action,
+        w_drive,
+        initial_u,
+        initial_v,
+        initial_w,
+        beta,
+        scan_backend="work_efficient_affine",
+    )
     lifted = lifted_intertwiner_scan(
         u_action,
         u_drive,
@@ -295,29 +594,32 @@ def diagnostics(seed: int = 20260806) -> dict[str, object]:
         lifted[..., layout.w],
     )
 
-    state_u, state_v, state_w = initial_u, initial_v, initial_w
-    sequential_rows = [[], [], []]
-    for position in range(length):
-        state_u = (
-            torch.einsum("bij,bj->bi", u_action[:, position], state_u)
-            + u_drive[:, position]
-        )
-        state_v = (
-            torch.einsum("bij,bj->bi", v_action[:, position], state_v)
-            + v_drive[:, position]
-        )
-        state_w = (
-            torch.einsum("bij,bj->bi", w_action[:, position], state_w)
-            + w_drive[:, position]
-            + bilinear_contract(state_u, state_v, beta)
-        )
-        sequential_rows[0].append(state_u)
-        sequential_rows[1].append(state_v)
-        sequential_rows[2].append(state_w)
-    sequential = tuple(torch.stack(rows, dim=1) for rows in sequential_rows)
+    sequential = recurrent_intertwiner_scan(
+        u_action,
+        u_drive,
+        v_action,
+        v_drive,
+        w_action,
+        w_drive,
+        initial_u,
+        initial_v,
+        initial_w,
+        beta,
+    )
 
     staged_error = max(
         float((left - right).abs().max()) for left, right in zip(staged, sequential)
+    )
+    hillis_error = max(
+        float((left - right).abs().max())
+        for left, right in zip(staged_hillis, sequential)
+    )
+    backend_error = max(
+        float((left - right).abs().max()) for left, right in zip(staged, staged_hillis)
+    )
+    affine_tree_error = max(
+        float((left - right).abs().max())
+        for left, right in zip(staged_affine_tree, sequential)
     )
     lift_error = max(
         float((left - right).abs().max())
@@ -338,6 +640,9 @@ def diagnostics(seed: int = 20260806) -> dict[str, object]:
 
     checks = {
         "staged_scan_matches_recurrence": staged_error <= 1e-11,
+        "hillis_steele_matches_recurrence": hillis_error <= 1e-11,
+        "scan_backends_agree": backend_error <= 1e-11,
+        "affine_tree_matches_recurrence": affine_tree_error <= 1e-11,
         "single_lift_matches_recurrence": lift_error <= 1e-11,
         "so3_cross_product_is_equivariant": equivariance_error <= 1e-11,
         "streaming_state_excludes_tensor_lift": 3 * dimension < layout.dimension,
@@ -353,7 +658,11 @@ def diagnostics(seed: int = 20260806) -> dict[str, object]:
         "streaming_cache_scalars": 3 * dimension,
         "homogeneous_proof_lift_scalars": layout.dimension,
         "parallel_scan_stages": 2,
+        "default_scan_backend": "work_efficient",
         "staged_recurrent_max_abs_error": staged_error,
+        "hillis_recurrent_max_abs_error": hillis_error,
+        "backend_max_abs_difference": backend_error,
+        "affine_tree_recurrent_max_abs_error": affine_tree_error,
         "lifted_recurrent_max_abs_error": lift_error,
         "equivariance_max_abs_error": equivariance_error,
         "degree_growth": feedback_degree_growth(8),

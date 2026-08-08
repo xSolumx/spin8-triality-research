@@ -32,12 +32,14 @@ replication summary because only seed 0 has been run.
 
 ## Source reports
 
-- `SSM-Models/experiments/recurrence_ladder_q8.json`
-- `SSM-Models/experiments/recurrence_ladder_q8_seed1_1000_focused.json`
-- `SSM-Models/experiments/recurrence_ladder_q8_seed2_1000_focused.json`
-- `SSM-Models/experiments/recurrence_ladder_d4_seed0_1000.json`
-- `SSM-Models/experiments/recurrence_ladder_d4_seed1_1000_focused.json`
-- `SSM-Models/experiments/recurrence_ladder_d4_seed2_1000_focused.json`
-- `SSM-Models/experiments/recurrence_ladder_s3_seed0_1000.json`
-- `SSM-Models/experiments/recurrence_ladder_s3_seed1_1000_focused.json`
-- `SSM-Models/experiments/recurrence_ladder_s3_seed2_1000_focused.json`
+- `../../artifacts/recurrence_ladder_q8.json`
+- `../../artifacts/recurrence_ladder_q8_seed1_1000_focused.json`
+- `../../artifacts/recurrence_ladder_q8_seed2_1000_focused.json`
+- `../../artifacts/recurrence_ladder_d4_seed0_1000.json`
+- `../../artifacts/recurrence_ladder_d4_seed1_1000_focused.json`
+- `../../artifacts/recurrence_ladder_d4_seed2_1000_focused.json`
+- `../../artifacts/recurrence_ladder_s3_seed0_1000.json`
+- `../../artifacts/recurrence_ladder_s3_seed1_1000_focused.json`
+- `../../artifacts/recurrence_ladder_s3_seed2_1000_focused.json`
+
+The corresponding original source paths are preserved in `PROVENANCE.json`.

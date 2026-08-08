@@ -102,7 +102,9 @@ The proof did not infer a polynomial from a floating-point fit.
    `deg(H)<=(3,3,3,6)`.
 2. The discovery grid used enough rational-circle nodes to determine every
    coefficient allowed by those bounds.
-3. A disjoint rational-circle grid reconstructed the coefficient maps again.
+3. An independently chosen rational-circle grid reconstructed the coefficient
+   maps again. It shared only the all-zero tensor anchor with the discovery
+   grid; the earlier description of the grids as fully disjoint was too strong.
 4. The two canonical rational coefficient serializations were required to
    agree exactly.
 5. Sixteen additional rational frames, each in both orientations, supplied 32
@@ -150,9 +152,73 @@ controlled by this certificate. Consequently:
 - strengthened global Dirac--Gram theorem: **open**;
 - global five-query D-optimality of `81/1024`: **open**.
 
-The next legitimate gate is a conditional-decorrelation lemma: at fixed star
-coordinates and normalized Cayley value, show that introducing the three
-residual Cholesky correlations cannot increase the normalized Dirac ratio (or
-produce an exact counterexample). Proving that lemma in the Schur operator
-would lift this theorem to general frames. More random frames would not
-strengthen the present result.
+## Historical next gate — subsequently falsified
+
+At the time of this result, the proposed next gate was a
+conditional-decorrelation lemma: at fixed star coordinates and normalized
+Cayley value, remove the three residual Cholesky correlations without
+increasing the normalized Dirac ratio. A later exact rational counterexample
+falsified that monotone removal map. It did not falsify the unrestricted
+Dirac--Gram inequality. The surviving global strategy must therefore control
+the residual variables jointly in the Schur operator; more random frames would
+not strengthen the present theorem.
+
+## Publication-strengthening addendum — 2026-08-06
+
+Exact factor analysis of the stored coefficient maps reveals
+
+\[
+A=(1-z)^3\widetilde A,
+\qquad
+H=(1-u)(v-w)(1-z)^3\widetilde H,
+\qquad
+Q=(1-z)^6\widetilde Q.
+\]
+
+After removing these forced factors, the Bernstein degree and zero counts fall
+from \((3,3,3,5)\) with 195 zeros to \((3,3,3,2)\) with 3 zeros for the margin,
+and from \((6,6,6,10)\) with 2,078 zeros to \((6,6,6,4)\) with 20 zeros for the
+discriminant. The reduced certificates still have no negative coefficients;
+their smallest positive coefficients are \(32/3\) and \(512/9\), respectively.
+
+Because every tensor-product Bernstein basis function is strictly positive in
+the open cube, the strengthened inequality is strict for
+\(0<u,v,w,z<1\). The factor \(v-w\) also exposes an exact orientation-blind
+subfamily that was previously hidden inside the 86-term odd polynomial.
+
+The reduced Bernstein support gives a sharper conclusion. The only zero
+controls of the reduced margin are \((0,0,0,k)\), and the only zero controls
+of the reduced discriminant have total spatial index at most one. Hence the
+normalized equality set on the entire closed cube is exactly
+
+\[
+z=1\quad\text{or}\quad (u,v,w)=(0,0,0).
+\]
+
+This classifies the boundary rather than merely proving open-cube strictness.
+On singular Gram faces the unnormalized continuous extension still vanishes
+through its common \(\Delta^3\) factor; that distinct statement does not make
+the normalized quotient zero.
+
+The finite-dimensional reduction has also been promoted to a separate exact
+certificate. All six branches of `A=0`, `D=0`, and `G=0` have symbolic rank
+25 with stored three-dimensional nullspaces; the circle quotient is a free
+rank-16 module; the full parameter-sign group has order 128 and leaves exactly
+the trivial and `a*A*d*D*g*G*c` parity sectors. Nonzero normalized face values
+`25/2`, `75/2`, and `75/2` certify that the three cubic Gram factors have exact
+generic order rather than only a lower-bound order. The exact interpolation
+nodes, Vandermonde spaces, and denominator conditions are recorded alongside
+these structural facts.
+
+The foundational certificate is
+[`spin8_dirac_star_foundations.py`](../../src/spin8_dirac_star_foundations.py),
+its artifact is
+[`spin8_dirac_star_foundations_20260806.json`](../../artifacts/spin8_dirac_star_foundations_20260806.json),
+the reduced structural certificate is
+[`spin8_dirac_star_structure.py`](../../src/spin8_dirac_star_structure.py), its
+artifact is
+[`spin8_dirac_star_structure_20260806.json`](../../artifacts/spin8_dirac_star_structure_20260806.json),
+the independent FLINT arithmetic replay is
+[`spin8_publication_flint_crosscheck_20260806.json`](../../artifacts/spin8_publication_flint_crosscheck_20260806.json),
+and the self-contained paper is
+[*An Exact Cubic Gram-Volume Inequality for Signed-Star Spin(8) Triality Sensors*](../manuscripts/SIGNED_STAR_DIRAC_GRAM.md).

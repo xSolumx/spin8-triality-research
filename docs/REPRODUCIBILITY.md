@@ -18,9 +18,13 @@ Exact SymPy certificates and CPU recurrence checks do not require CUDA.
 
 ```bash
 python -m unittest discover -s tests -p "test_*.py"
+python tools/verify_artifact_manifest.py
 ```
 
-The current suite passes 130 tests. The edge-theorem unit test is a lightweight
+As of 2026-08-06, the current suite passes 188 tests. The recorded full run was
+restricted to six logical processors, completed in 375.8 seconds including the
+resource supervisor, and peaked at 4.074 GiB of process-tree resident memory.
+The edge-theorem unit test is a lightweight
 artifact verifier: it reconstructs the stored polynomials and Bernstein arrays,
 directly compares both stored coefficient maps, requires complete equality
 between stored and freshly recomputed symmetry/divisibility records, and
@@ -36,7 +40,31 @@ The coordinate-geometry test checks all 52,752 multiview coordinate sensors,
 recomputes exact rational Lie ranks for all 141 distinct closures, and verifies
 the `SU(3) -> SU(2) -> trivial` representative chain. The generic SchurScan
 test independently compares its staged scan and finite homogeneous lift with
-sequential recurrence and checks an SO(3) cross-product control.
+sequential recurrence, checks noncommutative irregular-length order and
+gradients, exercises a length-2,048 contract, and checks an SO(3) cross-product
+control.
+
+## Intertwiner SchurScan benchmark
+
+The benchmark records eager tensor-program behavior; it does not claim a fused
+production kernel. CPU execution is capped at six threads.
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m pytest -q `
+  tests/test_intertwiner_schurscan.py `
+  tests/test_benchmark_intertwiner_schurscan.py
+
+python -m benchmark_intertwiner_schurscan `
+  --device cuda --dtype float32 --batch 8 `
+  --lengths 16 32 64 128 256 512 1024 2048 4096 `
+  --warmup 5 --repeats 15 --backward-max-length 256 `
+  --lift-max-length 32 --threads 6 `
+  --output artifacts/intertwiner_schurscan_cuda_replay.json
+```
+
+Canonical 2026-08-07 hardware results and checksums are listed in
+[`INTERTWINER_SCHURSCAN_BENCHMARK_RESULTS.md`](experiments/INTERTWINER_SCHURSCAN_BENCHMARK_RESULTS.md).
 
 The continuous-orbit test recomputes exact invariant tangent ranks, action
 ranks, stabilizer brackets/Killing forms, and one globally free closure for
@@ -57,6 +85,36 @@ checks 32 signed off-grid determinants.
 
 Acceptance conditions are frozen in
 [SPIN8_DIRAC_STAR_PREREGISTRATION.md](experiments/SPIN8_DIRAC_STAR_PREREGISTRATION.md).
+
+## Publication theorem extensions
+
+The Cayley design-criterion laws, the forced-factor reduction of the signed
+star certificate, and an independent FLINT arithmetic replay are reproduced
+with:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m spin8_cayley_blocks
+python -m spin8_cayley_flag `
+  --output artifacts/spin8_cayley_flag_replay.json
+python -m spin8_cayley_criteria `
+  --output artifacts/spin8_cayley_criteria_replay.json
+python -m spin8_dirac_star_structure `
+  --output artifacts/spin8_dirac_star_structure_replay.json
+python -m spin8_dirac_star_foundations `
+  --output artifacts/spin8_dirac_star_foundations_replay.json
+python -m spin8_publication_flint_crosscheck `
+  --threads 6 `
+  --output artifacts/spin8_publication_flint_crosscheck_replay.json
+python -m unittest discover -s tests `
+  -p "test_spin8_publication_theorems.py" -v
+```
+
+The FLINT pass repeats the rational polynomial divisions, derivative
+identities, endpoint eigenvalue slopes, and all 1,907 reduced Bernstein
+coefficients. It deliberately accepts the maintained rational coefficient
+maps as input; the full star replay above remains the independent check that
+regenerates those maps from exact determinant samples.
 
 ## Exact Cayley-null edge-family replay
 
@@ -121,6 +179,29 @@ Install `python-flint` to enable the optimized exact backend. The committed
 2026-08-06 artifact records the completed exact theorem. The 10 MB published
 determinant cache may replace the first stage when replaying later stages, but
 its SHA-256 link to the reconstruction must still pass.
+
+The complete equality-set audit reuses those proof objects and reconstructs
+the exact zero-control supports under the same six-core limit:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m spin8_dirac_one_edge_equality `
+  --reconstruction artifacts/spin8_dirac_one_edge_exact_20260804.json `
+  --cache artifacts/spin8_dirac_one_edge_determinant_cache_20260806.json `
+  --assembled artifacts/spin8_dirac_one_edge_duffy_20260806.json `
+  --workers 6 `
+  --output artifacts/spin8_dirac_one_edge_equality_replay.json
+```
+
+The exact two-edge endpoint-jet flag law is lightweight to replay from the
+published sector maps:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m spin8_dirac_two_edge_endpoints `
+  --coefficients artifacts/spin8_dirac_two_edge_all_sectors_coefficients_20260806.json `
+  --output artifacts/spin8_dirac_two_edge_endpoints_replay.json
+```
 
 ### Enforced workstation envelope
 

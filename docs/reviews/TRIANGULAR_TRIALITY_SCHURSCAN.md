@@ -24,6 +24,45 @@ Every box is an affine associative scan. The binding between stages is
 pointwise and activation-free. Parallel depth is a constant number of
 `O(log N)` stages; recurrent cache is `8+8+8=24` scalars per channel.
 
+The maintained parallel implementation now uses an ordered, work-efficient
+prefix tree.  Its operation count is linear in sequence length; the earlier
+Hillis--Steele reference remains available as a correctness and performance
+control.  See
+[`INTERTWINER_SCHURSCAN_BENCHMARK_RESULTS.md`](../experiments/INTERTWINER_SCHURSCAN_BENCHMARK_RESULTS.md).
+
+## The 81D / 89D distinction
+
+Two different lifted spaces appeared in the historical notes and must not be
+conflated:
+
+\[
+1+8+8+64=81
+\]
+
+is the homogeneous lift for the two source streams and their tensor product,
+
+\[
+[1,s^+,s^-,s^+\otimes s^-].
+\]
+
+It proves closure of the triality binding drive but does not contain the
+downstream vector state.  The complete single-stage lift of the displayed
+three-stream recurrence is
+
+\[
+1+8+8+64+8=89,
+\]
+
+with coordinates
+
+\[
+[1,s^+,s^-,s^+\otimes s^-,v].
+\]
+
+The practical staged recurrence materializes neither lift and streams only 24
+scalars.  The 89D construction is a proof oracle, not the benchmarked runtime
+state.
+
 ## Why this is better than the original proposal
 
 - It states exactly where nonlinearity lives.
@@ -79,6 +118,13 @@ then compare against:
 
 The exact rows should be used as mechanism oracles, not mixed into a claim
 that attention has already been replaced.
+
+Before another task benchmark, the scan itself had to pass an engineering
+gate.  That gate is now complete for eager PyTorch: noncommutative ordering,
+irregular lengths, gradients, a length-2,048 recurrence, CPU/CUDA memory, and
+forward/full-gradient timing all have maintained artifacts.  The next systems
+gate is a fused direct-affine kernel; no fused-kernel speed claim is currently
+made.
 
 ## Blind shared-action result
 
