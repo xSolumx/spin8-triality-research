@@ -1,8 +1,9 @@
 # An Octet Schur Reduction on an Adjacent Spin(8) Dirac--Gram Endpoint Face
 
 **Exact theorem note — 2026-08-07**
-**Status:** exact subgroup reduction, complete first-block theorem, and exact
-scalar second-block theorem; higher second-block minors remain open
+**Status:** exact subgroup reduction, complete first-block theorem, exact
+scalar second-block theorem, and one global quadratic second-block theorem;
+two quadratics and the higher second-block minors remain open
 **Certificate:**
 [`spin8_dirac_endpoint_octet.py`](../../src/spin8_dirac_endpoint_octet.py)
 **Artifact:**
@@ -46,11 +47,12 @@ This note proves \(X\succeq0\) on the complete five-cube. The proof combines
 the previously certified \(y=1\) Klein-four face with exact
 boundary-selector decompositions and a two-chart triangular certificate. It
 also proves the scalar principal minor \(Z_0\ge0\) by an exact identity with
-the global Fourier-energy polynomial. On the codimension-two boundary
-\(u_d=u_g=0\), all three quadratic \(Z\)-minors coincide and factor as the
-square of a polynomial of multidegree \((6,6,12)\). Their extension away from
-that boundary, together with the cubic and determinant families, remains
-open. Consequently this is a rigorous continuation
+the global Fourier-energy polynomial. A subsequent global certificate proves
+the quadratic mode \(0011001\) on the entire five-cube. On the codimension-two
+boundary \(u_d=u_g=0\), all three quadratic \(Z\)-minors coincide and factor
+as the square of a polynomial of multidegree \((6,6,12)\). The other two
+extensions away from that boundary, together with the cubic and determinant
+families, remain open. Consequently this is a rigorous continuation
 beyond the four-variable endpoint theorem, but not yet a proof of the full
 adjacent face or the unrestricted seven-variable inequality.
 
@@ -232,7 +234,24 @@ This identity is more informative than the native Bernstein tensor of
 basis artifact and that the correct proof is inherited from the global energy
 law.
 
-## 4. What remains open
+## 4. First global quadratic continuation
+
+The quadratic family associated with mode \(0011001\) now has a complete
+exact certificate:
+
+\[
+Z_0^2-s_{0011001}Z_{0011001}^2\ge0
+\quad\text{on }[0,1]^5.
+\]
+
+The proof uses a finite dyadic atlas away from the equality corner and a
+five-chart max-coordinate blow-up at that corner. Each chart has exact radial
+order four. Three require boundary-adapted signed-factor and selector
+certificates; the remaining two are natively Bernstein-nonnegative. The full
+proof and its explicit nonclaims are recorded in
+[`SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md`](../experiments/SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md).
+
+## 5. What remains open
 
 The three quadratic principal-minor families already share an exact boundary
 law. On \(u_d=u_g=0\), direct factorization in \(\mathbb Z[u_e,u_i,y]\)
@@ -249,7 +268,7 @@ also supplies the natural boundary term for the next exact selector
 decomposition.
 
 The exact reduction has isolated the remaining proof burden sharply. If the
-three quadratic minors, the cubic minor, and the determinant of the
+other two quadratic minors, the cubic minor, and the determinant of the
 Klein-four circulant \(Z\) are nonnegative on the five-cube, then
 \(Z\succeq0\), hence \(K_8\succeq0\), and the complete adjacent endpoint face
 is proved.
@@ -263,7 +282,7 @@ That statement has **not** yet been established. In particular:
 - this five-variable face does not settle the unrestricted seven-variable
   Dirac--Gram inequality.
 
-The next exact target is therefore the three quadratic \(Z\)-minor families,
-with boundary-adapted decompositions informed by their exact negative-control
-support. This is a smaller and better-conditioned problem than expanding the
-full eight-by-eight determinant directly.
+The next exact target is therefore the other two quadratic
+\(Z\)-minor families, with boundary-adapted decompositions informed by their
+exact negative-control support. This is a smaller and better-conditioned
+problem than expanding the full eight-by-eight determinant directly.

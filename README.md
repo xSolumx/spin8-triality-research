@@ -208,7 +208,9 @@ and
 and
 [two-edge atlas theorem](docs/experiments/SPIN8_DIRAC_TWO_EDGE_ATLAS_RESULTS.md),
 and
-[unrestricted reconstruction and tangent theorem](docs/experiments/SPIN8_DIRAC_UNRESTRICTED_RECONSTRUCTION_RESULTS.md).
+[unrestricted reconstruction and tangent theorem](docs/experiments/SPIN8_DIRAC_UNRESTRICTED_RECONSTRUCTION_RESULTS.md),
+and
+[first global adjacent-octet quadratic theorem](docs/experiments/SPIN8_DIRAC_OCTET_QUADRATIC_RESULTS.md).
 
 ### 5. Learning and compilation lineage
 
