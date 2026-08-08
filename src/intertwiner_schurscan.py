@@ -499,7 +499,15 @@ def so3_cross_product_tensor(
 
 
 def feedback_degree_growth(steps: int) -> dict[str, list[int]]:
-    """Formal generic degree obstruction when W feeds both source streams."""
+    """Formal degree recurrences for two explicitly scoped feedback graphs.
+
+    'one_source' means that 'w' enters one source linearly while the other
+    source remains affine of degree one.  'two_source' means that 'w'
+    enters both sources linearly.  The returned degrees assume that generic
+    leading coefficients do not cancel.  They obstruct a fixed finite
+    monomial linear lift; they are not a no-go theorem for arbitrary
+    nonlinear coordinates or every possible associative algorithm.
+    """
 
     triangular = []
     one_source_feedback = []
@@ -646,7 +654,7 @@ def diagnostics(seed: int = 20260806) -> dict[str, object]:
         "single_lift_matches_recurrence": lift_error <= 1e-11,
         "so3_cross_product_is_equivariant": equivariance_error <= 1e-11,
         "streaming_state_excludes_tensor_lift": 3 * dimension < layout.dimension,
-        "feedback_has_no_fixed_degree_lift": feedback_degree_growth(8)[
+        "feedback_degree_recurrence_matches_formula": feedback_degree_growth(8)[
             "feedback_into_both_sources"
         ][-1]
         == 256,
@@ -677,7 +685,8 @@ def diagnostics(seed: int = 20260806) -> dict[str, object]:
             "construction_is_not_triality_specific": checks[
                 "so3_cross_product_is_equivariant"
             ],
-            "generic_cyclic_feedback_is_scan_compatible": False,
+            "generic_cyclic_feedback_has_fixed_finite_monomial_linear_lift": False,
+            "all_scan_algorithms_for_cyclic_feedback_ruled_out": False,
         },
         "passed": all(checks.values()),
     }

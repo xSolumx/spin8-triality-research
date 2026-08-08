@@ -10,9 +10,10 @@ Raw artifact:
 
 ## The capacity correction
 
-For unit key (p), triality binding is an orthogonal map (M(p):S^-\to V).
-Single-pair retrieval is exact, but every wrong pair in an uncoded
-superposition contributes a full-norm orthogonal image. In one channel the
+For unit key \(p\), triality binding is an orthogonal map
+\(M(p):S^-\to V\). Single-pair retrieval is exact, but every wrong pair in an
+uncoded superposition contributes an orthogonal image with the same norm as
+its stored value. In one channel the
 observed mean relative squared errors are 1.0, 2.989, 6.953, and 14.755 for
 2, 4, 8, and 16 associations, agreeing with the prediction (K-1). The
 random-key inner-product value (1/8) is not an attenuation factor for this
@@ -20,35 +21,40 @@ bind--unbind operator.
 
 ## Exact multiplicity coding
 
-With code columns (c_k\in\mathbb R^H),
+With code columns \(c_k\in\mathbb R^H\),
 
-[
+\[
 \widehat n_q=n_q+\sum_{k\ne q}
 \langle c_q,c_k\rangle M(p_q)^TM(p_k)n_k.
-]
+\]
 
 Orthonormal columns therefore cancel every cross-term. Across all
-(K\le H\le32) cells, the maximum relative retrieval error was
+\(K\leq H\leq32\) cells, the maximum relative retrieval error was
 8.53e-16.
 
-Random unit codes followed the predicted mean squared error ((K-1)/H);
+Random unit codes followed the predicted mean squared error \((K-1)/H\);
 the largest relative discrepancy over the full grid was 0.1903, inside the
 frozen 20% gate.
 
 ## Optimal overcomplete coding
 
-For unit code columns, the frame-potential bound gives
+For unit code columns, the frame-potential bound gives the coefficient-energy
+inequality
 
-[
+\[
 \frac1K\sum_q\sum_{k\ne q}\langle c_q,c_k\rangle^2
 \ge \frac{K-H}{H}
-]
+\]
 
-when (K>H). Unit-norm tight frames attain it. The largest empirical relative
-discrepancy from this prediction was 0.0587, and every tested overcomplete
-tight frame with (H>1) beat its matched random code.
+when \(K>H\). Unit-norm tight frames attain it. For independent, zero-mean
+isotropic stored values, cross-vector terms vanish in expectation, so the same
+quantity is the expected relative squared retrieval error. It is not a
+deterministic lower bound for every correlated or adversarial value set. The
+largest empirical relative discrepancy from this random-value prediction was
+0.0587, and every tested overcomplete tight frame with \(H>1\) beat its
+matched random code.
 
-| Channels (H) | Associations (K) | Random-code MSE | Tight-frame MSE | Optimum | Coherence |
+| Channels \(H\) | Associations \(K\) | Random-code MSE | Tight-frame MSE | Frame-potential bound | Coherence |
 |---:|---:|---:|---:|---:|---:|
 | 4 | 5 | 1.0003 | 0.2483 | 0.25 | 0.25 |
 | 8 | 9 | 1.0180 | 0.1244 | 0.125 | 0.125 |
@@ -64,9 +70,9 @@ worst-case behavior. Average optimality is not a worst-case guarantee.
 
 The static codebook was extended to a real recurrent memory:
 
-[
+\[
 M_t[h]=r_t[h]V_tM_{t-1}[h]+B_t[h].
-]
+\]
 
 A hard zero retention and triality drive replace one addressed slot; untouched
 slots undergo the shared Spin(8) transport. Because all retention operators
@@ -80,7 +86,7 @@ Across a length-128, eight-slot random overwrite/transport stress test:
 - recurrent versus directly rebuilt symbolic memory: 2.22e-15;
 - final retrieval of all current slot values: 1.05e-15.
 
-This is an exact addressed (H)-slot dynamic memory with constant recurrent
+This is an exact addressed \(H\)-slot dynamic memory with constant recurrent
 state and logarithmic-depth parallel training.
 
 ## Dynamic and scan contracts
@@ -123,9 +129,12 @@ review and task-level baselines.
 
 ## No-free-lunch boundary
 
-Exact storage of (K) arbitrary 8D values requires at least (H=K) independent
-multiplicity dimensions in this linear construction. When (K>H), the rank
-bound makes nonzero average interference unavoidable. Addresses and query keys
-are supplied in the dynamic-slot gate. Cleanup decoders may trade approximation
-and codebook assumptions for capacity, but they do not invalidate this linear
-bound.
+Exact storage of \(K\) arbitrary 8D values requires at least \(H=K\)
+independent multiplicity dimensions in this linear construction. When
+\(K>H\), the rank bound makes nonzero average code-correlation energy
+unavoidable; for independent isotropic stored values this is nonzero expected
+retrieval MSE. A particular correlated value collection may exhibit accidental
+cross-term cancellation, but the map cannot recover every possible value
+collection exactly. Addresses and query keys are supplied in the dynamic-slot
+gate. Cleanup decoders may trade approximation and codebook assumptions for
+capacity, but they do not invalidate this linear rank bound.

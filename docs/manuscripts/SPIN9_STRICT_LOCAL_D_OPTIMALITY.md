@@ -79,7 +79,22 @@ Its dimension is
 
 Every member of this stratum is realizable by three unit spinor probes. This
 is an exact frame-operator formulation of the three-probe problem, not a
-continuous approximate-design relaxation.
+continuous approximate-design relaxation. For completeness, if the nonzero
+eigenvalues of \(M\) are
+\(\lambda_1\geq\lambda_2\geq\lambda_3>0\), then their sum is three and
+
+\[
+\lambda_1\geq1,
+\qquad
+\lambda_1+\lambda_2=3-\lambda_3\geq2.
+\]
+
+Thus \((\lambda_1,\lambda_2,\lambda_3)\) majorizes \((1,1,1)\).
+Schur--Horn supplies a \(3\times3\) positive-semidefinite Gram matrix with
+that spectrum and unit diagonal; factoring it gives three unit probes with
+frame operator \(M\). This is the converse proved in detail in the
+[frame-operator reduction](SPIN9_FRAME_OPERATOR_REDUCTION.md), not an
+assumption of the local theorem.
 
 ## 2. Tangent-space decomposition
 
@@ -124,12 +139,20 @@ T_{M_\star}\mathcal F_3^†
 
 The dimensions are \(33+1+5+5=44\).
 
-The slice representation was reconstructed exactly at \(c=0\). The
-curve-stabilizer certificate proves constant stabilizer dimension throughout
-the connected interior curve. A continuous family of finite-dimensional
-orthogonal \(\operatorname{SO}(3)\)-representations has locally constant
-integer highest-weight multiplicities; hence the \(V_1\oplus V_5\) slice type
-persists to \(c_\star\).
+The slice representation was reconstructed exactly at \(c=0\). Its transport
+to \(c_\star\) uses more than a bare dimension count. The exact
+curve-stabilizer matrix has constant rank on the connected interior interval,
+so its kernels form a smooth rank-three Lie-algebra bundle
+\(\mathfrak h_c\). The induced action on \(W(c)\) is faithful and spans
+\(\mathfrak{so}(W(c))\), identifying every fibre with
+\(\mathfrak{so}(3)\). After a local smooth choice of normalized bracket basis,
+the Casimir on the Grassmann normal bundle varies continuously. Its
+eigenvalues are drawn from the discrete finite set \(j(j+1)\) allowed in a
+six-dimensional real orthogonal representation; therefore their integer
+multiplicities are locally constant. Connectedness then transports the exact
+\(V_1\oplus V_5\) type from \(c=0\) to \(c_\star\). This is the precise
+bundle argument used here; constant stabilizer dimension alone would not
+justify the conclusion.
 
 ## 3. Stationarity
 
@@ -149,9 +172,14 @@ and obtains zero.
 
 ## 4. Reduction of the Hessian
 
-The Hessian vanishes on orbit directions because they are symmetry
-directions. There is no invariant bilinear coupling between \(V_1\) and
-\(V_5\). On the two equivalent \(V_5\) copies, Schur's lemma gives
+The Hessian annihilates orbit directions, including mixed orbit--slice terms.
+Indeed, for every infinitesimal action field \(\xi^\#\), invariance gives
+\(dF(\xi^\#)=0\) identically. Differentiating this identity at the critical
+point in an arbitrary tangent direction \(v\) gives
+\(\operatorname{Hess}F(v,\xi^\#)=0\); the term involving
+\(dF(\nabla_v\xi^\#)\) vanishes by stationarity. There is no invariant
+bilinear coupling between \(V_1\) and \(V_5\). On the two equivalent \(V_5\)
+copies, Schur's lemma gives
 
 \[
 \operatorname{Hess}_{V_5^{(o)}\oplus V_5^{(s)}}F
@@ -264,6 +292,17 @@ information operator, orbit projection, second variations, and signs. The
 closed forms above are checked against those independently computed field
 elements. No floating-point arithmetic, PSLQ relation, or interpolated
 rational function is accepted as proof.
+
+An independent Hessian-path numerical falsifier is also maintained in
+[spin9_local_hessian_independent.py](../../src/spin9_local_hessian_independent.py).
+It does not import the exact certificate or reuse its quotient projection.
+Instead it differentiates the direct information determinant on a fresh
+44-coordinate rank-three chart. It still shares the foundational Spin(9)
+generator constructor, so it is not an independent implementation of the base
+Clifford system. Float64 autodiff finds 11 negative directions, 33 symmetry
+zeros, and no positive direction. This is a regression check for sign, gauge,
+normalization, and dimension errors; it is deliberately not used as exact
+evidence.
 
 ## 8. Reproduction
 

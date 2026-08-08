@@ -106,28 +106,41 @@ not be materialized in the efficient training implementation.
 
 ## The feedback obstruction
 
-The direction of the dependency arrows is load-bearing. If `w` feeds back
-linearly into one source, generic polynomial degree grows as
+The direction of the dependency arrows is load-bearing. To make the
+obstruction precise, suppose `w` feeds back linearly into one source while the
+other remains affine. If \(d_t\) is the generic polynomial degree of `w`
+after step \(t\), then \(d_{t+1}=d_t+1\), giving
 
 \[
 2,3,4,5,\ldots.
 \]
 
-If it feeds both sources, the bilinear term generically doubles the degree:
+If `w` feeds linearly into both sources, then \(d_{t+1}=2d_t\), and the
+bilinear term generically doubles the degree:
 
 \[
 2,4,8,16,\ldots,2^t.
 \]
 
-Consequently no fixed finite collection of monomials can give an exact linear
-lift for generic cyclic feedback at arbitrary length. Special algebras may
-close by additional identities, but associativity cannot be claimed merely
-from bilinearity.
+Here "generic" means outside the algebraic set on which the leading
+coefficients cancel. Consequently no fixed finite collection of monomials of
+bounded degree can give an exact linear lift for these generic cyclic
+recurrences at arbitrary length. Special algebras may close by additional
+identities, and another non-polynomial coordinate system or algorithm is not
+ruled out; associativity cannot be claimed merely from bilinearity.
 
 This gives a clean architectural boundary:
 
-> Acyclic multilinear coupling permits a finite staged scan. Generic cyclic
-> multilinear feedback does not.
+> The displayed acyclic bilinear coupling has a finite staged affine scan.
+> The two displayed generic cyclic feedback graphs have no fixed finite
+> monomial linear lift.
+
+The frozen 2026-08-06 and 2026-08-07 JSON artifacts used the broader field
+name `generic_cyclic_feedback_is_scan_compatible`. That historical label is
+superseded by the scoped statement above; the artifact bytes remain unchanged
+for provenance. Current code emits both
+`generic_cyclic_feedback_has_fixed_finite_monomial_linear_lift: false` and
+`all_scan_algorithms_for_cyclic_feedback_ruled_out: false`.
 
 ## Nonexceptional control
 
@@ -209,7 +222,8 @@ Established here:
 - exact staged/recurrent equivalence for the displayed triangular recurrence;
 - an explicit finite homogeneous lift;
 - an independent SO(3) intertwiner instance;
-- formal degree growth showing why generic feedback is outside this theorem.
+- formal degree growth showing why the two specified generic feedback graphs
+  have no fixed finite monomial linear lift.
 
 Not yet established:
 

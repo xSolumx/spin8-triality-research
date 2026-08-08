@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 
 from spin9_local_hessian import diagnostics
+from spin9_local_hessian_independent import diagnostics as independent_diagnostics
 
 
 class Spin9LocalHessianTests(unittest.TestCase):
@@ -25,6 +26,16 @@ class Spin9LocalHessianTests(unittest.TestCase):
         self.assertTrue(report["orientation_spin9_orbit_normal"])
         self.assertTrue(report["curve_spin9_orbit_normal"])
         self.assertFalse(report["global_maximum_claimed"])
+
+    def test_independent_full_chart_autodiff_falsifier(self) -> None:
+        report = independent_diagnostics()
+        self.assertTrue(report["passed"], report)
+        self.assertFalse(report["imports_exact_hessian_certificate"])
+        self.assertEqual(report["chart_dimension"], 44)
+        self.assertEqual(report["negative_eigenvalue_count"], 11)
+        self.assertEqual(report["numerical_nullity"], 33)
+        self.assertEqual(report["positive_eigenvalue_count"], 0)
+        self.assertFalse(report["exact_theorem_claimed_from_this_audit"])
 
 
 if __name__ == "__main__":

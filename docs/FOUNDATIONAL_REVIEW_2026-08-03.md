@@ -172,10 +172,13 @@ on continuously perturbed sources and unseen generator paths. This is
 symmetry-driven identification of a supplied-action law, not a language result.
 
 Second, the project explicitly rejects a high-capacity claim for one 8D
-triality vector. Wrong-key bind--unbind terms retain full norm. Exact
+triality vector. Wrong-key bind--unbind terms preserve the stored-value norm
+before multiplication by the code inner product. Exact
 multi-item retrieval comes from orthogonal multiplicity codes for K at most H.
 Beyond that rank horizon, unit-norm tight frames attain the classical optimal
-average interference bound (K-H)/H; they do not evade it.
+average code-correlation energy \((K-H)/H\). It is also the expected retrieval
+MSE for independent isotropic stored values, not a pointwise lower bound for
+every possible value collection; tight frames do not evade the rank horizon.
 
 Third, a shared-basis retention transition upgrades the static code to an
 exact addressed dynamic memory. It overwrites one slot, transports every

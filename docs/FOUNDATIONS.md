@@ -365,12 +365,16 @@ positive and negative chiral spinor to the vector representation. For a unit
 positive key, the induced map from negative spinor to vector is orthogonal, so
 single-pair binding is exactly invertible.
 
-Raw superposition does not provide high capacity: every wrong-key term has
-full norm. Multiplicity codes expose the exact law. With H channels and K code
-columns, cross terms are weighted only by code inner products. Orthonormal
-columns give exact retrieval for K at most H. Unit-norm tight frames attain the
-classical frame-potential lower bound (K-H)/H on average squared interference
-when K exceeds H.
+Raw superposition does not provide high capacity: before multiplicity
+weighting, every wrong-key bind--unbind map preserves the norm of the stored
+value rather than attenuating it by a factor such as \(1/8\). Multiplicity
+codes expose the exact law. With \(H\) channels and \(K\) code columns, cross
+terms are weighted only by code inner products. Orthonormal columns give exact
+retrieval for \(K\leq H\). For \(K>H\), unit-norm tight frames attain the
+classical frame-potential lower bound \((K-H)/H\) on average squared code
+correlation. This equals expected retrieval MSE for independent, zero-mean
+isotropic values; it is not a deterministic minimum for every correlated or
+adversarial collection of stored values.
 
 An addressed dynamic form retains scan closure:
 
